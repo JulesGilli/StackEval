@@ -6575,46 +6575,5049 @@ export const questionsData: Question[] = [
 
 // Version Control
     {
-        id: 'vcs-user-001',
-        question: "Quel fichier doit toujours être ignoré par Git dans un projet Unity ?",
-        options: ["Library/", "Assets/", "ProjectSettings/", "Packages/"],
-        correctAnswer: 0,
-        explanation: "Library/ contient du cache local, jamais à versionner.",
+        id: "vc-user-1",
         category: "Version Control",
         level: "user",
+        question: "Quel est le but principal d’un système de contrôle de version ?",
+        options: [
+            "Suivre l’historique des modifications du projet et permettre de revenir à une version précédente",
+            "Augmenter la résolution des textures",
+            "Générer des shaders automatiquement",
+            "Compresser les scripts C#"
+        ],
+        correctAnswer: 0,
+        explanation: "Un VCS permet de suivre et restaurer l’historique des fichiers."
+    },
+    {
+        id: "vc-user-2",
+        category: "Version Control",
+        level: "user",
+        question: "Lequel de ces fichiers Unity doit absolument être inclus dans un dépôt Git ?",
+        options: [
+            "Assets/",
+            "Library/",
+            "Temp/",
+            "Obj/"
+        ],
+        correctAnswer: 0,
+        explanation: "Seul Assets/ (et ProjectSettings/) doivent être versionnés."
+    },
+    {
+        id: "vc-user-3",
+        category: "Version Control",
+        level: "user",
+        question: "Quel est le format recommandé pour les scènes Unity afin d’éviter des conflits difficiles à résoudre ?",
+        options: [
+            "Texte",
+            "Binaire",
+            "XML compressé",
+            "Image"
+        ],
+        correctAnswer: 0,
+        explanation: "Le format texte rend les merges et la résolution de conflits possibles."
+    },
+    {
+        id: "vc-user-4",
+        category: "Version Control",
+        level: "user",
+        question: "Dans Unity, que fait l’option 'Visible Meta Files' dans les Editor Settings ?",
+        options: [
+            "Elle force Unity à générer un fichier .meta pour chaque asset afin de permettre le suivi dans un VCS",
+            "Elle cache les textures non utilisées",
+            "Elle rend les scènes invisibles dans le Project",
+            "Elle supprime les .meta à chaque commit"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mode Visible Meta Files est requis pour le versionning d’un projet Unity."
+    },
+    {
+        id: "vc-user-5",
+        category: "Version Control",
+        level: "user",
+        question: "Quelle commande Git permet d’enregistrer une modification localement mais pas encore sur le serveur distant ?",
+        options: [
+            "git commit",
+            "git push",
+            "git clone",
+            "git revert"
+        ],
+        correctAnswer: 0,
+        explanation: "git commit enregistre les changements localement."
+    },
+    {
+        id: "vc-user-6",
+        category: "Version Control",
+        level: "user",
+        question: "Quel type de fichiers doit être ignoré via un .gitignore sur un projet Unity ?",
+        options: [
+            "Library/, Temp/, Obj/",
+            "Assets/",
+            "ProjectSettings/",
+            "Tous les fichiers .cs"
+        ],
+        correctAnswer: 0,
+        explanation: "Les dossiers générés automatiquement doivent être ignorés, pas Assets/ ou ProjectSettings/."
+    },
+    {
+        id: "vc-user-7",
+        category: "Version Control",
+        level: "user",
+        question: "Comment éviter de perdre du travail lors de l’utilisation d’un VCS avec Unity ?",
+        options: [
+            "Commiter régulièrement et synchroniser avec le dépôt distant",
+            "Supprimer les .meta",
+            "Travailler toujours hors-ligne",
+            "Renommer les dossiers Assets/"
+        ],
+        correctAnswer: 0,
+        explanation: "Commiter et pusher fréquemment prévient la perte de données."
+    },
+    {
+        id: "vc-user-8",
+        category: "Version Control",
+        level: "user",
+        question: "Quelle action faire avant de commencer à travailler sur une nouvelle fonctionnalité sur un projet partagé en Git ?",
+        options: [
+            "Créer une nouvelle branche",
+            "Supprimer tous les fichiers Library/",
+            "Ouvrir la scène principale en binaire",
+            "Ignorer le .meta"
+        ],
+        correctAnswer: 0,
+        explanation: "Les branches permettent de séparer les features."
+    },
+    {
+        id: "vc-user-9",
+        category: "Version Control",
+        level: "user",
+        question: "En cas de conflit sur une scène en format texte, que doit-on faire ?",
+        options: [
+            "Résoudre le conflit en éditant le fichier manuellement ou via un outil de merge",
+            "Supprimer la scène",
+            "Forcer un reimport",
+            "Ignorer le conflit"
+        ],
+        correctAnswer: 0,
+        explanation: "Un conflit texte se résout à la main ou avec un merge tool."
+    },
+    {
+        id: "vc-user-10",
+        category: "Version Control",
+        level: "user",
+        question: "Pourquoi ne faut-il jamais versionner le dossier Library/ dans un projet Unity ?",
+        options: [
+            "Car il est régénéré automatiquement et peut être très volumineux",
+            "Car il contient les scènes",
+            "Car il contient des .cs",
+            "Car il ralentit le lancement du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Library/ est généré à partir des Assets/ et ProjectSettings/."
+    },
+    {
+        id: "vc-user-11",
+        category: "Version Control",
+        level: "user",
+        question: "Quelle interface graphique populaire pour Git est souvent utilisée dans les équipes Unity ?",
+        options: [
+            "Sourcetree",
+            "Photoshop",
+            "Blender",
+            "VLC"
+        ],
+        correctAnswer: 0,
+        explanation: "Sourcetree est couramment utilisée pour le versionning Git en équipe."
+    },
+    {
+        id: "vc-user-12",
+        category: "Version Control",
+        level: "user",
+        question: "Que contient principalement un fichier .meta dans Unity ?",
+        options: [
+            "L’identifiant unique (GUID) et des infos d’asset",
+            "Le code C#",
+            "Les textures compressées",
+            "Le log d’erreur"
+        ],
+        correctAnswer: 0,
+        explanation: "Le .meta stocke le GUID, type d’asset, et parfois les settings."
+    },
+    {
+        id: "vc-user-13",
+        category: "Version Control",
+        level: "user",
+        question: "En équipe, pourquoi doit-on éviter de déplacer ou renommer des assets sans communiquer ?",
+        options: [
+            "Pour éviter les conflits de .meta et de scènes",
+            "Parce que ça fait planter l’éditeur",
+            "Pour gagner de la place sur le disque",
+            "Parce que Git ne supporte pas les renommages"
+        ],
+        correctAnswer: 0,
+        explanation: "Les renommages provoquent facilement des conflits si mal gérés."
+    },
+    {
+        id: "vc-user-14",
+        category: "Version Control",
+        level: "user",
+        question: "Dans Unity Collaborate, à quoi sert l’icône 'cloud' bleue à côté d’un fichier ?",
+        options: [
+            "À indiquer que le fichier est synchronisé avec le cloud",
+            "À signaler un bug",
+            "À changer le mode de rendu",
+            "À afficher la taille du fichier"
+        ],
+        correctAnswer: 0,
+        explanation: "Cloud bleu = fichier bien synchro avec Collaborate/Plastic SCM."
+    },
+    {
+        id: "vc-user-15",
+        category: "Version Control",
+        level: "user",
+        question: "Quel est l’avantage principal d’utiliser le format texte pour les Prefabs et scènes ?",
+        options: [
+            "Permettre le merge et la résolution de conflits",
+            "Rendre le projet plus rapide",
+            "Réduire la taille du build",
+            "Améliorer les collisions physiques"
+        ],
+        correctAnswer: 0,
+        explanation: "Format texte = possibilité de merge et d’inspection humaine."
+    },
+    {
+        id: "vc-user-16",
+        category: "Version Control",
+        level: "user",
+        question: "Lors de l’ouverture d’un projet Unity en équipe, un asset affiche 'Missing'. Que faire en priorité ?",
+        options: [
+            "Vérifier si l’asset et son .meta existent bien dans le VCS et sont bien synchronisés",
+            "Supprimer la scène",
+            "Relancer Unity sans rien faire",
+            "Mettre à jour le .gitignore"
+        ],
+        correctAnswer: 0,
+        explanation: "Vérifie que l’asset et son .meta sont présents/synchronisés."
+    },
+    {
+        id: "vc-user-17",
+        category: "Version Control",
+        level: "user",
+        question: "Quel service Unity propose une solution de version control intégrée compatible avec Git et Perforce ?",
+        options: [
+            "Unity Plastic SCM",
+            "Unity Remote",
+            "Unity Collaborate",
+            "Unity Analytics"
+        ],
+        correctAnswer: 0,
+        explanation: "Plastic SCM est la solution officielle Unity pour le versionning avancé."
+    },
+    {
+        id: "vc-user-18",
+        category: "Version Control",
+        level: "user",
+        question: "Quel fichier permet de configurer les exclusions de fichiers dans un repo Git ?",
+        options: [
+            ".gitignore",
+            ".csproj",
+            "README.md",
+            ".meta"
+        ],
+        correctAnswer: 0,
+        explanation: ".gitignore indique à Git quoi ignorer."
+    },
+    {
+        id: "vc-user-19",
+        category: "Version Control",
+        level: "user",
+        question: "Après un merge, un asset est en conflit. Quelle est la bonne démarche ?",
+        options: [
+            "Ouvrir le conflit dans un outil de merge, le résoudre, puis commit",
+            "Ignorer l’asset",
+            "Supprimer l’asset",
+            "Forcer un push"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut résoudre les conflits via merge tools adaptés."
+    },
+    {
+        id: "vc-user-20",
+        category: "Version Control",
+        level: "user",
+        question: "Quelle est la première étape à faire pour cloner un projet Unity existant avec Git ?",
+        options: [
+            "git clone URL_DU_DEPOT",
+            "git push",
+            "git commit",
+            "Créer un .meta à la main"
+        ],
+        correctAnswer: 0,
+        explanation: "git clone permet de récupérer le projet distant localement."
+    },
+    {
+        id: "vc-assoc-1",
+        category: "Version Control",
+        level: "pro",
+        question: "Quel est le risque principal si deux utilisateurs modifient le même fichier de scène Unity simultanément sur des branches différentes ?",
+        options: [
+            "Un conflit de merge difficile à résoudre",
+            "La suppression du dossier Library/",
+            "La perte automatique des .meta",
+            "Aucune conséquence, Git fusionne tout seul"
+        ],
+        correctAnswer: 0,
+        explanation: "Les scènes sont difficiles à fusionner sans communication préalable."
+    },
+    {
+        id: "vc-assoc-2",
+        category: "Version Control",
+        level: "pro",
+        question: "Que permet l’option 'Smart Merge (UnityYAMLMerge)' fournie avec Unity ?",
+        options: [
+            "Fusionner automatiquement des scènes et prefabs en format texte",
+            "Compresser les textures",
+            "Augmenter la résolution des assets",
+            "Gérer les dépendances de script"
+        ],
+        correctAnswer: 0,
+        explanation: "Smart Merge gère le merge auto des assets Unity en YAML."
+    },
+    {
+        id: "vc-assoc-3",
+        category: "Version Control",
+        level: "pro",
+        question: "Dans Plastic SCM, que permet le 'locking' sur un fichier de scène ?",
+        options: [
+            "Empêcher d’autres utilisateurs de modifier le fichier tant qu’il est verrouillé",
+            "Réduire la taille du fichier",
+            "Supprimer les branches inutilisées",
+            "Générer automatiquement un merge"
+        ],
+        correctAnswer: 0,
+        explanation: "Le locking évite les conflits sur les fichiers binaires ou critiques."
+    },
+    {
+        id: "vc-assoc-4",
+        category: "Version Control",
+        level: "pro",
+        question: "Quelle commande Git permet de récupérer les dernières modifications distantes dans ta branche locale ?",
+        options: [
+            "git pull",
+            "git push",
+            "git clone",
+            "git reset"
+        ],
+        correctAnswer: 0,
+        explanation: "git pull récupère et merge les changements distants."
+    },
+    {
+        id: "vc-assoc-5",
+        category: "Version Control",
+        level: "pro",
+        question: "Sur un projet Unity en équipe, quelle est la meilleure pratique pour gérer les gros assets binaires (ex: vidéos, textures HD) ?",
+        options: [
+            "Utiliser un système type Git LFS ou Plastic SCM",
+            "Les zipper et les envoyer par email",
+            "Les versionner en binaire dans le repo classique",
+            "Les stocker dans Library/"
+        ],
+        correctAnswer: 0,
+        explanation: "Git LFS ou Plastic SCM gèrent les gros fichiers de manière efficace."
+    },
+    {
+        id: "vc-assoc-6",
+        category: "Version Control",
+        level: "pro",
+        question: "Quelle conséquence directe si un fichier .meta est absent dans un commit contenant un asset Unity ?",
+        options: [
+            "L’asset perd son GUID et toutes ses références sont cassées",
+            "Le projet ne compile plus",
+            "Unity affiche une erreur de build",
+            "L’asset est automatiquement supprimé"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans .meta, GUID perdu = asset orphelin dans la scène/projet."
+    },
+    {
+        id: "vc-assoc-7",
+        category: "Version Control",
+        level: "pro",
+        question: "Pourquoi est-il déconseillé de commiter directement sur la branche main/master d’un projet Unity ?",
+        options: [
+            "Pour éviter d’introduire des bugs ou conflits non testés en prod",
+            "Parce que Git ne le permet pas",
+            "Parce que ça supprime les .meta",
+            "Car la scène ne sera plus accessible"
+        ],
+        correctAnswer: 0,
+        explanation: "On évite le direct sur main/master pour préserver la stabilité du projet."
+    },
+    {
+        id: "vc-assoc-8",
+        category: "Version Control",
+        level: "pro",
+        question: "Que permet le fichier .gitignore dans un projet collaboratif Unity ?",
+        options: [
+            "Exclure des fichiers/dossiers temporaires ou inutiles du versionning",
+            "Définir les droits utilisateurs",
+            "Restaurer automatiquement les assets supprimés",
+            "Changer le format de build"
+        ],
+        correctAnswer: 0,
+        explanation: ".gitignore évite de polluer le repo avec des fichiers non pertinents."
+    },
+    {
+        id: "vc-assoc-9",
+        category: "Version Control",
+        level: "pro",
+        question: "Quelles étapes effectuer avant de fusionner une branche de feature dans la branche principale ?",
+        options: [
+            "S’assurer que la branche est à jour, passer tous les tests, résoudre les conflits, puis merge",
+            "Supprimer le dossier Assets/",
+            "Changer la version de Unity",
+            "Push sans vérifier les conflits"
+        ],
+        correctAnswer: 0,
+        explanation: "Update, test, résolution de conflit, puis merge propre."
+    },
+    {
+        id: "vc-assoc-10",
+        category: "Version Control",
+        level: "pro",
+        question: "En cas de conflit irrésoluble sur un asset binaire (ex: .fbx, .mp4), quelle pratique adopter ?",
+        options: [
+            "Reprendre la version d’un des deux contributeurs et documenter la décision",
+            "Fusionner les deux fichiers avec un merge tool texte",
+            "Ignorer le fichier",
+            "Renommer le fichier dans les deux branches"
+        ],
+        correctAnswer: 0,
+        explanation: "Les binaires ne se fusionnent pas : tu choisis un camp et tu documentes."
+    },
+    {
+        id: "vc-assoc-11",
+        category: "Version Control",
+        level: "pro",
+        question: "Sur Plastic SCM, que veut dire 'checkin' ?",
+        options: [
+            "Enregistrer les changements sur le serveur",
+            "Mettre à jour la version de Unity",
+            "Ajouter un asset au projet",
+            "Supprimer une branche"
+        ],
+        correctAnswer: 0,
+        explanation: "Checkin = commit/push sur le serveur Plastic SCM."
+    },
+    {
+        id: "vc-assoc-12",
+        category: "Version Control",
+        level: "pro",
+        question: "Que permet la commande Git 'revert' ?",
+        options: [
+            "Annuler un commit spécifique sans supprimer l’historique",
+            "Supprimer tous les fichiers .meta",
+            "Revenir à la version initiale du repo",
+            "Changer la scène par défaut"
+        ],
+        correctAnswer: 0,
+        explanation: "revert crée un commit inverse du commit ciblé."
+    },
+    {
+        id: "vc-assoc-13",
+        category: "Version Control",
+        level: "pro",
+        question: "Pourquoi faut-il éviter de versionner les builds Unity dans un repo Git classique ?",
+        options: [
+            "Parce qu’ils sont volumineux et inutiles à l’historique projet",
+            "Parce que Git interdit les builds",
+            "Car ça casse la scène",
+            "Pour garder la place pour les .meta"
+        ],
+        correctAnswer: 0,
+        explanation: "Un build doit être généré, pas versionné."
+    },
+    {
+        id: "vc-assoc-14",
+        category: "Version Control",
+        level: "pro",
+        question: "Quelle fonctionnalité de Unity Plastic SCM facilite la gestion des projets en équipe large avec beaucoup de fichiers binaires ?",
+        options: [
+            "File Locking",
+            "Texture Compression",
+            "Asset Bundles",
+            "Incremental Build"
+        ],
+        correctAnswer: 0,
+        explanation: "Le verrouillage évite que deux personnes ne travaillent sur le même fichier binaire."
+    },
+    {
+        id: "vc-assoc-15",
+        category: "Version Control",
+        level: "pro",
+        question: "Après avoir résolu un conflit de merge, quelle étape est indispensable avant de pouvoir pusher la fusion ?",
+        options: [
+            "Ajouter le fichier résolu au commit (git add ou équivalent)",
+            "Supprimer le fichier",
+            "Changer le nom du repo",
+            "Modifier le .gitignore"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut ajouter (stager) les fichiers modifiés pour pouvoir commit."
+    },
+    {
+        id: "vc-assoc-16",
+        category: "Version Control",
+        level: "pro",
+        question: "Quelle stratégie de workflow favorise la stabilité et la livraison continue d’un projet Unity en équipe ?",
+        options: [
+            "Gitflow avec branches feature, develop, release, main",
+            "Travailler uniquement sur master",
+            "Créer un fork par utilisateur",
+            "Commit sur une branche random à chaque fois"
+        ],
+        correctAnswer: 0,
+        explanation: "Gitflow ou un dérivé = stabilité + évolutivité sur projet Unity."
+    },
+    {
+        id: "vc-assoc-17",
+        category: "Version Control",
+        level: "pro",
+        question: "Lorsqu’un asset est supprimé dans Unity, mais son .meta reste dans le repo, que se passe-t-il à la prochaine ouverture du projet ?",
+        options: [
+            "Unity affiche un warning ou un asset manquant",
+            "L’éditeur plante",
+            "Le fichier est restauré automatiquement",
+            "Le build échoue"
+        ],
+        correctAnswer: 0,
+        explanation: "Un .meta orphelin génère un warning ou reste inutilisé."
+    },
+    {
+        id: "vc-assoc-18",
+        category: "Version Control",
+        level: "pro",
+        question: "Pourquoi Unity recommande-t-il de toujours travailler en 'Force Text' pour les Assets Serialization ?",
+        options: [
+            "Pour rendre les merges et la résolution de conflits possibles en équipe",
+            "Pour gagner de la place sur le disque",
+            "Pour améliorer le rendu visuel",
+            "Pour accélérer les builds"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mode Force Text permet un vrai travail collaboratif."
+    },
+    {
+        id: "vc-assoc-19",
+        category: "Version Control",
+        level: "pro",
+        question: "Quel est le principal avantage à utiliser un système de versionning centralisé comme Plastic SCM plutôt que Git sur de très gros projets Unity ?",
+        options: [
+            "Gestion efficace des gros fichiers binaires et rapidité des opérations",
+            "Plus de conflits à résoudre",
+            "Moins besoin de documentation",
+            "Git n’est pas compatible avec Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Plastic SCM = support natif des binaires, plus adapté aux très gros projets."
+    },
+    {
+        id: "vc-assoc-20",
+        category: "Version Control",
+        level: "pro",
+        question: "Un collègue a modifié une prefab en même temps que toi. Comment retrouver qui a fait quelles modifications ?",
+        options: [
+            "En regardant l’historique du fichier dans le VCS (blame/annotate)",
+            "En ouvrant le dossier Library/",
+            "En réimportant le prefab",
+            "En lançant le build"
+        ],
+        correctAnswer: 0,
+        explanation: "L’outil blame ou annotate permet de voir qui a modifié quelle ligne."
+    },{
+        id: "vc-pro-1",
+        category: "Version Control",
+        level: "expert",
+        question: "Quelle stratégie permet d’intégrer un workflow CI/CD (build automatique) avec un projet Unity versionné dans Plastic SCM ?",
+        options: [
+            "Déclencher un build pipeline à chaque checkin ou merge sur la branche principale",
+            "Lancer les builds manuellement",
+            "Utiliser un dossier Dropbox partagé",
+            "Compresser le projet à chaque modification"
+        ],
+        correctAnswer: 0,
+        explanation: "Un build pipeline automatisé permet de valider, builder, et livrer sans intervention manuelle."
+    },
+    {
+        id: "vc-pro-2",
+        category: "Version Control",
+        level: "expert",
+        question: "Sur un projet multi-site avec des milliers d’assets binaires, pourquoi Plastic SCM est-il plus adapté que Git natif ?",
+        options: [
+            "Gestion native du locking, performances sur binaires, et synchro multi-site optimisée",
+            "Parce qu’il est open source",
+            "Il force l’usage du cloud",
+            "Il n’y a pas de différence"
+        ],
+        correctAnswer: 0,
+        explanation: "Plastic SCM a été conçu pour la gestion des gros assets Unity, là où Git atteint ses limites."
+    },
+    {
+        id: "vc-pro-3",
+        category: "Version Control",
+        level: "expert",
+        question: "Dans un audit, pourquoi l’absence d’historique propre sur les .meta est problématique sur un projet Unity ?",
+        options: [
+            "On ne peut pas tracer l’origine ni la suppression d’un asset (GUID perdu = liens cassés, debug impossible)",
+            "Ça augmente la taille du projet",
+            "Les builds deviennent plus lents",
+            "Ça n’a aucun impact"
+        ],
+        correctAnswer: 0,
+        explanation: "Les .meta sont la clé de la cohérence des assets et de leur traçabilité."
+    },
+    {
+        id: "vc-pro-4",
+        category: "Version Control",
+        level: "expert",
+        question: "Quel mécanisme de sécurité doit être mis en place sur un repository contenant des données confidentielles Unity (par exemple, NDA, data client) ?",
+        options: [
+            "Contrôle d’accès fin (permissions, audit logs, encrypted storage)",
+            "Autoriser l’accès à tous pour faciliter la collaboration",
+            "Mettre le repo en public temporairement",
+            "Supprimer tous les .gitignore"
+        ],
+        correctAnswer: 0,
+        explanation: "Sécurité = gestion d’accès, audit, et chiffrement quand requis."
+    },
+    {
+        id: "vc-pro-5",
+        category: "Version Control",
+        level: "expert",
+        question: "Après un crash serveur Plastic SCM ayant causé une corruption de repo, quelle première étape effectuer pour tenter une restauration ?",
+        options: [
+            "Restaurer le dernier backup du repository",
+            "Réinstaller Unity",
+            "Supprimer les fichiers Library/",
+            "Changer de VCS"
+        ],
+        correctAnswer: 0,
+        explanation: "Toujours partir du dernier backup connu sain."
+    },
+    {
+        id: "vc-pro-6",
+        category: "Version Control",
+        level: "expert",
+        question: "Quelle solution CI/CD choisir pour builder automatiquement un projet Unity hébergé sur GitHub et supporter Mac, Windows, Linux ?",
+        options: [
+            "GitHub Actions ou un service cloud compatible Unity (ex: Unity Cloud Build, Jenkins avec runners custom)",
+            "Automator sur Mac",
+            "Rsync sur FTP",
+            "Docker sans runner Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "GitHub Actions, Unity Cloud Build et Jenkins sont standards pour pipeline multiplateforme."
+    },
+    {
+        id: "vc-pro-7",
+        category: "Version Control",
+        level: "expert",
+        question: "Comment assurer l’intégrité des assets dans un repo Unity lors d’un audit qualité (ISO, norme interne) ?",
+        options: [
+            "Historique complet, protection contre les suppressions forcées, audit log, vérification de la cohérence GUID/.meta",
+            "Supprimer régulièrement le dossier ProjectSettings/",
+            "Changer la version de Unity à chaque build",
+            "Désactiver les merges"
+        ],
+        correctAnswer: 0,
+        explanation: "Audit qualité = traçabilité, intégrité, et possibilité de restaurer/valider l’historique."
+    },
+    {
+        id: "vc-pro-8",
+        category: "Version Control",
+        level: "expert",
+        question: "Quel est l’avantage principal du 'shelving' dans Plastic SCM sur des workflows complexes ?",
+        options: [
+            "Permet de sauvegarder temporairement du travail non terminé sans polluer l’historique ou la branch principale",
+            "Oblige à commiter sur la main",
+            "Accélère les builds",
+            "Empêche les conflits"
+        ],
+        correctAnswer: 0,
+        explanation: "Le shelving sert à stocker du travail en cours, pratique pour les interruptions ou pivots de tâches."
+    },
+    {
+        id: "vc-pro-9",
+        category: "Version Control",
+        level: "expert",
+        question: "Comment diagnostiquer un repo Git corrompu suite à un merge raté sur un projet Unity ?",
+        options: [
+            "git fsck, analyse des logs, vérification des HEAD/branches, et rebase ou restauration backup si nécessaire",
+            "Supprimer le repo",
+            "Rebuilder le projet Unity",
+            "Changer d’IDE"
+        ],
+        correctAnswer: 0,
+        explanation: "Diagnostic = commandes d’intégrité, lecture logs, restauration si non réparable."
+    },
+    {
+        id: "vc-pro-10",
+        category: "Version Control",
+        level: "expert",
+        question: "Quelle procédure appliquer pour intégrer de nouveaux développeurs dans un workflow VCS Unity déjà en production ?",
+        options: [
+            "Documentation claire (gitflow/plastic workflow), onboarding, droits d’accès progressifs, formation aux merges Unity",
+            "Donner accès complet et sans guide",
+            "Les laisser travailler hors versioning",
+            "Faire un clone sans .meta"
+        ],
+        correctAnswer: 0,
+        explanation: "Onboarding, documentation et droits sont obligatoires sur projets pro."
+    },
+    {
+        id: "vc-pro-11",
+        category: "Version Control",
+        level: "expert",
+        question: "Sur un build cloud (Unity Cloud Build ou équivalent), quel dossier doit impérativement être exclu du versionning pour éviter les corruptions/doublons ?",
+        options: [
+            "Library/",
+            "Assets/",
+            "Packages/",
+            "ProjectSettings/"
+        ],
+        correctAnswer: 0,
+        explanation: "Library/ contient du cache local non portable ni synchronisable."
+    },
+    {
+        id: "vc-pro-12",
+        category: "Version Control",
+        level: "expert",
+        question: "Comment automatiser l’ajout de fichiers .meta oubliés lors des commits sur un projet Unity ?",
+        options: [
+            "En utilisant un pre-commit hook (Git/Plastic SCM) pour vérifier et générer les .meta manquants",
+            "Commit tous les fichiers Library/",
+            "Forcer Unity à recompiler",
+            "Rien, c’est impossible"
+        ],
+        correctAnswer: 0,
+        explanation: "Pre-commit hooks peuvent prévenir l’oubli critique des .meta."
+    },
+    {
+        id: "vc-pro-13",
+        category: "Version Control",
+        level: "expert",
+        question: "Lors d’une migration d’un gros projet Git vers Plastic SCM, quelle étape est la plus critique pour éviter la perte d’historique ou de liens d’assets ?",
+        options: [
+            "Maintenir l’association .meta/GUID et valider l’import complet de l’historique",
+            "Changer tous les GUID à la main",
+            "Supprimer tous les fichiers cachés",
+            "Renommer les scenes"
+        ],
+        correctAnswer: 0,
+        explanation: "La correspondance GUID/.meta garantit la cohérence des assets après migration."
+    },
+    {
+        id: "vc-pro-14",
+        category: "Version Control",
+        level: "expert",
+        question: "Quelle technique permet de réduire la taille d’un repo Unity hébergé depuis plusieurs années avec des fichiers obsolètes volumineux ?",
+        options: [
+            "Faire un git gc suivi d’un filter-branch ou BFG Repo-Cleaner pour purger les gros fichiers inutiles",
+            "Supprimer tous les tags",
+            "Changer de repo",
+            "Renommer les assets"
+        ],
+        correctAnswer: 0,
+        explanation: "Git gc, filter-branch, et BFG permettent de nettoyer le repo."
+    },
+    {
+        id: "vc-pro-15",
+        category: "Version Control",
+        level: "expert",
+        question: "Pour garantir un audit de sécurité sur le repo (confidentialité, conformité), quelles traces/logs doivent être obligatoirement conservés ?",
+        options: [
+            "Audit logs des accès, des modifications, et des suppressions de branches ou assets critiques",
+            "Seuls les commits",
+            "Aucune trace, juste les builds",
+            "L’historique du dossier Library/"
+        ],
+        correctAnswer: 0,
+        explanation: "Un vrai audit exige la conservation des logs d’accès et de modif."
+    },
+    {
+        id: "vc-pro-16",
+        category: "Version Control",
+        level: "expert",
+        question: "Quelle différence majeure entre Plastic SCM et Git pour la gestion d’un projet Unity multi-sites, en dehors de la taille des assets ?",
+        options: [
+            "Plastic SCM gère nativement la synchronisation multi-site, Git nécessite des solutions annexes",
+            "Git permet le locking sur tous les fichiers",
+            "Plastic n’est pas compatible Unity",
+            "Il n’y a aucune différence"
+        ],
+        correctAnswer: 0,
+        explanation: "La synchro multi-site sur Plastic SCM est native et pensée pour les gros studios."
+    },
+    {
+        id: "vc-pro-17",
+        category: "Version Control",
+        level: "expert",
+        question: "Comment garantir que la branche principale reste toujours déployable/propre sur un projet Unity en équipe large ?",
+        options: [
+            "CI/CD, règles de merge strictes, validation automatique avant merge, tests auto, et code review obligatoire",
+            "Permettre le merge à tout moment",
+            "Désactiver la CI",
+            "Versionner les builds"
+        ],
+        correctAnswer: 0,
+        explanation: "Seule une discipline CI/CD et des règles solides garantissent une main stable."
+    },
+    {
+        id: "vc-pro-18",
+        category: "Version Control",
+        level: "expert",
+        question: "En cas de bug critique identifié post-merge sur la branche main, quelle action professionnelle prendre en priorité ?",
+        options: [
+            "Faire un hotfix sur une branche dédiée et merger dès validation",
+            "Supprimer le commit fautif du repo",
+            "Rollback toute la branche",
+            "Ignorer l’erreur"
+        ],
+        correctAnswer: 0,
+        explanation: "On fait un hotfix (fix direct et merge rapide)."
+    },
+    {
+        id: "vc-pro-19",
+        category: "Version Control",
+        level: "expert",
+        question: "Pour réduire les risques de conflits sur les scènes Unity, quelle organisation recommander ?",
+        options: [
+            "Découper les scènes en plusieurs sous-scenes (additive), appliquer le locking sur les scènes critiques, et communiquer",
+            "Travailler toujours à 2 sur la même scène",
+            "Versionner les scènes en binaire",
+            "Ignorer les .meta"
+        ],
+        correctAnswer: 0,
+        explanation: "Sous-scenes, locking, et communication = clé pour gros projets Unity."
+    },
+    {
+        id: "vc-pro-20",
+        category: "Version Control",
+        level: "expert",
+        question: "En cas de faille de sécurité détectée sur le repo (clé, asset sensible), quelle procédure appliquer immédiatement ?",
+        options: [
+            "Révoquer la clé, purger l’historique si nécessaire, communiquer à l’équipe et mettre à jour tous les secrets concernés",
+            "Juste supprimer le fichier fautif",
+            "Relancer Unity",
+            "Ignorer l’incident"
+        ],
+        correctAnswer: 0,
+        explanation: "Sécurité : révoquer, purger, notifier, et tout changer ce qui est compromis."
     },
 
 // Testing/QA
     {
-        id: 'test-user-001',
-        question: "Quel type de test permet de valider automatiquement un script sans lancer toute la scène ?",
-        options: ["Unit test", "Playmode test", "Stress test", "Integration test"],
-        correctAnswer: 0,
-        explanation: "Les unit tests testent la logique C# sans passer par l’engine.",
+        id: "qa-user-1",
         category: "Testing/QA",
         level: "user",
+        question: "Quel bouton de l’éditeur Unity permet de lancer un test manuel du jeu dans la scène en cours ?",
+        options: [
+            "Play (triangle en haut de l’éditeur)",
+            "Build",
+            "Console",
+            "Package Manager"
+        ],
+        correctAnswer: 0,
+        explanation: "Le bouton Play permet de tester le jeu en temps réel directement dans l’éditeur."
     },
-
+    {
+        id: "qa-user-2",
+        category: "Testing/QA",
+        level: "user",
+        question: "En Play Mode, que se passe-t-il si tu modifies la position d’un objet dans la scène ?",
+        options: [
+            "La modification est annulée dès qu’on sort du Play Mode",
+            "Le changement est sauvegardé",
+            "L’objet disparaît",
+            "L’éditeur plante"
+        ],
+        correctAnswer: 0,
+        explanation: "Toutes les modifications faites en Play Mode sont perdues quand tu arrêtes le mode Play."
+    },
+    {
+        id: "qa-user-3",
+        category: "Testing/QA",
+        level: "user",
+        question: "À quoi sert la fenêtre Console dans Unity ?",
+        options: [
+            "Afficher les messages d’erreur, d’avertissement et de debug",
+            "Modifier le code C#",
+            "Créer des assets",
+            "Changer la caméra"
+        ],
+        correctAnswer: 0,
+        explanation: "La Console permet de surveiller tout ce qui se passe pendant le test du jeu."
+    },
+    {
+        id: "qa-user-4",
+        category: "Testing/QA",
+        level: "user",
+        question: "Comment signaler un bug découvert lors d’un test manuel si tu travailles en équipe ?",
+        options: [
+            "Le documenter (capture, description, étapes) sur l’outil utilisé par l’équipe (Trello, Jira, Notion...)",
+            "Fermer Unity",
+            "Attendre la prochaine réunion",
+            "Supprimer la scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bug doit toujours être tracé dans l’outil de suivi de l’équipe."
+    },
+    {
+        id: "qa-user-5",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quel outil Unity te permet de suivre les logs d’exécution pendant un test ?",
+        options: [
+            "Console",
+            "Inspector",
+            "Project",
+            "Lighting"
+        ],
+        correctAnswer: 0,
+        explanation: "La fenêtre Console affiche tous les logs, erreurs et warnings du projet."
+    },
+    {
+        id: "qa-user-6",
+        category: "Testing/QA",
+        level: "user",
+        question: "Pourquoi est-il important de tester son jeu sur plusieurs plateformes (PC, mobile, WebGL) ?",
+        options: [
+            "Les bugs peuvent être différents selon la plateforme",
+            "Pour occuper le temps",
+            "C’est obligatoire par Unity",
+            "Aucune différence"
+        ],
+        correctAnswer: 0,
+        explanation: "Les comportements diffèrent souvent selon la plateforme, il faut donc toujours tester sur chaque cible."
+    },
+    {
+        id: "qa-user-7",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quand tu vois une erreur 'NullReferenceException' dans la console Unity, ça signifie :",
+        options: [
+            "Une variable ou un objet n’a pas été initialisé avant d’être utilisé",
+            "Le projet est bien codé",
+            "Il manque un asset graphique",
+            "Unity doit être mis à jour"
+        ],
+        correctAnswer: 0,
+        explanation: "Cette erreur indique que tu tentes d’utiliser une référence nulle dans ton code."
+    },
+    {
+        id: "qa-user-8",
+        category: "Testing/QA",
+        level: "user",
+        question: "Comment peux-tu vérifier si un bouton UI fonctionne correctement dans une scène ?",
+        options: [
+            "Cliquer dessus en Play Mode et vérifier l’action attendue",
+            "L’éditer dans le Project",
+            "Changer son nom",
+            "Supprimer sa couleur"
+        ],
+        correctAnswer: 0,
+        explanation: "Le test manuel le plus simple : cliquer dessus pendant le jeu et vérifier la réaction."
+    },
+    {
+        id: "qa-user-9",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quelle bonne pratique permet d’éviter les bugs oubliés avant livraison d’un projet Unity ?",
+        options: [
+            "Faire une checklist de tests avant chaque build",
+            "Ignorer les warnings",
+            "Livrer sans vérifier",
+            "Tester uniquement une scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans checklist, tu oublieras toujours de vérifier quelque chose."
+    },
+    {
+        id: "qa-user-10",
+        category: "Testing/QA",
+        level: "user",
+        question: "Que dois-tu faire avant d’envoyer une build au client ou à l’équipe ?",
+        options: [
+            "Tester toutes les fonctionnalités principales du jeu ou application",
+            "Juste changer le nom du fichier",
+            "Supprimer les logs",
+            "Rien, le build suffit"
+        ],
+        correctAnswer: 0,
+        explanation: "Un minimum de QA s’impose : toujours vérifier les fonctions clés avant livraison."
+    },
+    {
+        id: "qa-user-11",
+        category: "Testing/QA",
+        level: "user",
+        question: "Où peut-on voir les warnings jaunes pendant le test d’un projet Unity ?",
+        options: [
+            "Dans la Console",
+            "Dans la fenêtre Hierarchy",
+            "Sur le bureau",
+            "Dans la fenêtre Animator"
+        ],
+        correctAnswer: 0,
+        explanation: "Les warnings sont visibles dans la Console en jaune."
+    },
+    {
+        id: "qa-user-12",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quel raccourci permet de relancer rapidement le Play Mode dans Unity ?",
+        options: [
+            "Ctrl + P (ou Cmd + P sur Mac)",
+            "F1",
+            "Alt + Tab",
+            "Shift + S"
+        ],
+        correctAnswer: 0,
+        explanation: "Ctrl/Cmd + P permet de toggler le Play Mode instantanément."
+    },
+    {
+        id: "qa-user-13",
+        category: "Testing/QA",
+        level: "user",
+        question: "Pourquoi est-il conseillé de regarder les logs d’erreur à chaque test ?",
+        options: [
+            "Pour repérer les problèmes cachés ou discrets non visibles à l’écran",
+            "Juste pour remplir la console",
+            "Parce que Unity l’exige",
+            "Ça fait joli"
+        ],
+        correctAnswer: 0,
+        explanation: "Beaucoup de bugs ne sont visibles que dans les logs, pas à l’écran."
+    },
+    {
+        id: "qa-user-14",
+        category: "Testing/QA",
+        level: "user",
+        question: "En QA, quel est l’objectif d’un rapport de bug ?",
+        options: [
+            "Décrire clairement le problème pour qu’il soit reproductible et corrigeable par un dev",
+            "Se plaindre de la difficulté",
+            "Supprimer le bug tout seul",
+            "Refaire le projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Un rapport de bug doit permettre à n’importe qui de reproduire le bug et de le corriger."
+    },
+    {
+        id: "qa-user-15",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quelle action simple peut te permettre de savoir si un bug est lié à une scène ou à tout le projet ?",
+        options: [
+            "Tester le même élément dans une autre scène",
+            "Supprimer le projet",
+            "Changer la couleur du GameObject",
+            "Fermer Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Tester sur une autre scène permet de cerner la portée du bug."
+    },
+    {
+        id: "qa-user-16",
+        category: "Testing/QA",
+        level: "user",
+        question: "En Play Mode, comment repérer un freeze ou une boucle infinie ?",
+        options: [
+            "Unity ne répond plus, la Console affiche souvent des erreurs répétées",
+            "L’objet change de couleur",
+            "Le projet se ferme normalement",
+            "La souris change"
+        ],
+        correctAnswer: 0,
+        explanation: "Un freeze ou une boucle infinie bloque Unity, souvent avec des messages répétés en Console."
+    },
+    {
+        id: "qa-user-17",
+        category: "Testing/QA",
+        level: "user",
+        question: "Lors d’un test, pourquoi noter les étapes pour reproduire un bug ?",
+        options: [
+            "Pour permettre à d’autres de reproduire exactement le problème",
+            "Pour gagner du temps",
+            "Ce n’est pas utile",
+            "Pour supprimer le bug"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans steps précis, un bug n’est pas réparable par un autre membre de l’équipe."
+    },
+    {
+        id: "qa-user-18",
+        category: "Testing/QA",
+        level: "user",
+        question: "À quoi sert la touche 'Clear' dans la fenêtre Console ?",
+        options: [
+            "Effacer tous les messages visibles dans la Console",
+            "Fermer Unity",
+            "Supprimer le projet",
+            "Recompiler le code"
+        ],
+        correctAnswer: 0,
+        explanation: "Clear nettoie l’affichage des logs dans la Console, pratique pour voir uniquement les nouveaux messages."
+    },
+    {
+        id: "qa-user-19",
+        category: "Testing/QA",
+        level: "user",
+        question: "Pourquoi faut-il relancer plusieurs fois certains tests ?",
+        options: [
+            "Certains bugs n’apparaissent que dans des conditions précises ou après plusieurs cycles",
+            "Ça ne sert à rien",
+            "C’est une règle de Unity",
+            "Juste pour s’amuser"
+        ],
+        correctAnswer: 0,
+        explanation: "Les bugs intermittents ne se révèlent que sur plusieurs runs."
+    },
+    {
+        id: "qa-user-20",
+        category: "Testing/QA",
+        level: "user",
+        question: "Quel est l’intérêt d’utiliser les logs personnalisés (Debug.Log) dans un script Unity ?",
+        options: [
+            "Suivre le comportement du code pendant les tests",
+            "Décorer la Console",
+            "Ralentir le jeu",
+            "Supprimer les erreurs"
+        ],
+        correctAnswer: 0,
+        explanation: "Les logs aident à comprendre ce qui se passe dans ton script lors des tests."
+    },
+    {
+        id: "qa-associate-1",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel outil Unity permet de lancer des tests unitaires automatisés ?",
+        options: [
+            "Test Runner",
+            "Profiler",
+            "Build Settings",
+            "Animation Window"
+        ],
+        correctAnswer: 0,
+        explanation: "Test Runner permet de lancer des tests automatisés pour vérifier le comportement du code."
+    },
+    {
+        id: "qa-associate-2",
+        category: "Testing/QA",
+        level: "pro",
+        question: "À quoi sert un test automatisé par rapport à un test manuel ?",
+        options: [
+            "Il s’exécute tout seul et garantit la reproductibilité, évitant les oublis humains",
+            "Il teste le design",
+            "Il rend les builds plus légères",
+            "Il supprime tous les bugs"
+        ],
+        correctAnswer: 0,
+        explanation: "L’automatisation évite d’oublier des tests et permet une validation systématique à chaque modification."
+    },
+    {
+        id: "qa-associate-3",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Dans le Test Runner Unity, quels types de tests peut-on exécuter ?",
+        options: [
+            "Edit Mode et Play Mode",
+            "Build Mode et Light Mode",
+            "Profiler Mode et Scene Mode",
+            "Console Mode uniquement"
+        ],
+        correctAnswer: 0,
+        explanation: "Edit Mode pour le code pur, Play Mode pour tester le comportement en runtime."
+    },
+    {
+        id: "qa-associate-4",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel résultat indique qu’un test automatisé a échoué dans le Test Runner ?",
+        options: [
+            "Rouge (failed)",
+            "Vert (passed)",
+            "Bleu",
+            "Gris"
+        ],
+        correctAnswer: 0,
+        explanation: "Un test échoué s’affiche toujours en rouge dans l’interface Unity."
+    },
+    {
+        id: "qa-associate-5",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel est l’intérêt d’écrire des tests sur les scripts de gestion de score dans un jeu ?",
+        options: [
+            "S’assurer que l’évolution des scores fonctionne comme prévu après chaque modif",
+            "Faire joli dans le projet",
+            "Augmenter la difficulté du jeu",
+            "Rendre le jeu plus rapide"
+        ],
+        correctAnswer: 0,
+        explanation: "Tester la logique métier (score, points, niveaux) permet d’éviter les bugs de progression."
+    },
+    {
+        id: "qa-associate-6",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Que dois-tu vérifier dans un test Play Mode automatisé sur un bouton UI ?",
+        options: [
+            "Que le bouton déclenche bien l’action attendue lors d’un click",
+            "Que le bouton a la bonne couleur",
+            "Que le bouton existe dans le Project",
+            "Que le nom du bouton est correct"
+        ],
+        correctAnswer: 0,
+        explanation: "L’action du bouton (callback/event) est le cœur du test en Play Mode."
+    },
+    {
+        id: "qa-associate-7",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Pourquoi les logs personnalisés (Debug.Log) sont-ils utiles lors des tests ?",
+        options: [
+            "Pour comprendre ce que fait le code à chaque étape et diagnostiquer les problèmes",
+            "Pour effacer la Console",
+            "Pour cacher les erreurs",
+            "Pour ralentir le build"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bon log te dit où ça coince et t’évite de perdre du temps à deviner le comportement du script."
+    },
+    {
+        id: "qa-associate-8",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel est le risque d’ignorer les warnings jaunes dans la Console lors de la QA ?",
+        options: [
+            "Un warning peut cacher un bug réel qui passera inaperçu",
+            "Aucun, c’est cosmétique",
+            "Les warnings disparaissent après le build",
+            "Ça rend le projet plus léger"
+        ],
+        correctAnswer: 0,
+        explanation: "Un warning, c’est souvent un bug ou une mauvaise pratique qui peut devenir critique plus tard."
+    },
+    {
+        id: "qa-associate-9",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Pour tester la compatibilité multiplateforme d’un projet Unity, il faut :",
+        options: [
+            "Compiler et lancer des builds sur chaque plateforme cible (PC, Android, iOS, WebGL…)",
+            "Tester uniquement sur l’éditeur",
+            "Vérifier uniquement la documentation",
+            "Changer la couleur du Canvas"
+        ],
+        correctAnswer: 0,
+        explanation: "Le comportement peut changer selon la plateforme, donc toujours builder/tester sur chaque cible."
+    },
+    {
+        id: "qa-associate-10",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quand utiliser l’option 'Clear On Play' dans la fenêtre Console ?",
+        options: [
+            "Pour effacer automatiquement les logs précédents à chaque lancement du Play Mode",
+            "Pour effacer le projet",
+            "Pour recompiler tous les scripts",
+            "Pour sauvegarder la scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Clear On Play te permet de voir les nouveaux logs sans pollution des anciens messages."
+    },
+    {
+        id: "qa-associate-11",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Que représente le coverage en testing automatisé ?",
+        options: [
+            "Le pourcentage du code réellement exécuté par les tests",
+            "La vitesse du build",
+            "Le taux d’erreurs dans la console",
+            "Le nombre de warnings"
+        ],
+        correctAnswer: 0,
+        explanation: "Coverage = couverture du code, essentiel pour s’assurer que les tests touchent vraiment le cœur de la logique."
+    },
+    {
+        id: "qa-associate-12",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Pourquoi doit-on vérifier les edge cases (cas limites) lors des tests QA ?",
+        options: [
+            "Pour s’assurer que l’application ne crash pas ou ne bugge pas dans des situations extrêmes",
+            "Pour remplir la fiche QA",
+            "Pour finir plus vite",
+            "Parce que c’est la règle Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Les edge cases sont sources majeures de crash et de comportements imprévus."
+    },
+    {
+        id: "qa-associate-13",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel type de test permet de vérifier qu’une méthode retourne bien le résultat attendu dans tous les cas ?",
+        options: [
+            "Test unitaire",
+            "Test visuel",
+            "Test de build",
+            "Test de performance"
+        ],
+        correctAnswer: 0,
+        explanation: "Le test unitaire vérifie la validité d’une méthode en conditions contrôlées."
+    },
+    {
+        id: "qa-associate-14",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Dans un bug report efficace, il faut toujours :",
+        options: [
+            "Décrire les étapes précises pour reproduire, le résultat attendu, le résultat obtenu, et attacher des captures",
+            "Écrire 'ça marche pas'",
+            "Supprimer le code concerné",
+            "Changer le nom du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bug non documenté clairement est quasi impossible à corriger efficacement."
+    },
+    {
+        id: "qa-associate-15",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel outil Unity permet d’inspecter la mémoire utilisée par le jeu lors d’un test ?",
+        options: [
+            "Profiler",
+            "Animation Timeline",
+            "Inspector",
+            "Lighting"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Profiler permet d’analyser la mémoire, les perfs, les allocations…"
+    },
+    {
+        id: "qa-associate-16",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Comment détecter une fuite mémoire lors d’un test en Play Mode ?",
+        options: [
+            "En surveillant les courbes de mémoire dans le Profiler sur plusieurs cycles",
+            "En fermant l’éditeur",
+            "En changeant la couleur de la scène",
+            "En supprimant un asset"
+        ],
+        correctAnswer: 0,
+        explanation: "Si la mémoire augmente sans jamais redescendre, tu as une fuite."
+    },
+    {
+        id: "qa-associate-17",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Qu’est-ce qu’un faux positif en QA ?",
+        options: [
+            "Un test qui indique un succès alors qu’il aurait dû échouer",
+            "Un warning ignoré",
+            "Une couleur de bouton incorrecte",
+            "Un crash Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Faux positif : le test n’a pas détecté le bug qui existe pourtant."
+    },
+    {
+        id: "qa-associate-18",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quel est l’intérêt de faire des tests de performance sur le build final (pas que sur l’éditeur) ?",
+        options: [
+            "Les perfs en build ne sont pas toujours identiques à celles de l’éditeur",
+            "C’est inutile, c’est pareil",
+            "Pour décorer le build",
+            "Pour voir la couleur de la console"
+        ],
+        correctAnswer: 0,
+        explanation: "Optimiser dans l’éditeur ne suffit pas : il faut mesurer la vraie perf du build final."
+    },
+    {
+        id: "qa-associate-19",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quand faut-il retester une fonctionnalité après correction d’un bug ?",
+        options: [
+            "Toujours après correction pour vérifier que le bug est vraiment fixé",
+            "Jamais",
+            "Uniquement si le chef le demande",
+            "Quand on a le temps"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bug peut ressurgir si la correction est partielle ou touche d’autres modules."
+    },
+    {
+        id: "qa-associate-20",
+        category: "Testing/QA",
+        level: "pro",
+        question: "Quelle bonne pratique augmente la fiabilité du processus QA d’un projet Unity ?",
+        options: [
+            "Automatiser les tests critiques et faire relire tous les retours QA par plusieurs membres",
+            "Ignorer les tests",
+            "Ne faire qu’un test final",
+            "Livrer la build sans vérifier"
+        ],
+        correctAnswer: 0,
+        explanation: "Automatisation + validation croisée = fiabilité max sur la détection de bugs."
+    },
+    {
+        id: "qa-pro-1",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quelle approche permet de s’assurer qu’une régression n’est pas introduite après une mise à jour majeure du code ?",
+        options: [
+            "Mettre en place une suite de tests de non-régression automatisés",
+            "Relire le code à la main",
+            "Faire un build une fois par semaine",
+            "Vérifier uniquement les warnings"
+        ],
+        correctAnswer: 0,
+        explanation: "La non-régression se gère par des tests automatisés systématiques, qui doivent passer à chaque livraison."
+    },
+    {
+        id: "qa-pro-2",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Dans Unity Test Runner, que permet le mocking (mock object) lors des tests unitaires ?",
+        options: [
+            "Simuler des dépendances (services, objets externes) pour isoler le code testé",
+            "Optimiser les textures",
+            "Créer des assets temporaires",
+            "Ajouter des logs au Profiler"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mocking permet de tester une méthode indépendamment de son environnement ou de ses dépendances externes."
+    },
+    {
+        id: "qa-pro-3",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel outil ou framework Unity permet d’intégrer des tests automatisés dans un pipeline CI/CD ?",
+        options: [
+            "Unity Test Framework avec exécution CLI (command line)",
+            "Unity Collaborate",
+            "Timeline",
+            "Package Manager"
+        ],
+        correctAnswer: 0,
+        explanation: "Les tests peuvent être exécutés en ligne de commande dans une CI (GitHub Actions, Azure Pipelines, etc.)."
+    },
+    {
+        id: "qa-pro-4",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel est l’intérêt d’un rapport de coverage dans un pipeline de build Unity ?",
+        options: [
+            "Visualiser le pourcentage de code effectivement testé pour prioriser l’écriture de nouveaux tests",
+            "Réduire le temps de compilation",
+            "Changer le fond d’écran du projet",
+            "Augmenter la résolution des textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Le coverage permet de cibler les zones de code mal ou pas testées."
+    },
+    {
+        id: "qa-pro-5",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Pourquoi instrumenter des tests de performance automatisés (benchmarks) sur des builds réels et non l’éditeur ?",
+        options: [
+            "Les optimisations et performances réelles ne sont fiables que sur le build cible (PC, mobile, console), l’éditeur masque souvent les problèmes",
+            "L’éditeur est toujours plus rapide",
+            "Les benchmarks ne s’exécutent qu’en Editor",
+            "Le build ne supporte pas les tests"
+        ],
+        correctAnswer: 0,
+        explanation: "Le runtime buildé a un comportement radicalement différent (garbage collection, threads, device)."
+    },
+    {
+        id: "qa-pro-6",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel pattern améliore la testabilité du code dans Unity ?",
+        options: [
+            "Inversion de dépendance (Dependency Injection)",
+            "Usage de variables globales",
+            "Appeler GameObject.Find() partout",
+            "Tout mettre en static"
+        ],
+        correctAnswer: 0,
+        explanation: "L’injection de dépendance rend les modules testables et interchangeables (mock, stub, etc.)."
+    },
+    {
+        id: "qa-pro-7",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Comment éviter les faux négatifs dans des tests automatisés multi-plateformes Unity ?",
+        options: [
+            "S’assurer que les tests couvrent bien les différences de plateforme (Input, API, perfs) et éviter toute dépendance à l’environnement de l’éditeur",
+            "Ne jamais utiliser les coroutines",
+            "Ne pas faire de test sur mobile",
+            "N’utiliser que le mode Play"
+        ],
+        correctAnswer: 0,
+        explanation: "Chaque plateforme peut avoir des comportements ou APIs différents : tests robustes = code indépendant de l’éditeur."
+    },
+    {
+        id: "qa-pro-8",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Que permet la configuration d’un test de performance avec Unity Performance Testing Extension ?",
+        options: [
+            "Mesurer précisément les temps d’exécution de code/logiciel dans un contexte reproductible",
+            "Accélérer le build",
+            "Détecter la lumière dans la scène",
+            "Modifier les assets du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity Performance Testing Extension permet du benchmark scripté, reproductible et traçable."
+    },
+    {
+        id: "qa-pro-9",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Pourquoi l’isolation des tests est-elle critique en QA avancée ?",
+        options: [
+            "Pour garantir que chaque test s’exécute dans un environnement propre, sans dépendre d’un état global ou d’un autre test",
+            "Pour gagner du temps en développement",
+            "Pour réduire la taille du code",
+            "Pour décorer la console"
+        ],
+        correctAnswer: 0,
+        explanation: "Un test pollué par l’état des autres est inutilisable en CI/CD ou dans des suites massives."
+    },
+    {
+        id: "qa-pro-10",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Comment gérer un crash aléatoire qui n’apparaît que sur certains devices Android lors des builds QA ?",
+        options: [
+            "Utiliser les logs natifs du device (adb logcat), des crash reporters, et reproduire sur plusieurs modèles pour cibler la source",
+            "Changer le script",
+            "Augmenter la RAM du PC",
+            "Rebooter l’éditeur"
+        ],
+        correctAnswer: 0,
+        explanation: "La source réelle des crashs mobiles ne s’identifie qu’avec du vrai debug device + logs."
+    },
+    {
+        id: "qa-pro-11",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quelle stratégie permet de prioriser les cas de tests dans une suite massive (plus de 500 tests) ?",
+        options: [
+            "Classer les tests par criticité (core features, edge cases, business value), puis exécuter d’abord ceux à fort impact",
+            "Lancer tous les tests en vrac",
+            "Écrire moins de tests",
+            "Ignorer les tests longs"
+        ],
+        correctAnswer: 0,
+        explanation: "La criticité (impact business et plantage) doit primer dans la priorisation QA."
+    },
+    {
+        id: "qa-pro-12",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Dans le process QA, pourquoi automatiser les tests de build et déploiement ?",
+        options: [
+            "Pour garantir que chaque livraison produit un build propre, exécutable, et non régressé sans intervention humaine",
+            "Pour aller plus vite uniquement",
+            "Pour faire des screenshots",
+            "Pour économiser du stockage"
+        ],
+        correctAnswer: 0,
+        explanation: "Automatiser build/test = détecter les régressions avant livraison, sans oubli."
+    },
+    {
+        id: "qa-pro-13",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Que permet le flag -runTests dans la CLI Unity ?",
+        options: [
+            "Lancer les tests automatiquement lors d’un build en ligne de commande",
+            "Supprimer les assets inutilisés",
+            "Redémarrer le PC",
+            "Mettre à jour les packages"
+        ],
+        correctAnswer: 0,
+        explanation: "C’est la base pour l’intégration dans un pipeline CI/CD."
+    },
+    {
+        id: "qa-pro-14",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Pourquoi documenter systématiquement les étapes de reproduction d’un bug dans un ticket QA avancé ?",
+        options: [
+            "Pour garantir la reproductibilité et permettre au dev de corriger rapidement",
+            "Pour faire plaisir au chef de projet",
+            "Pour augmenter la complexité du projet",
+            "Pour changer la couleur du bouton"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bug sans étapes claires n’est jamais fixé à coup sûr."
+    },
+    {
+        id: "qa-pro-15",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel est le principal indicateur de qualité d’un pipeline de tests Unity automatisés en production ?",
+        options: [
+            "Taux de succès des builds/tests sur plusieurs plateformes (PC, mobile, console) sans intervention humaine",
+            "Temps de compilation",
+            "Nombre de prefabs dans le projet",
+            "Niveau de lumière dans la scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Stabilité, non régression, absence d’erreur post-livraison = top qualité pipeline QA."
+    },
+    {
+        id: "qa-pro-16",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel framework ou outil externe permet d’injecter des mocks/fakes pour tester le réseau dans Unity ?",
+        options: [
+            "NSubstitute, Moq, FakeItEasy (lib .NET compatibles Unity)",
+            "Audio Mixer",
+            "Unity Recorder",
+            "Animator Controller"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity supporte la plupart des frameworks de mock/double du monde .NET."
+    },
+    {
+        id: "qa-pro-17",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Qu’est-ce qu’un flaky test dans une pipeline QA ?",
+        options: [
+            "Un test qui échoue ou réussit de façon aléatoire selon l’environnement ou le timing",
+            "Un test rapide",
+            "Un warning de build",
+            "Un test uniquement pour l’éditeur"
+        ],
+        correctAnswer: 0,
+        explanation: "Un test non stable n’a aucune valeur QA (flaky test = à corriger ou isoler d’urgence)."
+    },
+    {
+        id: "qa-pro-18",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Comment détecter des memory leaks lors de tests automatisés batch sur plusieurs builds ?",
+        options: [
+            "En comparant les logs et graphs de mémoire à chaque run, automatisés, sur chaque build",
+            "En lançant le jeu une fois",
+            "En changeant le mode de scène",
+            "En supprimant un asset"
+        ],
+        correctAnswer: 0,
+        explanation: "Les leaks apparaissent dans les logs/graphs sur plusieurs runs, pas sur un run unique."
+    },
+    {
+        id: "qa-pro-19",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Pourquoi vérifier la compatibilité avec les systèmes de contrôle de version (Git, Plastic) lors de la QA automatisée Unity ?",
+        options: [
+            "Pour éviter des conflits/corruptions d’assets et garantir la traçabilité des changements testés",
+            "Pour accélérer le build",
+            "Pour avoir plus d’assets",
+            "Pour supprimer les logs"
+        ],
+        correctAnswer: 0,
+        explanation: "Un projet non versionné proprement génère des bugs et des pertes de code/asset non détectées."
+    },
+    {
+        id: "qa-pro-20",
+        category: "Testing/QA",
+        level: "expert",
+        question: "Quel indicateur prouve qu’un process QA est 'mature' dans un studio pro Unity ?",
+        options: [
+            "Taux de bugs détectés avant livraison, feedbacks rapides des tests auto, documentation et reproductibilité maximales",
+            "Nombre de lignes de code",
+            "Vitesse de la build",
+            "Couleur des boutons"
+        ],
+        correctAnswer: 0,
+        explanation: "Le vrai QA mature : automatisation, documentation, feedback instantané, non-régression continue."
+    },
 // Audio
     {
-        id: 'audio-user-001',
-        question: "Quel composant Unity permet de jouer un fichier sonore ?",
-        options: ["AudioSource", "Light", "Animator", "MeshFilter"],
-        correctAnswer: 0,
-        explanation: "AudioSource lit un clip audio dans la scène.",
+        id: "audio-user-1",
         category: "Audio",
         level: "user",
+        question: "Quel composant permet de jouer un son sur un GameObject dans Unity ?",
+        options: [
+            "AudioSource",
+            "AudioListener",
+            "Animator",
+            "MeshRenderer"
+        ],
+        correctAnswer: 0,
+        explanation: "L’AudioSource permet de jouer un son (musique, bruitage) sur un GameObject."
+    },
+    {
+        id: "audio-user-2",
+        category: "Audio",
+        level: "user",
+        question: "Quel composant doit obligatoirement être présent dans la scène pour entendre un son ?",
+        options: [
+            "AudioListener",
+            "AudioSource",
+            "AudioClip",
+            "Light"
+        ],
+        correctAnswer: 0,
+        explanation: "L’AudioListener (souvent attaché à la Main Camera) est indispensable pour percevoir le son dans la scène."
+    },
+    {
+        id: "audio-user-3",
+        category: "Audio",
+        level: "user",
+        question: "Quel format audio est couramment utilisé dans Unity pour les musiques et bruitages ?",
+        options: [
+            ".wav ou .mp3",
+            ".psd",
+            ".exe",
+            ".fbx"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity supporte principalement les fichiers .wav, .mp3, .ogg pour l’audio."
+    },
+    {
+        id: "audio-user-4",
+        category: "Audio",
+        level: "user",
+        question: "Comment lancer un son simple par script sur un AudioSource nommé 'audioSource' ?",
+        options: [
+            "audioSource.Play();",
+            "audioSource.SetActive(true);",
+            "audioSource.Start();",
+            "audioSource.Enable();"
+        ],
+        correctAnswer: 0,
+        explanation: "audioSource.Play() déclenche la lecture de l’AudioClip assigné."
+    },
+    {
+        id: "audio-user-5",
+        category: "Audio",
+        level: "user",
+        question: "Quel type d’asset faut-il créer/importer pour jouer un son ?",
+        options: [
+            "AudioClip",
+            "Texture2D",
+            "Material",
+            "AnimatorController"
+        ],
+        correctAnswer: 0,
+        explanation: "Un AudioClip contient les données audio à lire."
+    },
+    {
+        id: "audio-user-6",
+        category: "Audio",
+        level: "user",
+        question: "Quelle propriété de l’AudioSource contrôle le volume du son ?",
+        options: [
+            "volume",
+            "pitch",
+            "loop",
+            "mute"
+        ],
+        correctAnswer: 0,
+        explanation: "La propriété 'volume' (0 à 1) règle l’intensité du son."
+    },
+    {
+        id: "audio-user-7",
+        category: "Audio",
+        level: "user",
+        question: "Quelle option permet de rejouer automatiquement le son en boucle ?",
+        options: [
+            "Activer 'Loop' dans l’AudioSource",
+            "Activer 'Mute' dans l’AudioSource",
+            "Désactiver 'Play On Awake'",
+            "Changer la position 3D du son"
+        ],
+        correctAnswer: 0,
+        explanation: "'Loop' = le son repart du début dès qu’il se termine."
+    },
+    {
+        id: "audio-user-8",
+        category: "Audio",
+        level: "user",
+        question: "Que fait l’option 'Play On Awake' dans un AudioSource ?",
+        options: [
+            "Le son se joue automatiquement à l’activation du GameObject",
+            "Le son est mis en pause au démarrage",
+            "Le volume est coupé",
+            "Le son joue seulement si un script l’active"
+        ],
+        correctAnswer: 0,
+        explanation: "'Play On Awake' permet de jouer le son dès l’apparition du GameObject dans la scène."
+    },
+    {
+        id: "audio-user-9",
+        category: "Audio",
+        level: "user",
+        question: "Pour appliquer un effet de réverbération globale à une scène, on utilise :",
+        options: [
+            "Un Audio Reverb Zone",
+            "Un Mesh Collider",
+            "Un Material Shader",
+            "Un Canvas"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Reverb Zone applique une ambiance sonore (réverb) à un espace de la scène."
+    },
+    {
+        id: "audio-user-10",
+        category: "Audio",
+        level: "user",
+        question: "Que permet le slider 'Spatial Blend' d’une AudioSource ?",
+        options: [
+            "Gérer si le son est 2D (global) ou 3D (spatial, localisé)",
+            "Changer la couleur du son",
+            "Changer la durée du son",
+            "Déclencher un effet visuel"
+        ],
+        correctAnswer: 0,
+        explanation: "'Spatial Blend' permet de mixer entre son 2D et 3D."
+    },
+    {
+        id: "audio-user-11",
+        category: "Audio",
+        level: "user",
+        question: "Comment rendre un son audible uniquement à proximité du joueur ?",
+        options: [
+            "Activer le mode 3D sur l’AudioSource et régler les distances min/max",
+            "Mettre le son en 2D",
+            "Changer la couleur du GameObject",
+            "Supprimer l’AudioListener"
+        ],
+        correctAnswer: 0,
+        explanation: "En mode 3D, l’audibilité dépend de la distance à l’AudioListener."
+    },
+    {
+        id: "audio-user-12",
+        category: "Audio",
+        level: "user",
+        question: "Lequel de ces éléments ne fait PAS partie de la chaîne audio Unity ?",
+        options: [
+            "SpriteRenderer",
+            "AudioSource",
+            "AudioListener",
+            "AudioClip"
+        ],
+        correctAnswer: 0,
+        explanation: "SpriteRenderer sert à afficher une image, pas à jouer un son."
+    },
+    {
+        id: "audio-user-13",
+        category: "Audio",
+        level: "user",
+        question: "Quelle action permet de couper le son temporairement sur une AudioSource sans supprimer le composant ?",
+        options: [
+            "audioSource.mute = true;",
+            "audioSource.Stop();",
+            "audioSource.enabled = false;",
+            "audioSource.volume = 2.0;"
+        ],
+        correctAnswer: 0,
+        explanation: "La propriété mute coupe le son mais garde l’audio actif en mémoire."
+    },
+    {
+        id: "audio-user-14",
+        category: "Audio",
+        level: "user",
+        question: "Où règle-t-on le volume général de tout le projet (master) ?",
+        options: [
+            "Dans l’Audio Mixer",
+            "Sur chaque AudioClip",
+            "Sur les Materials",
+            "Dans la Lighting window"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Mixer permet de gérer le mixage global/master et les groupes de sons."
+    },
+    {
+        id: "audio-user-15",
+        category: "Audio",
+        level: "user",
+        question: "À quoi sert le paramètre 'pitch' sur une AudioSource ?",
+        options: [
+            "Changer la hauteur/tonalité du son (grave/aigu)",
+            "Changer la spatialisation",
+            "Activer la réverb",
+            "Changer le volume global"
+        ],
+        correctAnswer: 0,
+        explanation: "Le pitch modifie la fréquence du son (effet aigu/grave, ralenti/accéléré)."
+    },
+    {
+        id: "audio-user-16",
+        category: "Audio",
+        level: "user",
+        question: "Quelle interface permet de mixer plusieurs groupes audio et de leur appliquer des effets (EQ, compresseur, etc.) ?",
+        options: [
+            "Audio Mixer",
+            "Animator",
+            "Particle System",
+            "Lighting Settings"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Mixer gère les groupes, effets, transitions et snapshots."
+    },
+    {
+        id: "audio-user-17",
+        category: "Audio",
+        level: "user",
+        question: "Pour un bouton UI qui joue un clic sonore, on conseille généralement d’utiliser :",
+        options: [
+            "Un AudioSource sur le Canvas ou un singleton audio manager",
+            "Un Animator Controller",
+            "Un Audio Mixer Snapshot",
+            "Un SpriteRenderer"
+        ],
+        correctAnswer: 0,
+        explanation: "Centraliser le son d’UI évite les multiples AudioSource et permet un contrôle global."
+    },
+    {
+        id: "audio-user-18",
+        category: "Audio",
+        level: "user",
+        question: "Qu’arrive-t-il si plusieurs AudioSource jouent des sons différents en même temps dans la scène ?",
+        options: [
+            "Tous les sons se superposent, mixés par Unity",
+            "Un seul son joue",
+            "Les sons s’annulent",
+            "Unity plante"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity gère le mixage temps réel, tous les AudioSource actifs sont additionnés dans la sortie."
+    },
+    {
+        id: "audio-user-19",
+        category: "Audio",
+        level: "user",
+        question: "Un son est trop faible dans le jeu, que faire en priorité ?",
+        options: [
+            "Augmenter le volume de l’AudioSource ou du groupe dans l’Audio Mixer",
+            "Changer le pitch",
+            "Réduire la spatialisation",
+            "Recommencer la scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut d’abord agir sur le volume de la source ou du mixeur."
+    },
+    {
+        id: "audio-user-20",
+        category: "Audio",
+        level: "user",
+        question: "Quel est l’avantage de stocker les musiques de fond (BGM) en streaming plutôt qu’en decompress on load ?",
+        options: [
+            "Économie de mémoire RAM, adapté aux gros fichiers audio",
+            "Permettre la spatialisation 3D",
+            "Accélérer le build",
+            "Changer automatiquement de scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Les sons lourds (BGM, musiques longues) se lisent en streaming pour ne pas saturer la RAM."
+    },
+    {
+        id: "audio-pro-1",
+        category: "Audio",
+        level: "pro",
+        question: "Quel composant permet de détecter les changements de paramètres d’un Audio Mixer via script pour déclencher des réactions dans le jeu ?",
+        options: [
+            "AudioMixerSnapshot",
+            "AudioMixerParameterChangeHandler",
+            "AudioMixerController",
+            "AudioSourceEventListener"
+        ],
+        correctAnswer: 0,
+        explanation: "Un AudioMixerSnapshot permet de sauvegarder/charger des états (volumes, effets) de l’Audio Mixer, et de réagir à leur activation via script."
+    },
+    {
+        id: "audio-pro-2",
+        category: "Audio",
+        level: "pro",
+        question: "Quel avantage offre l’utilisation de l’Audio Mixer pour la gestion du son dans un jeu multi-scène complexe ?",
+        options: [
+            "Centralisation du mixage, contrôle global par groupe, automation d’effets, snapshots pour transitions sonores",
+            "Permet d’ajouter des textures audio",
+            "Rend la spatialisation plus réaliste sans code",
+            "Désactive automatiquement les AudioSource inutilisées"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Mixer permet de gérer plusieurs groupes, snapshots et d’automatiser la transition d’ambiances et d’effets."
+    },
+    {
+        id: "audio-pro-3",
+        category: "Audio",
+        level: "pro",
+        question: "Dans un système audio 3D, quelle propriété contrôle la rapidité de diminution du volume en s’éloignant de la source ?",
+        options: [
+            "rolloffMode",
+            "dopplerLevel",
+            "spread",
+            "priority"
+        ],
+        correctAnswer: 0,
+        explanation: "Le 'rolloffMode' (et ses courbes) contrôle l’atténuation du volume en fonction de la distance."
+    },
+    {
+        id: "audio-pro-4",
+        category: "Audio",
+        level: "pro",
+        question: "Pour faire un crossfade (transition douce) entre deux musiques, la meilleure méthode est :",
+        options: [
+            "Utiliser deux AudioSource et faire varier leur volume progressivement",
+            "Changer instantanément l’AudioClip",
+            "Activer le Mute puis démarrer la seconde musique",
+            "Utiliser un Material sur le GameObject"
+        ],
+        correctAnswer: 0,
+        explanation: "On utilise deux AudioSource en parallèle et on diminue le volume de l’une pendant qu’on augmente l’autre."
+    },
+    {
+        id: "audio-pro-5",
+        category: "Audio",
+        level: "pro",
+        question: "Pour limiter la polyphonie (nombre de sons joués en même temps) et éviter la saturation sonore :",
+        options: [
+            "Régler la propriété 'Max Voices' sur l’AudioSource ou gérer dynamiquement via un système audio manager",
+            "Activer le mode 2D sur tous les sons",
+            "Supprimer les AudioClip inutilisés",
+            "Changer le pitch de tous les sons"
+        ],
+        correctAnswer: 0,
+        explanation: "Limiter le nombre de voix actives est essentiel pour éviter les boucles sonores et la saturation."
+    },
+    {
+        id: "audio-pro-6",
+        category: "Audio",
+        level: "pro",
+        question: "Quel outil d’Unity permet d’automatiser le volume ou l’effet d’un groupe d’audio en fonction d’une variable de gameplay ?",
+        options: [
+            "Exposed Parameter dans l’Audio Mixer",
+            "Animator",
+            "NavMesh Agent",
+            "Post Processing Volume"
+        ],
+        correctAnswer: 0,
+        explanation: "Les paramètres exposés de l’Audio Mixer sont modifiables en temps réel par script."
+    },
+    {
+        id: "audio-pro-7",
+        category: "Audio",
+        level: "pro",
+        question: "Comment appliquer un effet de filtre passe-bas (Low Pass) sur certains sons lors d’une séquence de ralenti (slow motion) ?",
+        options: [
+            "Automatiser le cutoff d’un effet LowPass sur le groupe cible dans l’Audio Mixer",
+            "Changer le pitch sur toutes les AudioSource",
+            "Régler le volume général à zéro",
+            "Modifier la position de l’AudioListener"
+        ],
+        correctAnswer: 0,
+        explanation: "Le LowPass Filter coupe les hautes fréquences, typique pour les effets de ralenti ou sous l’eau."
+    },
+    {
+        id: "audio-pro-8",
+        category: "Audio",
+        level: "pro",
+        question: "Pourquoi placer les sons d’ambiance (ambience) sur des AudioSource en spatialisation 3D avec une distance max très élevée ?",
+        options: [
+            "Pour que le son couvre toute la scène mais reste localisé (parallax, immersion)",
+            "Pour consommer moins de mémoire",
+            "Pour éviter l’écho",
+            "Pour que le son reste 2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Même pour un son global, l’atténuation 3D permet des effets de perspective subtils."
+    },
+    {
+        id: "audio-pro-9",
+        category: "Audio",
+        level: "pro",
+        question: "Quel composant natif Unity permet de créer une ambiance sonore dépendant de la position du joueur dans une zone ?",
+        options: [
+            "Audio Reverb Zone",
+            "AudioMixerSnapshot",
+            "Animator",
+            "Reflection Probe"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Reverb Zone applique une réverb et ambiance sonore à une zone précise du monde."
+    },
+    {
+        id: "audio-pro-10",
+        category: "Audio",
+        level: "pro",
+        question: "Comment faire varier le volume d’un effet sonore selon l’intensité d’un événement (ex : explosion plus forte selon la distance) ?",
+        options: [
+            "Modifier la propriété volume de l’AudioSource par script selon la distance ou la force",
+            "Utiliser uniquement un AudioListener",
+            "Changer la spatial blend",
+            "Désactiver la source audio"
+        ],
+        correctAnswer: 0,
+        explanation: "L’intensité de l’événement doit se répercuter sur le volume ou le pitch par script."
+    },
+    {
+        id: "audio-pro-11",
+        category: "Audio",
+        level: "pro",
+        question: "Pour synchroniser la musique avec des événements précis (ex : rythme, battement), la meilleure approche est :",
+        options: [
+            "Analyser la position temporelle (time) de l’AudioSource et déclencher les événements par script",
+            "Utiliser le composant Animation",
+            "Changer la couleur du GameObject",
+            "Utiliser uniquement l’AudioListener"
+        ],
+        correctAnswer: 0,
+        explanation: "Le script lit audioSource.time pour synchroniser le gameplay avec la musique."
+    },
+    {
+        id: "audio-pro-12",
+        category: "Audio",
+        level: "pro",
+        question: "Pour éviter de charger de gros fichiers audio inutilement en RAM au lancement du jeu, il faut :",
+        options: [
+            "Activer l’option 'Streaming' sur l’AudioClip",
+            "Mettre tous les AudioClip en 'Decompress On Load'",
+            "Mettre en cache les fichiers audio dans Resources",
+            "Augmenter la fréquence du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Le streaming lit directement le fichier audio depuis le disque."
+    },
+    {
+        id: "audio-pro-13",
+        category: "Audio",
+        level: "pro",
+        question: "Quel effet natif Unity applique un écho à un son (retard sonore progressif) ?",
+        options: [
+            "Audio Echo Filter",
+            "Audio Reverb Zone",
+            "Audio Mixer Compression",
+            "Animator"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Audio Echo Filter ajoute un effet d’écho basique."
+    },
+    {
+        id: "audio-pro-14",
+        category: "Audio",
+        level: "pro",
+        question: "Comment éviter le problème de sons coupés prématurément lorsque trop de sources audio jouent simultanément sur une même scène ?",
+        options: [
+            "Gérer la priorité des AudioSource et désactiver les sons moins importants",
+            "Activer le mode 2D partout",
+            "Supprimer tous les AudioMixer",
+            "Passer en mono tous les AudioClip"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity coupe automatiquement les AudioSource avec la priorité la plus basse si la polyphonie maximale est atteinte."
+    },
+    {
+        id: "audio-pro-15",
+        category: "Audio",
+        level: "pro",
+        question: "Pour déclencher une transition audio contextuelle (ex : entrer dans un tunnel, sous l’eau, ralenti) :",
+        options: [
+            "Utiliser des snapshots de l’Audio Mixer avec transitions par script",
+            "Changer la scène",
+            "Supprimer le composant AudioListener",
+            "Muter tous les AudioSource"
+        ],
+        correctAnswer: 0,
+        explanation: "Les snapshots de l’Audio Mixer permettent des transitions douces d’effets globaux."
+    },
+    {
+        id: "audio-pro-16",
+        category: "Audio",
+        level: "pro",
+        question: "Dans un AudioSource, quelle propriété règle la largeur de diffusion du son (angle de propagation) ?",
+        options: [
+            "Spread",
+            "Spatial Blend",
+            "Rolloff Mode",
+            "Loop"
+        ],
+        correctAnswer: 0,
+        explanation: "Spread définit l’angle du cône audio, utile pour simuler des haut-parleurs directionnels."
+    },
+    {
+        id: "audio-pro-17",
+        category: "Audio",
+        level: "pro",
+        question: "Quel workflow permet de gérer plusieurs localisations audio (langues) dans un projet Unity ?",
+        options: [
+            "Utiliser un système de tables de localisation et charger dynamiquement les bons AudioClip selon la langue",
+            "Avoir une scène par langue",
+            "Définir une AudioSource par langue et activer/désactiver",
+            "Changer la fréquence de sample"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bon workflow utilise une table de mapping et charge à la volée le clip dans la bonne langue."
+    },
+    {
+        id: "audio-pro-18",
+        category: "Audio",
+        level: "pro",
+        question: "Pourquoi utiliser un compresseur sur un groupe d’effets sonores dans l’Audio Mixer ?",
+        options: [
+            "Pour éviter les pics de volume trop élevés et améliorer la cohérence sonore",
+            "Pour baisser la qualité audio",
+            "Pour économiser de la RAM",
+            "Pour augmenter le volume en permanence"
+        ],
+        correctAnswer: 0,
+        explanation: "Un compresseur limite les crêtes et harmonise la dynamique sonore."
+    },
+    {
+        id: "audio-pro-19",
+        category: "Audio",
+        level: "pro",
+        question: "Quel est le principal avantage d’un bus audio dédié dans l’Audio Mixer (par rapport à tout router sur Master) ?",
+        options: [
+            "Isoler, traiter ou muter rapidement un groupe de sons (ex : UI, musique, FX) indépendamment du reste",
+            "Accélérer la compilation",
+            "Changer le sample rate",
+            "Désactiver le Listener"
+        ],
+        correctAnswer: 0,
+        explanation: "Un bus permet de contrôler facilement les sous-groupes sans toucher au mix général."
+    },
+    {
+        id: "audio-pro-20",
+        category: "Audio",
+        level: "pro",
+        question: "Pour appliquer un effet temporaire de fade out (fondu sonore progressif vers zéro) sur tous les sons d’une scène :",
+        options: [
+            "Faire baisser le volume master de l’Audio Mixer progressivement",
+            "Supprimer toutes les AudioSource",
+            "Changer la scène",
+            "Activer/désactiver le spatial blend"
+        ],
+        correctAnswer: 0,
+        explanation: "On fait décroître le volume global pour un effet de fade out total."
+    },
+    {
+        id: "audio-expert-1",
+        category: "Audio",
+        level: "expert",
+        question: "Quel est le risque principal à utiliser massivement 'PlayOneShot' sur des AudioSource dans un contexte de gros projet multi-plateforme ?",
+        options: [
+            "Fuite mémoire et saturation CPU/GPU à cause de la création/déstruction rapide de voix audio non réutilisées",
+            "Le son ne sera jamais entendu",
+            "Problèmes de build avec le player Unity",
+            "Aucun, c’est optimisé pour tous les cas"
+        ],
+        correctAnswer: 0,
+        explanation: "'PlayOneShot' crée une voix audio temporaire. Utilisé à l’excès, ça peut exploser le nombre de voix et causer des fuites ou artefacts sonores."
+    },
+    {
+        id: "audio-expert-2",
+        category: "Audio",
+        level: "expert",
+        question: "Quel type de bug audio complexe peut survenir lors du streaming de fichiers AudioClip volumineux sur mobile ?",
+        options: [
+            "Micro-coupures ('glitches') si l’I/O disque ne suit pas ou si la mémoire tampon est insuffisante",
+            "Les fichiers sont lus à l’envers",
+            "L’AudioClip change automatiquement de format",
+            "La spatialisation ne fonctionne plus"
+        ],
+        correctAnswer: 0,
+        explanation: "Sur mobile, l’accès disque lent ou le manque de RAM/tampon peut provoquer des coupures audio aléatoires."
+    },
+    {
+        id: "audio-expert-3",
+        category: "Audio",
+        level: "expert",
+        question: "Pour automatiser le contrôle dynamique d’effets audio selon le gameplay sur plusieurs plateformes, le plus robuste est :",
+        options: [
+            "Utiliser des paramètres exposés dans l’Audio Mixer pilotés par script, plutôt que des modifications directes de chaque AudioSource",
+            "Gérer manuellement chaque AudioSource dans chaque scène",
+            "Utiliser uniquement un AudioListener par scène",
+            "Tout gérer dans le Start()"
+        ],
+        correctAnswer: 0,
+        explanation: "Les paramètres exposés permettent des automatisations propres, compatibles multi-scène/multi-platforme."
+    },
+    {
+        id: "audio-expert-4",
+        category: "Audio",
+        level: "expert",
+        question: "Quel middleware audio tiers est utilisé dans de nombreux jeux AAA avec Unity pour des besoins de pipeline avancé ?",
+        options: [
+            "FMOD ou Wwise",
+            "Unreal Audio Engine",
+            "OpenAL",
+            "AudioClip Pro"
+        ],
+        correctAnswer: 0,
+        explanation: "FMOD et Wwise sont les références du marché, supportés nativement par Unity."
+    },
+    {
+        id: "audio-expert-5",
+        category: "Audio",
+        level: "expert",
+        question: "Comment profiler les performances audio (voix, buffers, effets) sur une build mobile ou console ?",
+        options: [
+            "Utiliser le Profiler Audio d’Unity sur device cible ou un outil de monitoring embarqué (FMOD Studio Live Update, Wwise Profiler)",
+            "Le build log Unity suffit",
+            "Allouer plus de RAM dans le Quality Settings",
+            "Changer la compression du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Seul le Profiler ou un middleware donne une vue détaillée des voix actives, buffers et traitements temps réel."
+    },
+    {
+        id: "audio-expert-6",
+        category: "Audio",
+        level: "expert",
+        question: "Pour minimiser la latence lors du déclenchement d’un son interactif (ex : feedback UI réactif) :",
+        options: [
+            "Précharger les clips ('Preload Audio Data'), utiliser des samples courts, éviter le streaming pour ces sons",
+            "Utiliser uniquement l’option streaming",
+            "Passer l’AudioSource en 2D",
+            "Augmenter le volume"
+        ],
+        correctAnswer: 0,
+        explanation: "Le préchargement réduit la latence : éviter le streaming sur les sons critiques et courts."
+    },
+    {
+        id: "audio-expert-7",
+        category: "Audio",
+        level: "expert",
+        question: "Quelle erreur de pipeline audio peut provoquer une désynchronisation entre l’audio et une cinématique/animation sur plusieurs devices ?",
+        options: [
+            "Frame drop, ou variation de la fréquence de sample (sample rate) entre plateformes",
+            "Utiliser des AudioClip mono",
+            "Désactiver le Spatial Blend",
+            "Passer la scène en 2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Des framerate instables ou un sample rate variable peuvent désynchroniser les pistes audio et vidéo."
+    },
+    {
+        id: "audio-expert-8",
+        category: "Audio",
+        level: "expert",
+        question: "Dans Unity, que permet concrètement un 'DSP Buffer Size' trop faible ?",
+        options: [
+            "Moins de latence mais risque de glitch/audio drop si le CPU n’est pas assez rapide",
+            "Meilleure spatialisation",
+            "Plus de voix simultanées",
+            "Réduction de la taille des builds"
+        ],
+        correctAnswer: 0,
+        explanation: "Buffer trop petit : latence minimale mais instabilité sonore sur CPU faible."
+    },
+    {
+        id: "audio-expert-9",
+        category: "Audio",
+        level: "expert",
+        question: "Comment assurer la compatibilité de la spatialisation binaurale (3D) sur les différentes plateformes (mobile/VR/PC) ?",
+        options: [
+            "Utiliser des plugins de spatialisation certifiés (Oculus Audio SDK, Resonance Audio), tester chaque cible",
+            "Rester sur AudioSource en 2D",
+            "Utiliser le Doppler Effect",
+            "Aucune adaptation nécessaire"
+        ],
+        correctAnswer: 0,
+        explanation: "Les plugins spécifiques (Oculus, Resonance) garantissent une spatialisation correcte, avec fallback natif si absent."
+    },
+    {
+        id: "audio-expert-10",
+        category: "Audio",
+        level: "expert",
+        question: "Pourquoi préférer des samples mono pour les effets sonores positionnés dynamiquement (explosions, footsteps, FX) ?",
+        options: [
+            "Meilleure compatibilité, spatialisation plus efficace, moins de charge mémoire",
+            "Ça n’a aucune importance",
+            "Permet des musiques plus longues",
+            "Améliore le pitch"
+        ],
+        correctAnswer: 0,
+        explanation: "Mono : plus léger et spatialisation 3D réelle (stéréo mal gérée par Unity en 3D)."
+    },
+    {
+        id: "audio-expert-11",
+        category: "Audio",
+        level: "expert",
+        question: "Pour un projet VR, pourquoi utiliser l’AudioMixer en mode 'output to submix' par contexte (ex : musique, voix, FX) ?",
+        options: [
+            "Pour isoler les traitements (spatialisation, filtres, effets) selon le contexte, et faciliter le debug et l’optimisation",
+            "Pour changer le volume master",
+            "Pour réduire la RAM consommée par les musiques",
+            "Pour désactiver les sources"
+        ],
+        correctAnswer: 0,
+        explanation: "Sous-mix permet de traiter, profiler ou muter indépendamment chaque contexte."
+    },
+    {
+        id: "audio-expert-12",
+        category: "Audio",
+        level: "expert",
+        question: "Comment appliquer un effet de reverb réaliste en temps réel sur un environnement généré dynamiquement (ex : niveau procédural) ?",
+        options: [
+            "Créer/placer dynamiquement des Audio Reverb Zones et ajuster leurs paramètres selon la géométrie",
+            "Ajouter des AudioSource sur chaque mur",
+            "Utiliser un seul AudioListener",
+            "Changer la compression de tous les fichiers"
+        ],
+        correctAnswer: 0,
+        explanation: "La reverb zone se place dynamiquement, ajustée selon la géométrie ou l’algo de génération."
+    },
+    {
+        id: "audio-expert-13",
+        category: "Audio",
+        level: "expert",
+        question: "Pour simuler des interférences radio ou des artefacts audio (ex : brouillage, effet 'walkie-talkie'), il est conseillé d’utiliser :",
+        options: [
+            "Une chaîne de DSP avec filtre passe-bande, distorsion, et éventuellement des samples d’interférences",
+            "Changer le mode 2D/3D en temps réel",
+            "Utiliser seulement des AudioClip compressés en MP3",
+            "Passer tous les sons en stéréo"
+        ],
+        correctAnswer: 0,
+        explanation: "Un enchaînement de filtres DSP simule des artefacts audio avancés."
+    },
+    {
+        id: "audio-expert-14",
+        category: "Audio",
+        level: "expert",
+        question: "Quel est le principal problème à vouloir mixer des sources audio à des fréquences d’échantillonnage différentes (44,1 kHz / 48 kHz) dans Unity ?",
+        options: [
+            "Artefacts, désynchronisation et charge CPU supplémentaire à cause de la conversion temps réel",
+            "Aucun problème, Unity gère tout sans perte",
+            "Meilleure qualité audio",
+            "Risque de bug sur les lumières"
+        ],
+        correctAnswer: 0,
+        explanation: "Le resampling en temps réel est coûteux et source de bugs audio."
+    },
+    {
+        id: "audio-expert-15",
+        category: "Audio",
+        level: "expert",
+        question: "Quel pipeline optimiser pour limiter le chargement audio sur un niveau à très forte densité de SFX (ex : jeu de tir intense, dizaines d’explosions/sec) ?",
+        options: [
+            "Object pool d’AudioSource, management dynamique des priorités, preload des clips critiques, limitation du nombre de voix",
+            "Tout charger en streaming",
+            "Passer tous les sons en 2D",
+            "Faire un Destroy() de toutes les AudioSource à chaque fin de son"
+        ],
+        correctAnswer: 0,
+        explanation: "Object pooling et management des voix est indispensable pour la perf en cas de gros volume."
+    },
+    {
+        id: "audio-expert-16",
+        category: "Audio",
+        level: "expert",
+        question: "Quel est l’impact de la compression MP3 sur un pipeline audio multiplateforme, comparé au format WAV/OGG ?",
+        options: [
+            "Compression destructive : perte de qualité, délai de décompression plus long, licensing restrictif sur certaines plateformes",
+            "Aucun : qualité identique",
+            "Format ouvert, aucun souci",
+            "Incompatible avec les mobiles"
+        ],
+        correctAnswer: 0,
+        explanation: "MP3 = compression destructrice, décompression plus lente, et des problèmes de licence possible."
+    },
+    {
+        id: "audio-expert-17",
+        category: "Audio",
+        level: "expert",
+        question: "Quel bug est typique lors du changement rapide de scène contenant de nombreuses AudioSource, surtout sur mobile ?",
+        options: [
+            "Clipping audio ou persistance de sons (les AudioSource ne sont pas stoppées/cleanées au changement de scène)",
+            "Changement de la taille du build",
+            "Désactivation du Spatial Blend",
+            "Meilleure qualité audio"
+        ],
+        correctAnswer: 0,
+        explanation: "Des AudioSource persistantes créent des overlaps ou sons fantômes lors d’un changement de scène mal géré."
+    },
+    {
+        id: "audio-expert-18",
+        category: "Audio",
+        level: "expert",
+        question: "Comment optimiser la RAM consommée par l’audio sur mobile/tablette avec beaucoup d’ambiances et d’effets longs ?",
+        options: [
+            "Utiliser le streaming pour les clips longs, compresser en OGG, et limiter le preload des samples",
+            "Tout charger en PCM",
+            "Doubler le buffer audio",
+            "Changer de moteur audio"
+        ],
+        correctAnswer: 0,
+        explanation: "OGG + streaming réduit la charge mémoire, à utiliser pour musiques et sons longs."
+    },
+    {
+        id: "audio-expert-19",
+        category: "Audio",
+        level: "expert",
+        question: "Pour garantir que le pipeline audio fonctionne à l’identique entre build Debug, Release et Development sur toutes plateformes, il faut :",
+        options: [
+            "Toujours tester l’audio sur device réel et vérifier les logs d’erreurs/audio leaks",
+            "Faire confiance au build Editor uniquement",
+            "Utiliser le même taux de compression partout",
+            "Passer toutes les AudioSource en mode 2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Seul un test réel sur hardware permet de valider le pipeline audio sur toutes les builds."
+    },
+    {
+        id: "audio-expert-20",
+        category: "Audio",
+        level: "expert",
+        question: "Quel workflow éviter absolument pour l’audio en multijoueur temps réel ?",
+        options: [
+            "Jouer tous les sons via RPC/Network pour chaque joueur, sans management local",
+            "Utiliser le pooling localement",
+            "Utiliser un gestionnaire d’audio indépendant sur chaque client",
+            "Limiter la portée des AudioSource"
+        ],
+        correctAnswer: 0,
+        explanation: "Éviter de jouer chaque son via le réseau. Les sons doivent être instanciés localement pour chaque client."
     },
 
 // Build/Deployment
     {
-        id: 'build-user-001',
-        question: "Quel menu permet de changer la plateforme de build dans Unity ?",
-        options: ["File > Build Settings", "Edit > Player Settings", "Window > Platform", "Assets > Build"],
-        correctAnswer: 0,
-        explanation: "File > Build Settings permet de choisir la cible (PC, WebGL, Android…).",
-        category: "Build/Deployment",
+        id: "build-user-1",
+        category: "Build",
         level: "user",
+        question: "Quel menu Unity permet de configurer la plateforme de déploiement du projet (Windows, Android, iOS...) ?",
+        options: [
+            "File > Build Settings",
+            "Edit > Project Settings",
+            "Window > Package Manager",
+            "GameObject > Create Empty"
+        ],
+        correctAnswer: 0,
+        explanation: "File > Build Settings permet de choisir la plateforme cible et lancer un build."
+    },
+    {
+        id: "build-user-2",
+        category: "Build",
+        level: "user",
+        question: "Quel format de fichier est généré par défaut lors d’un build Unity pour Windows ?",
+        options: [
+            ".exe",
+            ".apk",
+            ".unitypackage",
+            ".xcodeproj"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity génère un exécutable Windows (.exe) lors du build pour cette plateforme."
+    },
+    {
+        id: "build-user-3",
+        category: "Build",
+        level: "user",
+        question: "Quelle action doit-on absolument réaliser avant de déployer un projet Unity sur Android ?",
+        options: [
+            "Installer le SDK Android et configurer le chemin dans Unity",
+            "Installer Visual Studio Code",
+            "Passer en mode 2D",
+            "Changer le nom de la scène principale"
+        ],
+        correctAnswer: 0,
+        explanation: "Le SDK Android est indispensable pour le build, il faut le configurer dans Unity."
+    },
+    {
+        id: "build-user-4",
+        category: "Build",
+        level: "user",
+        question: "Que contient le dossier 'Builds' (ou le dossier de sortie) après un build réussi ?",
+        options: [
+            "Les fichiers exécutables et toutes les ressources nécessaires pour lancer le jeu",
+            "Les scripts sources du projet",
+            "Uniquement les assets bruts",
+            "Les logs d’éditeur"
+        ],
+        correctAnswer: 0,
+        explanation: "Le dossier de build contient tout ce qu’il faut pour exécuter le projet sur la cible."
+    },
+    {
+        id: "build-user-5",
+        category: "Build",
+        level: "user",
+        question: "Comment inclure plusieurs scènes dans le build final d’un projet Unity ?",
+        options: [
+            "Les ajouter à la liste dans 'Scenes In Build' dans Build Settings",
+            "Créer un prefab de chaque scène",
+            "Les glisser dans l’onglet Project",
+            "Renommer le dossier Scenes"
+        ],
+        correctAnswer: 0,
+        explanation: "Seules les scènes listées dans Build Settings seront compilées dans le build."
+    },
+    {
+        id: "build-user-6",
+        category: "Build",
+        level: "user",
+        question: "Quel réglage de Player Settings détermine le nom de l’exécutable final ?",
+        options: [
+            "Product Name",
+            "Company Name",
+            "Scripting Backend",
+            "Quality Level"
+        ],
+        correctAnswer: 0,
+        explanation: "Product Name est utilisé pour nommer l’exécutable et certains dossiers du build."
+    },
+    {
+        id: "build-user-7",
+        category: "Build",
+        level: "user",
+        question: "Quelle option faut-il activer pour créer un build web compatible navigateur avec Unity ?",
+        options: [
+            "WebGL",
+            "Universal Windows Platform",
+            "Android",
+            "Standalone"
+        ],
+        correctAnswer: 0,
+        explanation: "WebGL est la cible à sélectionner pour déployer un projet Unity sur le web."
+    },
+    {
+        id: "build-user-8",
+        category: "Build",
+        level: "user",
+        question: "Quelle extension de fichier correspond à un build Unity destiné à Android ?",
+        options: [
+            ".apk",
+            ".exe",
+            ".unitypackage",
+            ".webm"
+        ],
+        correctAnswer: 0,
+        explanation: "Un build Android donne un fichier .apk ou .aab, selon la configuration."
+    },
+    {
+        id: "build-user-9",
+        category: "Build",
+        level: "user",
+        question: "Que se passe-t-il si une scène n’est pas incluse dans la liste des 'Scenes In Build' ?",
+        options: [
+            "Elle ne sera pas présente dans le build final",
+            "Elle est incluse automatiquement",
+            "Elle est compilée mais cachée",
+            "Elle remplace la scène principale"
+        ],
+        correctAnswer: 0,
+        explanation: "Seules les scènes listées sont intégrées au build. Les autres sont ignorées."
+    },
+    {
+        id: "build-user-10",
+        category: "Build",
+        level: "user",
+        question: "Quelle fonctionnalité permet d’avoir différentes configurations de build (Debug, Release, Development) ?",
+        options: [
+            "Le choix du mode de build dans Build Settings",
+            "Les Quality Settings",
+            "Le bouton Play",
+            "L’option Asset Bundles"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mode (Development, Release...) est à choisir dans Build Settings."
+    },
+    {
+        id: "build-user-11",
+        category: "Build",
+        level: "user",
+        question: "Quel outil intégré à Unity permet d’exporter et d’importer des assets entre projets ?",
+        options: [
+            "UnityPackage",
+            "Prefab Variant",
+            "Assembly Definition",
+            "Custom Inspector"
+        ],
+        correctAnswer: 0,
+        explanation: "Les .unitypackage servent à transférer assets/scripts/config entre projets."
+    },
+    {
+        id: "build-user-12",
+        category: "Build",
+        level: "user",
+        question: "Pour générer un build compatible MacOS, il faut :",
+        options: [
+            "Sélectionner 'MacOS' comme plateforme cible dans Build Settings",
+            "Installer Xcode obligatoirement",
+            "Renommer les assets en .mac",
+            "Changer l’API graphique"
+        ],
+        correctAnswer: 0,
+        explanation: "On sélectionne la cible MacOS dans le menu de build."
+    },
+    {
+        id: "build-user-13",
+        category: "Build",
+        level: "user",
+        question: "Si un build Unity échoue, que faire en priorité ?",
+        options: [
+            "Consulter la console d’Unity pour trouver la cause (logs, erreurs, warnings)",
+            "Relancer directement un nouveau build",
+            "Supprimer tous les scripts",
+            "Réinstaller Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Lire les logs/console donne la source exacte du problème la plupart du temps."
+    },
+    {
+        id: "build-user-14",
+        category: "Build",
+        level: "user",
+        question: "Quelle option de Build Settings permet de réduire la taille d’un build WebGL ?",
+        options: [
+            "Compression Method (gzip, brotli...)",
+            "Color Space",
+            "Scripting Backend",
+            "Api Compatibility Level"
+        ],
+        correctAnswer: 0,
+        explanation: "La compression réduit la taille des fichiers à charger côté navigateur."
+    },
+    {
+        id: "build-user-15",
+        category: "Build",
+        level: "user",
+        question: "Quel paramètre est critique pour tester un build Android sur un device physique ?",
+        options: [
+            "Activer le mode développeur (Developer Mode) sur le téléphone",
+            "Changer l’ID de la compagnie",
+            "Passer en HDR",
+            "Installer Asset Store Tools"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans le mode développeur activé sur l’appareil, impossible d’installer l’APK."
+    },
+    {
+        id: "build-user-16",
+        category: "Build",
+        level: "user",
+        question: "Quel fichier de configuration est généré lors d’un build Android et contient les permissions requises ?",
+        options: [
+            "AndroidManifest.xml",
+            "BuildManifest.txt",
+            "PlayerSettings.json",
+            "manifest.json"
+        ],
+        correctAnswer: 0,
+        explanation: "L’AndroidManifest.xml déclare toutes les permissions et settings requis par l’app."
+    },
+    {
+        id: "build-user-17",
+        category: "Build",
+        level: "user",
+        question: "Pour changer l’icône de l’application finale, il faut :",
+        options: [
+            "Aller dans Player Settings et modifier la section Icon",
+            "Changer le logo dans la scène principale",
+            "Modifier le nom de la scène",
+            "Créer un fichier build_icon.png à la racine"
+        ],
+        correctAnswer: 0,
+        explanation: "La section Icon dans Player Settings gère les icônes multi-plateforme."
+    },
+    {
+        id: "build-user-18",
+        category: "Build",
+        level: "user",
+        question: "Quelle API Unity utiliser pour lancer un build automatique via script (ex : pipeline CI/CD) ?",
+        options: [
+            "BuildPipeline.BuildPlayer()",
+            "Application.Quit()",
+            "Resources.Load()",
+            "EditorUtility.DisplayDialog()"
+        ],
+        correctAnswer: 0,
+        explanation: "BuildPipeline permet de lancer des builds automatisés depuis un script."
+    },
+    {
+        id: "build-user-19",
+        category: "Build",
+        level: "user",
+        question: "Que faire si un build WebGL ne fonctionne pas sur un navigateur récent ?",
+        options: [
+            "Vérifier la compatibilité Unity/WebGL et les settings de compression/format",
+            "Installer WebGL Publisher",
+            "Supprimer la scène principale",
+            "Changer le mode colorimétrique"
+        ],
+        correctAnswer: 0,
+        explanation: "Certains réglages et versions d’Unity ou du navigateur peuvent rendre un build incompatible."
+    },
+    {
+        id: "build-user-20",
+        category: "Build",
+        level: "user",
+        question: "Quel onglet dans Player Settings permet d’ajuster les permissions requises (accès caméra, stockage...) sur mobile ?",
+        options: [
+            "Other Settings > Configuration",
+            "Quality",
+            "Scripting Define Symbols",
+            "Physics"
+        ],
+        correctAnswer: 0,
+        explanation: "C’est dans la section Other Settings / Configuration qu’on gère permissions et options avancées."
+    },
+    {
+        id: "build-assoc-1",
+        category: "Build",
+        level: "pro",
+        question: "Quel paramètre Player Settings doit être vérifié pour garantir la compatibilité entre un build Windows et un build MacOS ?",
+        options: [
+            "L’architecture CPU (x86/x64/ARM)",
+            "Le type d’input system utilisé",
+            "La résolution de la caméra principale",
+            "La couleur du canvas"
+        ],
+        correctAnswer: 0,
+        explanation: "Les architectures supportées (Intel, ARM…) doivent correspondre à la plateforme cible."
+    },
+    {
+        id: "build-assoc-2",
+        category: "Build",
+        level: "pro",
+        question: "Quel outil Unity permet de créer plusieurs versions d’un même projet pour différents clients ou environnements sans dupliquer tout le projet ?",
+        options: [
+            "Build Configurations (Addressables)",
+            "Assembly Definitions",
+            "Unity Hub",
+            "Package Manager"
+        ],
+        correctAnswer: 0,
+        explanation: "Les Build Configurations (ou Addressables) permettent de définir des builds différents selon le contexte."
+    },
+    {
+        id: "build-assoc-3",
+        category: "Build",
+        level: "pro",
+        question: "Que fait l’option 'Development Build' dans les Build Settings ?",
+        options: [
+            "Active les logs de debug et permet l’attachement d’un profiler",
+            "Réduit la taille du build",
+            "Optimise les textures",
+            "Active la compilation IL2CPP"
+        ],
+        correctAnswer: 0,
+        explanation: "'Development Build' génère un build avec logs/console/Debug et Profiling activés."
+    },
+    {
+        id: "build-assoc-4",
+        category: "Build",
+        level: "pro",
+        question: "Pourquoi privilégier IL2CPP à Mono pour des builds mobiles ?",
+        options: [
+            "IL2CPP offre de meilleures performances et plus de sécurité (AOT compile vers C++)",
+            "Mono permet le hot reload",
+            "IL2CPP ne supporte pas Android",
+            "Mono est obligatoire pour iOS"
+        ],
+        correctAnswer: 0,
+        explanation: "IL2CPP compile en C++ natif, performant et sécurisé (requis pour iOS, recommandé pour Android)."
+    },
+    {
+        id: "build-assoc-5",
+        category: "Build",
+        level: "pro",
+        question: "Quel fichier doit-on personnaliser pour ajouter des permissions (ex: accès caméra) à une app Android Unity ?",
+        options: [
+            "AndroidManifest.xml",
+            "manifest.json",
+            "PlayerSettings.asset",
+            "build.gradle"
+        ],
+        correctAnswer: 0,
+        explanation: "L’AndroidManifest.xml déclare les permissions requises pour l’app."
+    },
+    {
+        id: "build-assoc-6",
+        category: "Build",
+        level: "pro",
+        question: "Pour automatiser la création de builds depuis une CI/CD (GitHub Actions, Jenkins…), on utilise généralement :",
+        options: [
+            "Unity en mode batch via la ligne de commande",
+            "Le bouton Build dans l’éditeur",
+            "L’option PlayMode",
+            "L’Asset Store"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity CLI/batch build s’intègre dans les scripts/pipelines d’intégration continue."
+    },
+    {
+        id: "build-assoc-7",
+        category: "Build",
+        level: "pro",
+        question: "Quel paramètre permet d’optimiser la taille finale du build en excluant des assets inutilisés ?",
+        options: [
+            "Build Report et Asset Stripping",
+            "Scripting Runtime Version",
+            "Quality Settings",
+            "API Compatibility Level"
+        ],
+        correctAnswer: 0,
+        explanation: "Le stripping d’assets/code supprime ce qui n’est pas utilisé pour alléger le build."
+    },
+    {
+        id: "build-assoc-8",
+        category: "Build",
+        level: "pro",
+        question: "Quel problème peut survenir si le champ 'Bundle Identifier' (ou Package Name) n’est pas unique sur mobile ?",
+        options: [
+            "Impossible d’installer l’app (conflit avec une autre application)",
+            "Le build ne compile pas",
+            "Les assets sont ignorés",
+            "L’icône disparaît"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Bundle ID doit être unique sur chaque store mobile."
+    },
+    {
+        id: "build-assoc-9",
+        category: "Build",
+        level: "pro",
+        question: "Quelle bonne pratique permet d’éviter la régression après modification d’un pipeline de build Unity ?",
+        options: [
+            "Versionner les scripts de build et utiliser des tests automatisés",
+            "Compiler en Debug uniquement",
+            "Changer le GUID des assets",
+            "Désactiver le cache"
+        ],
+        correctAnswer: 0,
+        explanation: "Le versioning du pipeline + tests garantit la stabilité après chaque modif."
+    },
+    {
+        id: "build-assoc-10",
+        category: "Build",
+        level: "pro",
+        question: "Quel type de fichier de build faut-il fournir pour la publication sur le Google Play Store (2023+) ?",
+        options: [
+            ".aab (Android App Bundle)",
+            ".apk",
+            ".unitypackage",
+            ".zip"
+        ],
+        correctAnswer: 0,
+        explanation: "Google impose le format .aab pour la publication sur le Play Store depuis 2021."
+    },
+    {
+        id: "build-assoc-11",
+        category: "Build",
+        level: "pro",
+        question: "Que permet l’option 'Strip Engine Code' dans Player Settings ?",
+        options: [
+            "Supprimer le code moteur Unity non utilisé pour réduire la taille du build",
+            "Optimiser les shaders",
+            "Créer un build multi-plateforme",
+            "Activer le Profiler"
+        ],
+        correctAnswer: 0,
+        explanation: "Le stripping réduit la taille du runtime en ne gardant que ce qui est utilisé."
+    },
+    {
+        id: "build-assoc-12",
+        category: "Build",
+        level: "pro",
+        question: "Quel fichier Unity doit-on éditer ou ajouter pour intégrer un splash screen personnalisé (logo, animation) dans un build mobile ?",
+        options: [
+            "Player Settings > Splash Image",
+            "ProjectSettings.asset",
+            "manifest.json",
+            "build.gradle"
+        ],
+        correctAnswer: 0,
+        explanation: "La section Splash Image dans Player Settings gère les écrans de démarrage custom."
+    },
+    {
+        id: "build-assoc-13",
+        category: "Build",
+        level: "pro",
+        question: "Dans un pipeline de build, pourquoi générer des checksums ou des hash sur les assets exportés ?",
+        options: [
+            "Détecter toute modification/corruption des assets dans la chaîne de livraison",
+            "Accélérer la compilation",
+            "Augmenter la sécurité réseau",
+            "Changer la clé du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Un hash assure l’intégrité des fichiers lors du transfert/publication."
+    },
+    {
+        id: "build-assoc-14",
+        category: "Build",
+        level: "pro",
+        question: "Quel est l’intérêt d’utiliser Addressables lors du build d’un projet Unity de grande taille ?",
+        options: [
+            "Charger/décharger dynamiquement des assets, réduire la mémoire consommée, faciliter les mises à jour",
+            "Permet de lancer le build plus vite",
+            "Change la physique",
+            "Déclenche la recompilation du code"
+        ],
+        correctAnswer: 0,
+        explanation: "Addressables optimise la gestion mémoire/streaming/mise à jour des assets."
+    },
+    {
+        id: "build-assoc-15",
+        category: "Build",
+        level: "pro",
+        question: "Quelle erreur commune empêche la publication d’un build iOS généré sous Windows ?",
+        options: [
+            "Il faut obligatoirement un Mac pour compiler et signer le projet iOS",
+            "Unity bloque la compilation iOS sous Windows",
+            "Le fichier .ipa ne peut être signé",
+            "Le Store refuse les builds auto-générés"
+        ],
+        correctAnswer: 0,
+        explanation: "La signature et la compilation finale iOS ne sont possibles que sur Mac (Xcode)."
+    },
+    {
+        id: "build-assoc-16",
+        category: "Build",
+        level: "pro",
+        question: "Dans un projet avec plusieurs scènes, comment garantir qu’une scène de test n’est pas incluse dans le build final ?",
+        options: [
+            "Vérifier qu’elle n’est pas listée dans 'Scenes In Build' (Build Settings)",
+            "Renommer la scène en .test",
+            "Supprimer tous les prefabs de la scène",
+            "La mettre en dehors du dossier Assets"
+        ],
+        correctAnswer: 0,
+        explanation: "Seules les scènes listées sont buildées."
+    },
+    {
+        id: "build-assoc-17",
+        category: "Build",
+        level: "pro",
+        question: "Quelle option de Player Settings doit être configurée pour restreindre l’accès à Internet de l’application publiée ?",
+        options: [
+            "Désactiver les permissions réseau dans la section Configuration/Other Settings",
+            "Passer en mode Offline dans Quality Settings",
+            "Changer le Scripting Backend",
+            "Passer en Low Power Mode"
+        ],
+        correctAnswer: 0,
+        explanation: "Les permissions réseau sont gérées dans Other Settings."
+    },
+    {
+        id: "build-assoc-18",
+        category: "Build",
+        level: "pro",
+        question: "Lorsqu’un build Unity WebGL ne charge pas certaines textures ou sons, la cause fréquente est :",
+        options: [
+            "Des assets non compatibles WebGL (formats, taille, compression)",
+            "Le Player Name mal configuré",
+            "Des shaders incompatibles DirectX",
+            "Le build est fait en mode Debug"
+        ],
+        correctAnswer: 0,
+        explanation: "WebGL a des restrictions fortes sur les formats et tailles d’assets supportés."
+    },
+    {
+        id: "build-assoc-19",
+        category: "Build",
+        level: "pro",
+        question: "Quel rapport de build est produit par Unity et utile pour l’analyse de la taille du projet final ?",
+        options: [
+            "Build Report (buildreport)",
+            "Profiler Report",
+            "PlayerPrefs.txt",
+            "Asset List"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Build Report détaille la taille et la composition du build (scripts, assets, shaders…)."
+    },
+    {
+        id: "build-assoc-20",
+        category: "Build",
+        level: "pro",
+        question: "Pour publier une mise à jour sans forcer le téléchargement de tout le build, quelle technique Unity utiliser ?",
+        options: [
+            "Asset Bundles ou Addressables pour charger dynamiquement uniquement ce qui change",
+            "Changer la version du Player dans Player Settings",
+            "Passer en mode Debug",
+            "Mettre à jour le dossier Library"
+        ],
+        correctAnswer: 0,
+        explanation: "Bundles et Addressables permettent le patch/différentiel plutôt que de re-télécharger tout le projet."
+    },
+    {
+        id: "build-pro-1",
+        category: "Build",
+        level: "expert",
+        question: "Quel mécanisme utiliser pour garantir la reproductibilité d’un build (hash identique) dans une pipeline CI/CD Unity ?",
+        options: [
+            "Configurer un build deterministic (BuildOptions.Deterministic) et fixer l’ordre des assets/scripts",
+            "Désactiver le cache de compilation",
+            "Utiliser uniquement Asset Bundles",
+            "Toujours builder sur le même OS"
+        ],
+        correctAnswer: 0,
+        explanation: "Les builds déterministes et l’ordre de process garantissent que le même code donne le même build hash."
+    },
+    {
+        id: "build-pro-2",
+        category: "Build",
+        level: "expert",
+        question: "Lors d’un build multi-plateforme automatisé, quel paramètre doit absolument être géré dans un système de build scripting ?",
+        options: [
+            "Les Player Settings (Bundle ID, résolution, backend…) selon la plateforme cible",
+            "La langue de l’éditeur Unity",
+            "Le nom du dossier Assets",
+            "Le nombre de scènes ouvertes dans l’éditeur"
+        ],
+        correctAnswer: 0,
+        explanation: "Chaque plateforme peut nécessiter des paramètres Player Settings différents, à injecter automatiquement."
+    },
+    {
+        id: "build-pro-3",
+        category: "Build",
+        level: "expert",
+        question: "Quelle est la limite majeure des Unity Cloud Build pour une équipe devant déployer sur des stores propriétaires avec des process customisés ?",
+        options: [
+            "La personnalisation limitée des pipelines (pré/post scripts, environnements, plugins d’authentification)",
+            "Le support du format .zip",
+            "L’obligation d’utiliser IL2CPP",
+            "L’impossibilité d’utiliser des prefabs"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity Cloud Build est très limité dès qu’on veut des pipelines custom."
+    },
+    {
+        id: "build-pro-4",
+        category: "Build",
+        level: "expert",
+        question: "Dans une organisation DevOps, pourquoi activer la signature automatique des builds via un certificat/p12 sécurisé ?",
+        options: [
+            "Pour garantir l’intégrité/authenticité du build et automatiser le process de déploiement",
+            "Pour pouvoir exporter en WebGL",
+            "Pour réduire la taille du build",
+            "Pour utiliser les shaders HDRP"
+        ],
+        correctAnswer: 0,
+        explanation: "La signature garantit l’origine et l’intégrité de l’app livrée (nécessaire pour stores, MDM, etc)."
+    },
+    {
+        id: "build-pro-5",
+        category: "Build",
+        level: "expert",
+        question: "Quel système externe est recommandé pour générer, historiser, et distribuer des builds Unity dans une grosse équipe multi-projets ?",
+        options: [
+            "Un gestionnaire d’artefacts dédié (Nexus, Artifactory, etc.) intégré à la CI",
+            "Un partage Google Drive",
+            "Git Large File Storage (LFS)",
+            "Asset Store privé"
+        ],
+        correctAnswer: 0,
+        explanation: "Les artefacts de build doivent être versionnés/traçables (CI + gestionnaire d’artefacts)."
+    },
+    {
+        id: "build-pro-6",
+        category: "Build",
+        level: "expert",
+        question: "Quel est l’intérêt d’automatiser la génération de changelog/version lors du build ?",
+        options: [
+            "Faciliter le support, le debug, la traçabilité et le rollback",
+            "Changer le Bundle ID à chaque build",
+            "Activer la compression LZ4",
+            "Réinitialiser le cache"
+        ],
+        correctAnswer: 0,
+        explanation: "Changelog + versioning = support pro et traçabilité des livraisons/retours."
+    },
+    {
+        id: "build-pro-7",
+        category: "Build",
+        level: "expert",
+        question: "Pourquoi un build Unity WebGL est-il souvent incompatible avec certaines API C# ou packages natifs ?",
+        options: [
+            "Parce que WebGL n’autorise que le .NET Standard 2.0 sans accès natif à l’OS",
+            "Parce que WebGL utilise DirectX",
+            "Car il ne supporte pas les sprites",
+            "Car le build WebGL est compilé en Java"
+        ],
+        correctAnswer: 0,
+        explanation: "WebGL = sandbox, API très restreintes (pas d’IO natif, pas de threads classiques, etc)."
+    },
+    {
+        id: "build-pro-8",
+        category: "Build",
+        level: "expert",
+        question: "Quelle technique permet de réduire la taille des builds iOS sans impacter la stabilité de l’app ?",
+        options: [
+            "Activer le Managed Stripping Level sur 'High' et désactiver les architectures inutilisées",
+            "Désactiver le Garbage Collector",
+            "Passer en mono backend",
+            "Optimiser la résolution du canvas"
+        ],
+        correctAnswer: 0,
+        explanation: "Stripping et arch reduction = build plus léger, moins de code embarqué."
+    },
+    {
+        id: "build-pro-9",
+        category: "Build",
+        level: "expert",
+        question: "Quel est le principal risque de distribuer un build Android signé avec une clé de debug fournie par Unity ?",
+        options: [
+            "Le build peut être falsifié ou retiré du store (clé non privée, non unique)",
+            "Le build ne sera pas accepté sur iOS",
+            "L’app plantera au démarrage",
+            "Les assets ne seront pas chargés"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut toujours utiliser une clé privée pour les builds de production."
+    },
+    {
+        id: "build-pro-10",
+        category: "Build",
+        level: "expert",
+        question: "Dans quel cas faut-il obligatoirement générer un build 'fat' (multi-arch) plutôt qu’un build mono-architecture ?",
+        options: [
+            "Quand on vise des appareils variés (ARMv7/ARM64/x86/x64) sans pouvoir prédire la cible",
+            "Pour accélérer le runtime",
+            "Pour déboguer plus facilement",
+            "Pour réduire la taille"
+        ],
+        correctAnswer: 0,
+        explanation: "Multi-arch = un seul APK qui fonctionne sur toutes les archis (appareils non homogènes)."
+    },
+    {
+        id: "build-pro-11",
+        category: "Build",
+        level: "expert",
+        question: "Pour garantir que tous les assets Addressables d’une version de jeu sont disponibles après le déploiement, il faut :",
+        options: [
+            "Générer le catalogue Addressables lors du build et vérifier la complétude sur le CDN/serveur cible",
+            "Désactiver les builds incrémentaux",
+            "Activer le mode Debug dans Addressables",
+            "Réinitialiser le cache"
+        ],
+        correctAnswer: 0,
+        explanation: "Vérification du manifest/catalogue sur la cible = zéro asset manquant au lancement."
+    },
+    {
+        id: "build-pro-12",
+        category: "Build",
+        level: "expert",
+        question: "Pourquoi build pipeline customisé > bouton Build de l’éditeur pour une équipe professionnelle ?",
+        options: [
+            "Pour automatiser, fiabiliser, documenter et contrôler tous les paramètres du build",
+            "Pour activer l’éditeur en mode dark",
+            "Pour générer plus de logs",
+            "Pour publier sur l’Asset Store"
+        ],
+        correctAnswer: 0,
+        explanation: "Le pipeline custom = reproductibilité, intégration au workflow équipe, fiabilité."
+    },
+    {
+        id: "build-pro-13",
+        category: "Build",
+        level: "expert",
+        question: "Comment s’assurer que chaque build envoyé en production est traçable et roll-backable ?",
+        options: [
+            "En générant un tag Git ou une release pour chaque build, associé au numéro de version embarqué dans l’app",
+            "En notant la version dans un fichier texte",
+            "En utilisant le même build number pour toutes les versions",
+            "En renommant le fichier .exe"
+        ],
+        correctAnswer: 0,
+        explanation: "L’automatisation du tag/release avec le build = traçabilité et rollback facile."
+    },
+    {
+        id: "build-pro-14",
+        category: "Build",
+        level: "expert",
+        question: "Quel check technique faut-il intégrer dans le pipeline pour détecter une régression de perf après une optimisation ou refactoring ?",
+        options: [
+            "Exécuter un build automatique avec bench et profiler pour comparer les métriques à une baseline",
+            "Vérifier la taille du build",
+            "Activer le mode Development Build",
+            "Changer l’icône du projet"
+        ],
+        correctAnswer: 0,
+        explanation: "Perf regression = profiler automatique + benchmark sur chaque build."
+    },
+    {
+        id: "build-pro-15",
+        category: "Build",
+        level: "expert",
+        question: "Quelle précaution de sécurité prendre lors du stockage des clés/signatures (keystore, p12, provisioning…) dans une CI/CD ?",
+        options: [
+            "Utiliser un secret manager/chiffrement, jamais en clair dans le repo",
+            "Committer les clés dans Git",
+            "Stocker les clés sur le bureau de la machine",
+            "Envoyer par email à chaque membre"
+        ],
+        correctAnswer: 0,
+        explanation: "Never ever commit secrets: use secret management/encrypted storage."
+    },
+    {
+        id: "build-pro-16",
+        category: "Build",
+        level: "expert",
+        question: "Comment intégrer automatiquement la vérification d’erreurs critiques de runtime dans la pipeline de build Unity ?",
+        options: [
+            "En automatisant des tests de smoke/end-to-end + parsing des logs de build et runtime",
+            "En lançant l’éditeur Unity après chaque build",
+            "En activant le splash screen Unity",
+            "En augmentant la RAM du serveur"
+        ],
+        correctAnswer: 0,
+        explanation: "CI/CD = build + run + smoke tests + parsing auto des logs pour erreurs."
+    },
+    {
+        id: "build-pro-17",
+        category: "Build",
+        level: "expert",
+        question: "Pour une release Android instantanée (Play Instant), quelle contrainte supplémentaire appliquer au build Unity ?",
+        options: [
+            "La taille de l’APK/aab doit être <15MB après stripping",
+            "Utiliser Mono uniquement",
+            "Désactiver le Profiler",
+            "Changer l’icône à chaque build"
+        ],
+        correctAnswer: 0,
+        explanation: "Play Instant impose des builds ultra-légers."
+    },
+    {
+        id: "build-pro-18",
+        category: "Build",
+        level: "expert",
+        question: "Pour accélérer l’itération des builds en équipe, quel système Unity utiliser pour ne pas recompiler inutilement tous les scripts/assets à chaque build ?",
+        options: [
+            "Cache Server (Unity Accelerator)",
+            "Le bouton Refresh dans l’éditeur",
+            "Le PlayerPrefs",
+            "Rebuilder la librairie à chaque fois"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity Accelerator permet le partage du cache de build entre postes."
+    },
+    {
+        id: "build-pro-19",
+        category: "Build",
+        level: "expert",
+        question: "Quelle solution permet de tester automatiquement le build final sur différents devices réels (Android, iOS, PC…) depuis une CI ?",
+        options: [
+            "Des services de device farm (BrowserStack, AWS Device Farm, Firebase Test Lab, etc.)",
+            "Lancer PlayMode dans l’éditeur",
+            "Utiliser un émulateur Android uniquement",
+            "Brancher chaque device en USB"
+        ],
+        correctAnswer: 0,
+        explanation: "Les Device Farm permettent d’exécuter des builds sur de vrais appareils à distance."
+    },
+    {
+        id: "build-pro-20",
+        category: "Build",
+        level: "expert",
+        question: "Quel outil Unity permet d’instrumenter automatiquement le code pour l’analyse de couverture de test dans un build CI/CD ?",
+        options: [
+            "Unity Test Framework (Code Coverage)",
+            "Addressables Profiler",
+            "Scriptable Build Pipeline",
+            "Asset Import Pipeline"
+        ],
+        correctAnswer: 0,
+        explanation: "Unity Test Framework, avec l’option Code Coverage, génère un rapport d’instrumentation."
+    },
+// Animation
+    {
+        id: "anim-user-1",
+        category: "Animation",
+        level: "user",
+        question: "Quel composant est indispensable pour contrôler une animation par script dans Unity ?",
+        options: [
+            "Animator",
+            "Rigidbody",
+            "Collider",
+            "NavMeshAgent"
+        ],
+        correctAnswer: 0,
+        explanation: "Le composant Animator permet de gérer et contrôler les animations sur un GameObject."
+    },
+    {
+        id: "anim-user-2",
+        category: "Animation",
+        level: "user",
+        question: "Quel fichier contient l’ensemble des transitions et états d’animation dans Unity ?",
+        options: [
+            "Animator Controller",
+            "Prefab",
+            "Material",
+            "Script C#"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Animator Controller définit les états et transitions d’animation pour un objet."
+    },
+    {
+        id: "anim-user-3",
+        category: "Animation",
+        level: "user",
+        question: "Quelle fenêtre permet de visualiser et d’éditer la courbe temporelle d’une animation keyframée ?",
+        options: [
+            "Animation Window",
+            "Hierarchy",
+            "Profiler",
+            "Inspector"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Animation Window permet d’éditer les keyframes, les courbes et les timelines d’animation."
+    },
+    {
+        id: "anim-user-4",
+        category: "Animation",
+        level: "user",
+        question: "Quelle méthode permet de lancer une animation spécifique via script sur un Animator ?",
+        options: [
+            "SetTrigger()",
+            "AddForce()",
+            "GetComponent()",
+            "Invoke()"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator.SetTrigger() déclenche une transition conditionnée par un trigger dans le controller."
+    },
+    {
+        id: "anim-user-5",
+        category: "Animation",
+        level: "user",
+        question: "Que se passe-t-il si un GameObject possède un Animator Controller mais aucune animation liée ?",
+        options: [
+            "Le GameObject n’aura aucun mouvement d’animation",
+            "Le GameObject disparaît",
+            "Le GameObject devient invisible",
+            "Unity renomme l’objet automatiquement"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans animation dans le controller, aucune animation ne sera jouée sur l’objet."
+    },
+    {
+        id: "anim-user-6",
+        category: "Animation",
+        level: "user",
+        question: "Quelle propriété permet de changer la vitesse de lecture d’une animation sur l’Animator ?",
+        options: [
+            "Animator.speed",
+            "Animator.enabled",
+            "Animator.isPlaying",
+            "Animator.loopTime"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator.speed permet d’accélérer ou ralentir toutes les animations contrôlées par l’Animator."
+    },
+    {
+        id: "anim-user-7",
+        category: "Animation",
+        level: "user",
+        question: "Quel type de fichier importé dans Unity contient généralement des animations d’objets 3D ?",
+        options: [
+            ".fbx",
+            ".mp3",
+            ".png",
+            ".json"
+        ],
+        correctAnswer: 0,
+        explanation: "Les fichiers .fbx supportent les modèles 3D ET les animations embarquées."
+    },
+    {
+        id: "anim-user-8",
+        category: "Animation",
+        level: "user",
+        question: "Quelle option dans l’Animator permet de répéter une animation à l’infini ?",
+        options: [
+            "Loop Time",
+            "Fixed Update",
+            "Bake Animation",
+            "Multi Pass"
+        ],
+        correctAnswer: 0,
+        explanation: "L’option Loop Time force la répétition de l’animation tant que l’état est actif."
+    },
+    {
+        id: "anim-user-9",
+        category: "Animation",
+        level: "user",
+        question: "Dans le context du système d’animation, que représente un ‘state’ (état) ?",
+        options: [
+            "Un ensemble d’animations ou une pose particulière pouvant être activée",
+            "Un script attaché à l’Animator",
+            "Une texture de sprite",
+            "Une scène Unity"
+        ],
+        correctAnswer: 0,
+        explanation: "Un état (state) représente un moment du controller où une animation ou une pose est jouée."
+    },
+    {
+        id: "anim-user-10",
+        category: "Animation",
+        level: "user",
+        question: "Quel élément permet de définir les transitions entre différents états d’animation ?",
+        options: [
+            "Transition",
+            "Keyframe",
+            "Component",
+            "Prefab"
+        ],
+        correctAnswer: 0,
+        explanation: "Les transitions déterminent comment passer d’un état à un autre dans l’Animator Controller."
+    },
+    {
+        id: "anim-user-11",
+        category: "Animation",
+        level: "user",
+        question: "Quel paramètre peut être utilisé dans un Animator Controller pour conditionner une transition ?",
+        options: [
+            "Un booléen, un float, un int, ou un trigger",
+            "Uniquement un booléen",
+            "Uniquement un int",
+            "Un script C#"
+        ],
+        correctAnswer: 0,
+        explanation: "Les transitions peuvent être contrôlées par différents types de paramètres dans le controller."
+    },
+    {
+        id: "anim-user-12",
+        category: "Animation",
+        level: "user",
+        question: "Que permet de faire la timeline dans le context d’une animation Unity ?",
+        options: [
+            "Orchestrer plusieurs animations, sons et events sur une séquence temporelle",
+            "Changer le mode d’affichage de la fenêtre Scene",
+            "Remplacer le système Mecanim",
+            "Créer des textures dynamiquement"
+        ],
+        correctAnswer: 0,
+        explanation: "La Timeline est un outil pour synchroniser et orchestrer des animations complexes."
+    },
+    {
+        id: "anim-user-13",
+        category: "Animation",
+        level: "user",
+        question: "Comment désactiver l’Animator d’un GameObject en runtime ?",
+        options: [
+            "Animator.enabled = false",
+            "Animator.Play(\"\")",
+            "Destroy(gameObject)",
+            "SetActive(false)"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator.enabled = false stoppe toute animation pilotée par ce composant."
+    },
+    {
+        id: "anim-user-14",
+        category: "Animation",
+        level: "user",
+        question: "Si une animation est trop rapide, quelle action corrige ce problème sans modifier l’animation d’origine ?",
+        options: [
+            "Diminuer Animator.speed",
+            "Augmenter la fréquence du moniteur",
+            "Changer le nom de l’animation",
+            "Changer le scale du GameObject"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator.speed permet de ralentir l’exécution de l’animation en temps réel."
+    },
+    {
+        id: "anim-user-15",
+        category: "Animation",
+        level: "user",
+        question: "Quel type de composant est nécessaire pour appliquer des animations à un personnage humanoïde importé d’un logiciel 3D ?",
+        options: [
+            "Animator avec Avatar configuré",
+            "Box Collider",
+            "NavMeshAgent",
+            "Particle System"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Animator avec un Avatar humanoïde mappe les bones du personnage pour le système d’animation Unity."
+    },
+    {
+        id: "anim-user-16",
+        category: "Animation",
+        level: "user",
+        question: "À quoi sert la fonction AddEvent dans l’Animation Window ?",
+        options: [
+            "Déclencher une méthode C# à un moment précis de l’animation",
+            "Créer une transition automatique",
+            "Dupliquer l’animation",
+            "Changer la couleur de la courbe"
+        ],
+        correctAnswer: 0,
+        explanation: "AddEvent permet de lier une fonction à une frame clé de l’animation."
+    },
+    {
+        id: "anim-user-17",
+        category: "Animation",
+        level: "user",
+        question: "Dans Unity, comment faire jouer une animation de marche puis une animation de saut sans transition automatique ?",
+        options: [
+            "Désactiver les transitions automatiques dans l’Animator Controller",
+            "Créer un nouveau prefab",
+            "Mettre Animator.enabled à false",
+            "Changer de scène"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut configurer explicitement les transitions ou déclencher les animations via script."
+    },
+    {
+        id: "anim-user-18",
+        category: "Animation",
+        level: "user",
+        question: "Dans le context de l’Animator, que signifie un ‘Blend Tree’ ?",
+        options: [
+            "Un arbre qui mélange plusieurs animations selon des paramètres (ex: vitesse, direction)",
+            "Un arbre qui gère les colliders",
+            "Un script pour mélanger des couleurs",
+            "Un dossier d’assets"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Blend Tree permet de mixer plusieurs animations dynamiquement selon des variables."
+    },
+    {
+        id: "anim-user-19",
+        category: "Animation",
+        level: "user",
+        question: "Quel élément visuel dans l’Animator Controller symbolise la transition d’un état à un autre ?",
+        options: [
+            "Une flèche",
+            "Un cube",
+            "Un cercle",
+            "Un point d’exclamation"
+        ],
+        correctAnswer: 0,
+        explanation: "La flèche indique la transition active entre deux états d’animation."
+    },
+    {
+        id: "anim-user-20",
+        category: "Animation",
+        level: "user",
+        question: "Pour quelle raison utiliser un ‘Root Motion’ dans les paramètres de l’Animator ?",
+        options: [
+            "Faire déplacer le GameObject selon les mouvements d’animation (ex: marche réelle)",
+            "Changer le parent du GameObject",
+            "Appliquer une texture dynamique",
+            "Synchroniser deux scènes"
+        ],
+        correctAnswer: 0,
+        explanation: "Root Motion permet au mouvement contenu dans l’animation d’influencer la position réelle du GameObject."
+    },
+    {
+        id: "anim-pro-1",
+        category: "Animation",
+        level: "pro",
+        question: "Quel est le rôle principal d’un ‘Avatar’ dans le système d’animation Unity ?",
+        options: [
+            "Faire la correspondance entre le rig du modèle et le système d’animation humanoïde de Unity",
+            "Gérer les textures de la peau",
+            "Optimiser la mémoire vidéo",
+            "Contrôler les transitions"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Avatar mappe le rig importé sur le système d’animation humanoïde natif Unity."
+    },
+    {
+        id: "anim-pro-2",
+        category: "Animation",
+        level: "pro",
+        question: "Comment corriger un problème d’échelle lors de l’importation d’une animation .fbx dans Unity ?",
+        options: [
+            "Ajuster le Scale Factor dans l’Inspector de l’asset .fbx",
+            "Changer la couleur de l’Animator",
+            "Créer une nouvelle scène",
+            "Ajouter un Box Collider"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Scale Factor corrige directement les problèmes d’échelle à l’import."
+    },
+    {
+        id: "anim-pro-3",
+        category: "Animation",
+        level: "pro",
+        question: "Dans un Blend Tree, comment gérer la transition entre la marche, la course et l’arrêt ?",
+        options: [
+            "Utiliser un paramètre float représentant la vitesse",
+            "Créer une transition automatique entre chaque état",
+            "Ajouter un trigger pour chaque mouvement",
+            "Multiplier les Animator Controllers"
+        ],
+        correctAnswer: 0,
+        explanation: "Le paramètre float permet de mixer dynamiquement entre idle, walk et run dans un seul Blend Tree."
+    },
+    {
+        id: "anim-pro-4",
+        category: "Animation",
+        level: "pro",
+        question: "Quel événement doit être utilisé pour synchroniser l’apparition d’un effet sonore avec une animation ?",
+        options: [
+            "Animation Event",
+            "Update()",
+            "OnTriggerEnter()",
+            "FixedUpdate()"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Animation Event déclenche du code à une frame précise de l’animation."
+    },
+    {
+        id: "anim-pro-5",
+        category: "Animation",
+        level: "pro",
+        question: "Quelle est la méthode la plus propre pour déclencher une animation en réponse à une action utilisateur en C# ?",
+        options: [
+            "Définir un trigger ou booléen dans l’Animator et l’activer via script",
+            "Changer le nom du GameObject",
+            "Supprimer puis recréer le Animator Controller",
+            "Utiliser Animator.speed = 2"
+        ],
+        correctAnswer: 0,
+        explanation: "La gestion via paramètres exposés dans le controller est la bonne pratique."
+    },
+    {
+        id: "anim-pro-6",
+        category: "Animation",
+        level: "pro",
+        question: "Quel problème peut provoquer une transition trop courte entre deux animations dans un Animator Controller ?",
+        options: [
+            "Des sauts visuels ou du clipping entre les poses",
+            "Un crash de l’application",
+            "Un freeze du contrôleur",
+            "Une désactivation de l’Animator"
+        ],
+        correctAnswer: 0,
+        explanation: "Une transition trop rapide cause des artefacts et des glitches visuels."
+    },
+    {
+        id: "anim-pro-7",
+        category: "Animation",
+        level: "pro",
+        question: "Comment éviter que deux transitions se déclenchent simultanément dans le même Animator Controller ?",
+        options: [
+            "Désactiver ‘Has Exit Time’ et bien gérer les conditions",
+            "Utiliser Animator.Stop()",
+            "Passer Animator.enabled à false",
+            "Changer le nom du state"
+        ],
+        correctAnswer: 0,
+        explanation: "Sans exit time et avec des conditions claires, une seule transition peut être active à la fois."
+    },
+    {
+        id: "anim-pro-8",
+        category: "Animation",
+        level: "pro",
+        question: "Quelle différence entre un Animator Controller et un Runtime Animator Controller ?",
+        options: [
+            "Le premier est l’asset éditable dans Unity, le second est la version utilisée en runtime (abstraite)",
+            "Le second sert pour les shaders uniquement",
+            "Ils sont strictement identiques",
+            "Le second ne gère pas les Blend Trees"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator Controller = asset modifiable ; Runtime Animator Controller = abstraction côté code pour l’Animator."
+    },
+    {
+        id: "anim-pro-9",
+        category: "Animation",
+        level: "pro",
+        question: "Quel composant permet de mélanger dynamiquement deux animations (ex : courir ET tirer) sur un personnage ?",
+        options: [
+            "Layer dans l’Animator Controller",
+            "Physics Material",
+            "Material",
+            "Coroutine"
+        ],
+        correctAnswer: 0,
+        explanation: "Les layers permettent de superposer ou d’ajouter du ‘masking’ sur des parties du corps."
+    },
+    {
+        id: "anim-pro-10",
+        category: "Animation",
+        level: "pro",
+        question: "Pour désynchroniser le cycle d’une animation (ex : plusieurs ennemis qui ne marchent pas de façon identique), quelle solution efficace ?",
+        options: [
+            "Changer le Animator.Play() en démarrant à un temps différent, ou utiliser Animator.CrossFade() avec un offset",
+            "Changer le nom du prefab",
+            "Rendre le Animator unique pour chaque ennemi",
+            "Augmenter le nombre de keyframes"
+        ],
+        correctAnswer: 0,
+        explanation: "Démarrer chaque animation à un moment différent évite la ‘synchronisation visuelle’ des clones."
+    },
+    {
+        id: "anim-pro-11",
+        category: "Animation",
+        level: "pro",
+        question: "Quelle option faut-il activer/importer pour bénéficier du Root Motion sur une animation importée ?",
+        options: [
+            "‘Root Transform Position (Y)’ ou ‘Root Motion’ dans l’Inspector de l’animation",
+            "Mesh Compression",
+            "Add Component > Rigidbody",
+            "Apply Avatar Mask"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut activer le root motion à l’import ET dans le controller pour que le mouvement physique soit pris en compte."
+    },
+    {
+        id: "anim-pro-12",
+        category: "Animation",
+        level: "pro",
+        question: "Quel outil Unity permet de combiner animation, audio, et activation d’objets dans une même séquence complexe ?",
+        options: [
+            "Timeline",
+            "Inspector",
+            "Lighting Settings",
+            "Prefab Mode"
+        ],
+        correctAnswer: 0,
+        explanation: "Timeline est fait pour synchroniser et orchestrer plusieurs tracks d’animation/audio."
+    },
+    {
+        id: "anim-pro-13",
+        category: "Animation",
+        level: "pro",
+        question: "En animation, que permet un ‘Avatar Mask’ dans Unity ?",
+        options: [
+            "Animer ou bloquer seulement certaines parties du corps sur un layer d’animation",
+            "Changer la couleur d’un objet",
+            "Créer un mask de texture",
+            "Importer des objets 2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Avatar Mask permet de limiter les effets d’une animation à certains bones (par exemple, animer le haut du corps indépendamment des jambes)."
+    },
+    {
+        id: "anim-pro-14",
+        category: "Animation",
+        level: "pro",
+        question: "Quel outil/système choisir pour faire de l’animation par timeline, keyframes et événements sur un objet qui n’est pas un personnage ?",
+        options: [
+            "Animation Window",
+            "Animator Controller",
+            "Prefab Variant",
+            "Physics Material"
+        ],
+        correctAnswer: 0,
+        explanation: "Animation Window est adaptée à toutes les animations par courbes (UI, props, etc.), pas juste aux personnages."
+    },
+    {
+        id: "anim-pro-15",
+        category: "Animation",
+        level: "pro",
+        question: "Comment gérer l’interruption d’une animation en cours pour en jouer une autre immédiatement ?",
+        options: [
+            "Utiliser Animator.CrossFade ou Animator.Play avec le nom de l’état cible",
+            "Désactiver l’Animator",
+            "Changer de scène",
+            "Créer un nouveau GameObject"
+        ],
+        correctAnswer: 0,
+        explanation: "Animator.Play() ou CrossFade() permet de switcher d’une animation à l’autre à la frame près."
+    },
+    {
+        id: "anim-pro-16",
+        category: "Animation",
+        level: "pro",
+        question: "Quelle approche pour optimiser les performances quand on a des dizaines de personnages animés en même temps ?",
+        options: [
+            "Limiter les controllers, optimiser les transitions et utiliser des LOD pour l’Animator",
+            "Activer le Deep Profiling",
+            "Mettre tous les personnages dans une seule animation",
+            "Utiliser uniquement Animator.speed = 0.5"
+        ],
+        correctAnswer: 0,
+        explanation: "Moins de controllers, transitions propres, culling sur Animator et LOD sur mesh/anim = gain de perf."
+    },
+    {
+        id: "anim-pro-17",
+        category: "Animation",
+        level: "pro",
+        question: "Comment peut-on lire l’avancement actuel (temps) d’un état d’animation dans un script ?",
+        options: [
+            "AnimatorStateInfo.normalizedTime",
+            "GetComponent().time",
+            "Animator.currentFrame",
+            "AnimationTimer"
+        ],
+        correctAnswer: 0,
+        explanation: "AnimatorStateInfo.normalizedTime donne un float [0..1] représentant la progression."
+    },
+    {
+        id: "anim-pro-18",
+        category: "Animation",
+        level: "pro",
+        question: "Quel problème courant provoque des sauts (‘snapping’) lors de transitions entre animations avec Root Motion ?",
+        options: [
+            "Incohérence des courbes de déplacement entre les animations (root curves)",
+            "Mauvais color grading",
+            "Utilisation de SpriteRenderer au lieu de SkinnedMeshRenderer",
+            "Mauvais tag de layer"
+        ],
+        correctAnswer: 0,
+        explanation: "Les mouvements doivent être cohérents dans toutes les animations pour éviter les sauts brutaux."
+    },
+    {
+        id: "anim-pro-19",
+        category: "Animation",
+        level: "pro",
+        question: "Quel est l’impact de ‘Has Exit Time’ sur une transition dans un Animator Controller ?",
+        options: [
+            "Force la transition à attendre la fin de l’animation avant de se déclencher",
+            "Réduit la taille du build",
+            "Optimise le GPU",
+            "Active le Profiling"
+        ],
+        correctAnswer: 0,
+        explanation: "Has Exit Time impose que l’animation en cours se termine avant de passer à l’état suivant."
+    },
+    {
+        id: "anim-pro-20",
+        category: "Animation",
+        level: "pro",
+        question: "Quelle fonction permet de contrôler la lecture (pause, reprise, avance rapide) d’une Timeline via script ?",
+        options: [
+            "PlayableDirector.Pause(), Play(), Stop(), etc.",
+            "Animator.enabled = false",
+            "SetActive(false)",
+            "Update()"
+        ],
+        correctAnswer: 0,
+        explanation: "PlayableDirector gère la Timeline en C# (pause, play, stop, seek, etc.)."
+    },
+    {
+        id: "anim-expert-1",
+        category: "Animation",
+        level: "expert",
+        question: "Comment optimiser les performances d’animation sur un grand nombre de NPCs dans une scène ?",
+        options: [
+            "Activer le culling sur chaque Animator et réduire la fréquence d’update",
+            "Déplacer tous les NPCs dans la hiérarchie racine",
+            "Utiliser des spritesheets",
+            "Désactiver tous les Blend Trees"
+        ],
+        correctAnswer: 0,
+        explanation: "Le culling désactive le calcul d’animation hors caméra ; réduire l’update économise du CPU."
+    },
+    {
+        id: "anim-expert-2",
+        category: "Animation",
+        level: "expert",
+        question: "Quel outil utiliser pour retargeter dynamiquement des animations d’un personnage à un autre avec un rig différent ?",
+        options: [
+            "Avatar et retargeting runtime",
+            "NavMeshAgent",
+            "Prefab Variant",
+            "Physics2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Le système d’Avatar de Unity permet le retargeting d’animations entre rigs compatibles."
+    },
+    {
+        id: "anim-expert-3",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle approche utiliser pour mixer en temps réel plusieurs animations (ex : respirer, viser, courir, tirer) tout en gardant la cohérence du résultat ?",
+        options: [
+            "Utiliser plusieurs layers dans l’Animator avec des Avatar Masks",
+            "Ajouter un Animator par animation",
+            "Utiliser Animation.Play dans une boucle",
+            "Passer par le Legacy Animation Component"
+        ],
+        correctAnswer: 0,
+        explanation: "Les layers, avec ou sans masks, permettent un blending propre et cohérent de plusieurs animations simultanées."
+    },
+    {
+        id: "anim-expert-4",
+        category: "Animation",
+        level: "expert",
+        question: "Quel est le risque de modifier les valeurs de propriétés animées via script au runtime (ex : transform.position) ?",
+        options: [
+            "Créer des conflits avec le système d’animation qui écrasera les valeurs au frame suivante",
+            "Optimiser les FPS",
+            "Forcer le recalcul du Lightmap",
+            "Augmenter la taille du build"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Animator écrase tout changement sur une propriété animée à chaque frame, donc toute modification manuelle est perdue sauf si gérée explicitement."
+    },
+    {
+        id: "anim-expert-5",
+        category: "Animation",
+        level: "expert",
+        question: "Quel pipeline d’animation choisir pour appliquer des animations complexes sur des objets non-humanoïdes (machines, portes, etc.) tout en gardant la synchronisation audio/FX ?",
+        options: [
+            "Timeline, Animation Clips et PlayableDirector",
+            "NavMeshAgent",
+            "Animator uniquement",
+            "Cinemachine"
+        ],
+        correctAnswer: 0,
+        explanation: "Timeline permet de mixer animation, audio, FX, et événements sur tous types d’objets."
+    },
+    {
+        id: "anim-expert-6",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle méthode utiliser pour corriger des ‘popping’ lors de transitions avec root motion entre plusieurs clips ?",
+        options: [
+            "Aligner manuellement les courbes root entre les animations et synchroniser les positions",
+            "Augmenter la vitesse de transition",
+            "Désactiver le root motion",
+            "Mettre le Animator en Update Mode: Animate Physics"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut soigner la continuité des courbes root pour éviter les snaps de position."
+    },
+    {
+        id: "anim-expert-7",
+        category: "Animation",
+        level: "expert",
+        question: "Quel est l’avantage principal d’un Custom Playable (AnimationScriptPlayable) comparé au pipeline Animator classique ?",
+        options: [
+            "Gérer des logiques de blending, layers, contraintes ou effets impossibles dans Animator Controller",
+            "Réduire la taille des assets",
+            "Supprimer le besoin de rig",
+            "Augmenter la résolution des textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Playable custom donne accès au pipeline d’animation bas-niveau : logique procédurale, blending dynamique, etc."
+    },
+    {
+        id: "anim-expert-8",
+        category: "Animation",
+        level: "expert",
+        question: "Comment débugger efficacement une animation qui fonctionne dans le Preview mais pas en runtime ?",
+        options: [
+            "Vérifier l’Animator Controller, les overrides de state, les triggers, et le script qui contrôle le Animator",
+            "Relancer Unity",
+            "Changer la couleur du GameObject",
+            "Réimporter tous les assets"
+        ],
+        correctAnswer: 0,
+        explanation: "Le runtime n’utilise pas toujours les mêmes paramètres que le Preview Editor ; il faut tracer les paramètres et le code."
+    },
+    {
+        id: "anim-expert-9",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle technique permet de synchroniser précisément plusieurs personnages ou objets sur un événement précis (chorégraphie, cinématique) ?",
+        options: [
+            "Utiliser Timeline et des PlayableDirector synchronisés",
+            "Créer un script avec Update()",
+            "Utiliser uniquement des triggers",
+            "Baker les animations dans le mesh"
+        ],
+        correctAnswer: 0,
+        explanation: "Timeline et plusieurs PlayableDirector permettent la synchro multi-objet à la frame près."
+    },
+    {
+        id: "anim-expert-10",
+        category: "Animation",
+        level: "expert",
+        question: "Quel bug classique peut apparaître lors d’un retargeting d’animation sur des rigs humanoïdes avec des proportions différentes ?",
+        options: [
+            "Des déformations bizarres (bras trop courts/longs, pieds qui glissent)",
+            "Des artefacts de lumière",
+            "Des problèmes de collision",
+            "Des warnings de texture"
+        ],
+        correctAnswer: 0,
+        explanation: "Des proportions différentes sans ajustement du retarget provoquent des mouvements irréalistes."
+    },
+    {
+        id: "anim-expert-11",
+        category: "Animation",
+        level: "expert",
+        question: "Comment appliquer une contrainte dynamique sur un bone (ex : main qui suit une cible) pendant une animation ?",
+        options: [
+            "Utiliser les Animation Rigging Constraints (package officiel Unity)",
+            "Changer le Animator Controller à la volée",
+            "Utiliser un Physics Material",
+            "Créer un second Animator"
+        ],
+        correctAnswer: 0,
+        explanation: "Animation Rigging permet des IK, LookAt, MultiAim ou TwoBoneIK en runtime, pour mixer anim et logique dynamiques."
+    },
+    {
+        id: "anim-expert-12",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle approche pour intégrer des animations générées en runtime (procédurales ou via IA) avec le pipeline existant ?",
+        options: [
+            "Utiliser des AnimationClip Playable ou générer des clips dynamiquement, puis les jouer via un PlayableGraph",
+            "Ajouter des Animator Controllers dynamiquement",
+            "Remplacer tous les blend trees",
+            "Exporter en FBX"
+        ],
+        correctAnswer: 0,
+        explanation: "Les AnimationClips peuvent être générés et injectés dans le PlayableGraph pour blending/switching."
+    },
+    {
+        id: "anim-expert-13",
+        category: "Animation",
+        level: "expert",
+        question: "Pourquoi éviter d’utiliser Animator.SetTrigger à chaque frame dans Update() ?",
+        options: [
+            "Parce que cela peut spammer l’état de l’Animator et créer des transitions imprévisibles",
+            "Parce que ça modifie la caméra",
+            "Parce que ça reset le prefab",
+            "Parce que ça utilise le GPU"
+        ],
+        correctAnswer: 0,
+        explanation: "SetTrigger doit être appelé au bon moment, pas en boucle sinon l’état part en cacahuète."
+    },
+    {
+        id: "anim-expert-14",
+        category: "Animation",
+        level: "expert",
+        question: "Comment détecter si une animation importée n’a pas de loop alors qu’elle devrait boucler ?",
+        options: [
+            "Vérifier dans l’Inspector que l’option Loop Time est cochée",
+            "Changer de layer",
+            "Remplacer l’Animator par un script",
+            "Activer le mode 2D"
+        ],
+        correctAnswer: 0,
+        explanation: "Une animation ne boucle que si Loop Time est activé sur le clip."
+    },
+    {
+        id: "anim-expert-15",
+        category: "Animation",
+        level: "expert",
+        question: "Quel problème peut poser l’utilisation abusive de ‘Animator Override Controller’ ?",
+        options: [
+            "Difficulté à maintenir/contrôler les overrides et risques d’oublier de référencer les bons clips",
+            "Augmentation de la taille des scènes",
+            "Ralentissement du Lighting",
+            "Perte de textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Plus on override, plus on risque de bugs de mapping, de confusion et de maintenance lourde."
+    },
+    {
+        id: "anim-expert-16",
+        category: "Animation",
+        level: "expert",
+        question: "Comment synchroniser précisément un effet visuel (particle system) avec un événement dans une animation complexe ?",
+        options: [
+            "Animation Event sur le clip qui déclenche le système de particules via script",
+            "Créer un nouveau Animator",
+            "Ajouter un trigger sur l’Animator Controller",
+            "Utiliser Lighting Settings"
+        ],
+        correctAnswer: 0,
+        explanation: "Les Animation Events appellent une méthode en C#, qui lance le particle system au bon moment."
+    },
+    {
+        id: "anim-expert-17",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle stratégie pour débugger un problème de Blend Tree qui ne répond pas aux paramètres envoyés par le code ?",
+        options: [
+            "Vérifier que les paramètres du Blend Tree existent et sont mis à jour par le script",
+            "Changer tous les paramètres en triggers",
+            "Modifier le layer du GameObject",
+            "Réduire la résolution du mesh"
+        ],
+        correctAnswer: 0,
+        explanation: "Un paramètre qui n’existe pas ou mal écrit = Blend Tree statique."
+    },
+    {
+        id: "anim-expert-18",
+        category: "Animation",
+        level: "expert",
+        question: "Quel impact a le ‘Update Mode’ de l’Animator sur le comportement en VR (XR) ou avec la physique ?",
+        options: [
+            "En mode Animate Physics, l’Animator update pendant FixedUpdate, idéal pour synchroniser avec la physique ou XR",
+            "Il augmente la résolution du mesh",
+            "Il optimise le Baking",
+            "Il force le Mesh Renderer à s’activer"
+        ],
+        correctAnswer: 0,
+        explanation: "En Animate Physics, les updates sont calés sur la physique, utile pour XR/interactions précises."
+    },
+    {
+        id: "anim-expert-19",
+        category: "Animation",
+        level: "expert",
+        question: "Quelle structure de code permet de piloter dynamiquement plusieurs Timeline en même temps sur plusieurs objets ?",
+        options: [
+            "Créer plusieurs PlayableDirector et contrôler chacun par script",
+            "Un seul PlayableDirector pour toute la scène",
+            "Un Animator Controller global",
+            "Utiliser Update() pour tout synchroniser"
+        ],
+        correctAnswer: 0,
+        explanation: "Chaque Timeline a son PlayableDirector ; ils peuvent être lancés/synchronisés via code."
+    },
+    {
+        id: "anim-expert-20",
+        category: "Animation",
+        level: "expert",
+        question: "Quel est l’avantage du Baking d’animation (exporter l’anim ‘baked’ dans le mesh) ?",
+        options: [
+            "Permet de jouer l’animation sans Animator Controller ni rig au runtime (perf, simplicité, scènes fixes)",
+            "Réduit la taille des textures",
+            "Augmente la résolution de la lumière",
+            "Gère le streaming audio"
+        ],
+        correctAnswer: 0,
+        explanation: "Le baking d’anim est utile pour les props ou décors : pas besoin d’Animator, lecture ultra rapide."
+    },
+    {
+        id: "shader-user-1",
+        category: "Shaders",
+        level: "user",
+        question: "Quel est le but principal d’un matériau (Material) dans Unity ?",
+        options: [
+            "Définir l’apparence visuelle d’un objet via un shader et des textures",
+            "Contrôler la physique de l’objet",
+            "Changer le comportement de l’audio",
+            "Optimiser le pathfinding"
+        ],
+        correctAnswer: 0,
+        explanation: "Un matériau détermine la façon dont un objet est affiché en utilisant un shader et des textures."
+    },
+    {
+        id: "shader-user-2",
+        category: "Shaders",
+        level: "user",
+        question: "Qu’est-ce qu’un shader dans Unity ?",
+        options: [
+            "Un programme qui calcule comment un objet est rendu à l’écran",
+            "Un composant physique",
+            "Un asset audio",
+            "Un script pour le gameplay"
+        ],
+        correctAnswer: 0,
+        explanation: "Un shader est un programme s’exécutant sur le GPU, contrôlant l’apparence visuelle d’un objet."
+    },
+    {
+        id: "shader-user-3",
+        category: "Shaders",
+        level: "user",
+        question: "Quel pipeline de rendu propose Unity pour la gestion avancée des shaders et effets visuels ?",
+        options: [
+            "URP (Universal Render Pipeline) et HDRP (High Definition Render Pipeline)",
+            "Animator Controller",
+            "NavMesh",
+            "Timeline"
+        ],
+        correctAnswer: 0,
+        explanation: "URP et HDRP permettent des shaders avancés, des effets custom, et plus de flexibilité que le pipeline standard."
+    },
+    {
+        id: "shader-user-4",
+        category: "Shaders",
+        level: "user",
+        question: "Comment appliquer une texture à un objet 3D dans Unity ?",
+        options: [
+            "Assigner une texture à la propriété 'Albedo' du matériau de l’objet",
+            "Attacher la texture à la caméra",
+            "Placer la texture dans le dossier Audio",
+            "Changer le script C#"
+        ],
+        correctAnswer: 0,
+        explanation: "La texture est appliquée au slot 'Albedo' dans le matériel attaché au mesh."
+    },
+    {
+        id: "shader-user-5",
+        category: "Shaders",
+        level: "user",
+        question: "Quel slot du shader Standard permet de régler la transparence d’un matériau ?",
+        options: [
+            "Alpha",
+            "Normal Map",
+            "Emission",
+            "Smoothness"
+        ],
+        correctAnswer: 0,
+        explanation: "Le canal Alpha définit le niveau de transparence."
+    },
+    {
+        id: "shader-user-6",
+        category: "Shaders",
+        level: "user",
+        question: "À quoi sert une Normal Map dans un matériau ?",
+        options: [
+            "Simuler du relief sans ajouter de polygones",
+            "Augmenter le volume audio",
+            "Changer la physique",
+            "Contrôler le pathfinding"
+        ],
+        correctAnswer: 0,
+        explanation: "La normal map donne une illusion de relief et de détails sur la surface, sans géométrie réelle."
+    },
+    {
+        id: "shader-user-7",
+        category: "Shaders",
+        level: "user",
+        question: "Comment activer la transparence sur un matériau avec le shader Standard ?",
+        options: [
+            "Changer le mode Rendering de 'Opaque' à 'Transparent'",
+            "Augmenter la valeur du Smoothness",
+            "Décocher 'Receive Shadows'",
+            "Changer la texture d’albedo"
+        ],
+        correctAnswer: 0,
+        explanation: "Il faut définir le mode Rendering en Transparent pour permettre la transparence."
+    },
+    {
+        id: "shader-user-8",
+        category: "Shaders",
+        level: "user",
+        question: "Quel asset permet de créer des shaders personnalisés sans coder dans Unity ?",
+        options: [
+            "Shader Graph",
+            "Audio Mixer",
+            "Animation Rigging",
+            "Physics Material"
+        ],
+        correctAnswer: 0,
+        explanation: "Shader Graph permet de créer des shaders visuellement, sans écrire de code HLSL."
+    },
+    {
+        id: "shader-user-9",
+        category: "Shaders",
+        level: "user",
+        question: "Quel paramètre ajuste la brillance d’une surface dans le shader Standard ?",
+        options: [
+            "Smoothness",
+            "Emission",
+            "Alpha",
+            "Metallic"
+        ],
+        correctAnswer: 0,
+        explanation: "Le paramètre Smoothness définit à quel point la surface réfléchit la lumière (brillance)."
+    },
+    {
+        id: "shader-user-10",
+        category: "Shaders",
+        level: "user",
+        question: "Si une texture apparaît toute blanche sur un mesh, quelle erreur probable vérifier ?",
+        options: [
+            "Mauvais UV Mapping sur le modèle",
+            "Audio import incorrect",
+            "Mauvaise animation",
+            "Collider absent"
+        ],
+        correctAnswer: 0,
+        explanation: "Un UV Mapping incorrect empêche la texture de s’appliquer correctement sur la géométrie."
+    },
+    {
+        id: "shader-user-11",
+        category: "Shaders",
+        level: "user",
+        question: "Quel paramètre d’un matériau permet d’émettre de la lumière, même sans éclairage de scène ?",
+        options: [
+            "Emission",
+            "Smoothness",
+            "Normal Map",
+            "Alpha"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Emission fait briller un matériau, indépendamment de la lumière de la scène."
+    },
+    {
+        id: "shader-user-12",
+        category: "Shaders",
+        level: "user",
+        question: "Quel format d’image est recommandé pour les textures avec transparence en Unity ?",
+        options: [
+            "PNG",
+            "MP3",
+            "JPG",
+            "MP4"
+        ],
+        correctAnswer: 0,
+        explanation: "Le format PNG gère l’alpha/transparence, à la différence du JPG."
+    },
+    {
+        id: "shader-user-13",
+        category: "Shaders",
+        level: "user",
+        question: "Qu’est-ce qu’une Albedo Map ?",
+        options: [
+            "Une texture couleur de base appliquée sur un matériau",
+            "Une map audio spatialisée",
+            "Un paramètre de physique",
+            "Un composant de caméra"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Albedo Map est la texture de couleur de base."
+    },
+    {
+        id: "shader-user-14",
+        category: "Shaders",
+        level: "user",
+        question: "Dans Shader Graph, que permet le node 'Multiply' ?",
+        options: [
+            "Multiplier la valeur de deux entrées (ex : couleur et alpha)",
+            "Créer une nouvelle texture",
+            "Déclencher un événement audio",
+            "Changer de caméra"
+        ],
+        correctAnswer: 0,
+        explanation: "Multiply permet de combiner mathématiquement deux valeurs dans un shader."
+    },
+    {
+        id: "shader-user-15",
+        category: "Shaders",
+        level: "user",
+        question: "Quel composant faut-il ajouter sur un mesh pour afficher le rendu d’un shader ?",
+        options: [
+            "Mesh Renderer",
+            "Audio Source",
+            "NavMesh Agent",
+            "Animation"
+        ],
+        correctAnswer: 0,
+        explanation: "Le Mesh Renderer est responsable de l’affichage du mesh avec son matériau/shader."
+    },
+    {
+        id: "shader-user-16",
+        category: "Shaders",
+        level: "user",
+        question: "Si un shader ne compile pas et affiche une surface rose dans la scène, quelle est la cause principale ?",
+        options: [
+            "Erreur de compilation dans le code du shader",
+            "Caméra mal positionnée",
+            "Collider manquant",
+            "Texte manquant"
+        ],
+        correctAnswer: 0,
+        explanation: "Le rose indique une erreur de shader : soit code HLSL foireux, soit mauvais slot."
+    },
+    {
+        id: "shader-user-17",
+        category: "Shaders",
+        level: "user",
+        question: "Quel est l’intérêt du mode 'Cutout' sur un shader Standard ?",
+        options: [
+            "Créer des matériaux avec transparence franche (ex : feuillage, grillage)",
+            "Améliorer la physique",
+            "Changer la vitesse d’animation",
+            "Gérer le volume audio"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mode Cutout masque net une partie du matériau avec un seuil d’alpha."
+    },
+    {
+        id: "shader-user-18",
+        category: "Shaders",
+        level: "user",
+        question: "Comment réutiliser un matériau sur plusieurs objets sans duplication ?",
+        options: [
+            "Drag and drop le même material asset sur chaque objet",
+            "Créer un prefab par objet",
+            "Copier-coller le mesh",
+            "Créer un nouvel Audio Mixer"
+        ],
+        correctAnswer: 0,
+        explanation: "Un seul Material asset peut être partagé par tous les Mesh Renderer nécessaires."
+    },
+    {
+        id: "shader-user-19",
+        category: "Shaders",
+        level: "user",
+        question: "À quoi sert le paramètre Tiling dans un matériau ?",
+        options: [
+            "Répéter la texture sur le mesh selon des axes X/Y",
+            "Changer la taille du mesh",
+            "Changer la couleur du shader",
+            "Activer l’audio spatial"
+        ],
+        correctAnswer: 0,
+        explanation: "Tiling ajuste la répétition d’une texture."
+    },
+    {
+        id: "shader-user-20",
+        category: "Shaders",
+        level: "user",
+        question: "Quel node Shader Graph te permet de sampler (lire) une texture ?",
+        options: [
+            "Sample Texture 2D",
+            "Add",
+            "Lerp",
+            "Transform"
+        ],
+        correctAnswer: 0,
+        explanation: "Sample Texture 2D permet d’accéder aux pixels d’une texture dans le graphe."
+    },
+    {
+        id: "shader-pro-1",
+        category: "Shaders",
+        level: "pro",
+        question: "Quel avantage apporte l’utilisation de Shader Graph sur URP ou HDRP ?",
+        options: [
+            "Création de shaders personnalisés visuellement, adaptés au pipeline choisi",
+            "Permet de gérer l’audio spatial",
+            "Ajoute la physique avancée",
+            "Optimise automatiquement toutes les textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Shader Graph simplifie la création de shaders custom, compatibles avec URP/HDRP."
+    },
+    {
+        id: "shader-pro-2",
+        category: "Shaders",
+        level: "pro",
+        question: "Quelle différence majeure entre un Shader PBR et un Shader Unlit ?",
+        options: [
+            "Le shader PBR réagit à la lumière, l’Unlit non",
+            "L’Unlit gère la physique",
+            "Le PBR s’utilise seulement sur UI",
+            "L’Unlit requiert du code C#"
+        ],
+        correctAnswer: 0,
+        explanation: "Unlit = aucun éclairage ; PBR = shading basé sur la physique, réagit aux lumières/scène."
+    },
+    {
+        id: "shader-pro-3",
+        category: "Shaders",
+        level: "pro",
+        question: "Quel pipeline Unity faut-il utiliser pour activer les effets de Post-Processing avancés (ex : bloom, vignette, DOF) avec compatibilité Shader Graph ?",
+        options: [
+            "URP ou HDRP uniquement",
+            "Pipeline standard",
+            "Input System",
+            "Timeline"
+        ],
+        correctAnswer: 0,
+        explanation: "URP/HDRP intègrent les volumes de post-process et sont compatibles Shader Graph."
+    },
+    {
+        id: "shader-pro-4",
+        category: "Shaders",
+        level: "pro",
+        question: "Quelle propriété doit être activée pour qu’un matériau émette de la lumière dans le pipeline HDRP ?",
+        options: [
+            "Enable Emission et paramétrage de l’intensité",
+            "Mettre le mode en Cutout",
+            "Augmenter le Metallic à 1",
+            "Changer le Render Queue"
+        ],
+        correctAnswer: 0,
+        explanation: "Emission doit être activé et configuré dans HDRP pour émettre physiquement de la lumière."
+    },
+    {
+        id: "shader-pro-5",
+        category: "Shaders",
+        level: "pro",
+        question: "Comment optimiser la performance d’un shader custom gourmand en calculs ?",
+        options: [
+            "Minimiser les branches, réduire les calculs par pixel, et utiliser des textures pré-calculées",
+            "Ajouter plus de nodes Multiply",
+            "Monter la résolution des textures",
+            "Désactiver l’anti-aliasing"
+        ],
+        correctAnswer: 0,
+        explanation: "Réduire les instructions GPU et utiliser les maps pré-calculées optimise la perf."
+    },
+    {
+        id: "shader-pro-6",
+        category: "Shaders",
+        level: "pro",
+        question: "Pourquoi faut-il faire attention à la taille des textures utilisées dans les matériaux ?",
+        options: [
+            "Grosse texture = consommation mémoire GPU et risques de baisse de FPS",
+            "Cela augmente le volume sonore",
+            "Les textures changent la physique",
+            "Les textures n’ont aucun impact"
+        ],
+        correctAnswer: 0,
+        explanation: "Des textures trop grandes saturent la mémoire vidéo et ralentissent le rendu."
+    },
+    {
+        id: "shader-pro-7",
+        category: "Shaders",
+        level: "pro",
+        question: "Dans Shader Graph, que permet le node 'Time' ?",
+        options: [
+            "Créer des effets animés dépendant du temps (ex : pulsation, scrolling, wobble)",
+            "Activer un trigger audio",
+            "Changer le mode physics",
+            "Modifier le Mesh Collider"
+        ],
+        correctAnswer: 0,
+        explanation: "Le node Time permet d’animer des propriétés dans le shader (scroll, pulsation, etc)."
+    },
+    {
+        id: "shader-pro-8",
+        category: "Shaders",
+        level: "pro",
+        question: "Que se passe-t-il si plusieurs Mesh Renderer partagent le même Material asset et on modifie ce Material à runtime ?",
+        options: [
+            "Tous les Mesh Renderer utilisant ce Material sont modifiés en temps réel",
+            "Rien ne se passe",
+            "Uniquement le premier Mesh Renderer est modifié",
+            "Cela crée un doublon automatique"
+        ],
+        correctAnswer: 0,
+        explanation: "Les modifications runtime sur un Material partagé s’appliquent à tous les objets qui l’utilisent."
+    },
+    {
+        id: "shader-pro-9",
+        category: "Shaders",
+        level: "pro",
+        question: "Pourquoi le choix du mode 'Opaque' vs 'Transparent' a-t-il un impact sur l’ordre de rendu et la perf ?",
+        options: [
+            "Les objets transparents sont rendus après les opaques, peuvent causer overdraw et bugs de tri",
+            "Transparent est toujours plus rapide",
+            "Opaque bloque le son",
+            "Cela change le type de Collider"
+        ],
+        correctAnswer: 0,
+        explanation: "Le mode Transparent implique un tri différent (back-to-front), plus coûteux et sujet à overdraw."
+    },
+    {
+        id: "shader-pro-10",
+        category: "Shaders",
+        level: "pro",
+        question: "À quoi sert un 'Render Queue' personnalisé dans un shader ?",
+        options: [
+            "Définir l’ordre de rendu manuel par rapport aux autres objets (utile pour les effets spéciaux, UI, transparence)",
+            "Gérer le pathfinding",
+            "Changer le bake d’audio",
+            "Définir la gravité"
+        ],
+        correctAnswer: 0,
+        explanation: "La Render Queue permet de contrôler quand le shader est dessiné pendant la frame."
+    },
+    {
+        id: "shader-pro-11",
+        category: "Shaders",
+        level: "pro",
+        question: "Qu’est-ce qu’une 'Mask Map' dans HDRP ?",
+        options: [
+            "Une texture multi-canal (R,G,B,A) regroupant différents paramètres physiques (Metallic, AO, Detail, Smoothness)",
+            "Un script d’IA",
+            "Un son spatialisé",
+            "Une map d’UV"
+        ],
+        correctAnswer: 0,
+        explanation: "La Mask Map rassemble plusieurs paramètres pour optimiser la perf et réduire les fetch GPU."
+    },
+    {
+        id: "shader-pro-12",
+        category: "Shaders",
+        level: "pro",
+        question: "Quel impact a le nombre de passes (Pass) dans un shader custom ?",
+        options: [
+            "Plus il y a de passes, plus le shader est gourmand (draw calls et perf GPU)",
+            "Aucun impact",
+            "Cela change la physique du mesh",
+            "Accélère le build"
+        ],
+        correctAnswer: 0,
+        explanation: "Chaque pass ajoute un draw call et du calcul, à limiter autant que possible."
+    },
+    {
+        id: "shader-pro-13",
+        category: "Shaders",
+        level: "pro",
+        question: "Comment débugger visuellement un problème de normals sur un mesh via un shader ?",
+        options: [
+            "Utiliser un shader qui colore la surface selon la normale (ex : visualize normals)",
+            "Baisser la résolution du mesh",
+            "Changer la caméra",
+            "Désactiver l’éclairage"
+        ],
+        correctAnswer: 0,
+        explanation: "Visualiser les normales permet d’identifier les problèmes de mesh ou de bake."
+    },
+    {
+        id: "shader-pro-14",
+        category: "Shaders",
+        level: "pro",
+        question: "Quelle est la différence entre une Bump Map et une Normal Map ?",
+        options: [
+            "Bump Map = monochrome ; Normal Map = RGB, encode la direction de la normale pour plus de réalisme",
+            "Aucune différence",
+            "Normal Map = audio",
+            "Bump Map gère la specularité"
+        ],
+        correctAnswer: 0,
+        explanation: "La Normal Map donne une vraie direction, la Bump Map ne gère que l’intensité du relief."
+    },
+    {
+        id: "shader-pro-15",
+        category: "Shaders",
+        level: "pro",
+        question: "Pourquoi faut-il parfois “baker” une Lightmap même avec des shaders PBR ?",
+        options: [
+            "Pour intégrer l’éclairage statique, éviter de tout calculer en temps réel et améliorer la perf",
+            "Pour le son spatial",
+            "Pour les collisions",
+            "Pour accélérer le physics update"
+        ],
+        correctAnswer: 0,
+        explanation: "La lightmap stocke l’illumination statique et libère des ressources pour le runtime."
+    },
+    {
+        id: "shader-pro-16",
+        category: "Shaders",
+        level: "pro",
+        question: "Quel node Shader Graph utiliser pour faire défiler une texture (ex : scrolling UV) ?",
+        options: [
+            "Tiling and Offset avec Time",
+            "Sample Texture 2D Array",
+            "Metallic",
+            "One Minus"
+        ],
+        correctAnswer: 0,
+        explanation: "Un Offset animé via Time permet de scroller la texture dans le shader."
+    },
+    {
+        id: "shader-pro-17",
+        category: "Shaders",
+        level: "pro",
+        question: "Si un matériau affiche des artefacts noirs dans les zones éclairées, quel paramètre regarder ?",
+        options: [
+            "Vérifier les normales, la smoothness et les maps d’AO",
+            "Réduire la taille de l’audio",
+            "Changer le type d’animation",
+            "Ajouter un Mesh Collider"
+        ],
+        correctAnswer: 0,
+        explanation: "Artefacts = souvent problèmes de normales, lightmap mal bake, ou AO extrême."
+    },
+    {
+        id: "shader-pro-18",
+        category: "Shaders",
+        level: "pro",
+        question: "Quelle différence entre une Emission Map et une Albedo Map ?",
+        options: [
+            "L’Emission Map détermine les zones qui émettent de la lumière, l’Albedo Map la couleur de base",
+            "Albedo = brillance",
+            "Emission Map gère les collisions",
+            "Aucune, ce sont des synonymes"
+        ],
+        correctAnswer: 0,
+        explanation: "L’Emission Map est utilisée pour simuler des sources lumineuses locales."
+    },
+    {
+        id: "shader-pro-19",
+        category: "Shaders",
+        level: "pro",
+        question: "Dans Shader Graph, comment réaliser une transition progressive entre deux textures ?",
+        options: [
+            "Utiliser le node Lerp (Linear Interpolate)",
+            "Ajouter deux Texture Samplers",
+            "Utiliser le node Add",
+            "Changer de caméra"
+        ],
+        correctAnswer: 0,
+        explanation: "Lerp permet d’interpoler entre deux entrées selon un facteur (masque, temps, etc.)."
+    },
+    {
+        id: "shader-pro-20",
+        category: "Shaders",
+        level: "pro",
+        question: "Pourquoi utiliser le node 'One Minus' dans un shader ?",
+        options: [
+            "Inverser une valeur (utile pour masks, alpha, ou blending inversé)",
+            "Augmenter la résolution",
+            "Répéter une texture",
+            "Créer un prefab"
+        ],
+        correctAnswer: 0,
+        explanation: "One Minus retourne 1-x : pratique pour inverser un masque ou canal d’alpha."
+    },
+    {
+        id: "shader-expert-1",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment optimiser un shader PBR complexe pour un projet mobile sous URP sans perte visuelle notable ?",
+        options: [
+            "Réduire les passes, utiliser des textures compressées, limiter les calculs dynamiques et exploiter les LODs de shaders",
+            "Augmenter la résolution des textures et ajouter des passes supplémentaires",
+            "Utiliser uniquement des shaders Unlit",
+            "Désactiver le batching statique"
+        ],
+        correctAnswer: 0,
+        explanation: "L’optimisation mobile passe par la réduction des passes, compression et simplification des calculs tout en conservant la qualité visuelle."
+    },
+    {
+        id: "shader-expert-2",
+        category: "Shaders",
+        level: "expert",
+        question: "Dans HDRP, comment tirer parti des Shader Variants pour améliorer les temps de compilation et runtime ?",
+        options: [
+            "En limitant les keywords actifs et en compilant uniquement les variants nécessaires au projet",
+            "En activant tous les keywords par défaut",
+            "En désactivant la compilation des shaders",
+            "En augmentant le nombre de passes"
+        ],
+        correctAnswer: 0,
+        explanation: "Limiter les keywords évite de compiler et charger des variants inutiles, réduisant la taille et le temps de build."
+    },
+    {
+        id: "shader-expert-3",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment intégrer un shader personnalisé complexe dans un pipeline URP tout en conservant la compatibilité avec le système de Post-Processing ?",
+        options: [
+            "Utiliser les fonctions et templates URP spécifiques, et éviter d’outrepasser les passes standard du pipeline",
+            "Écrire un shader standard sans tenir compte du pipeline",
+            "Ignorer le Post-Processing",
+            "Utiliser un shader Legacy"
+        ],
+        correctAnswer: 0,
+        explanation: "Respecter les conventions URP et ses templates garantit la compatibilité avec les effets de post-processing."
+    },
+    {
+        id: "shader-expert-4",
+        category: "Shaders",
+        level: "expert",
+        question: "Quels sont les risques d’utiliser trop de propriétés et textures dans un même matériau shader sur les performances GPU ?",
+        options: [
+            "Augmentation de la bande passante mémoire et saturation du GPU, ce qui peut provoquer des chutes de FPS",
+            "Plus de détails graphiques sans impact",
+            "Amélioration automatique des performances",
+            "Plus de précision pour le pathfinding"
+        ],
+        correctAnswer: 0,
+        explanation: "Chaque texture ou propriété supplémentaire consomme mémoire GPU et bande passante, dégradant la performance."
+    },
+    {
+        id: "shader-expert-5",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment profiler efficacement un shader complexe pour identifier les goulets d’étranglement GPU dans Unity ?",
+        options: [
+            "Utiliser le GPU Profiler intégré, RenderDoc, ou Frame Debugger pour analyser les draw calls et le temps de rendu par shader",
+            "Regarder uniquement le CPU Profiler",
+            "Augmenter la résolution des textures",
+            "Supprimer les lumières"
+        ],
+        correctAnswer: 0,
+        explanation: "Les outils GPU permettent de visualiser les passes et leur coût pour optimiser précisément."
+    },
+    {
+        id: "shader-expert-6",
+        category: "Shaders",
+        level: "expert",
+        question: "Quel est l’impact du blending alpha pré-multiplié vs alpha standard dans les shaders transparents ?",
+        options: [
+            "Le blending pré-multiplié réduit les artefacts et améliore la qualité des bords transparents",
+            "Aucun impact",
+            "Il augmente la luminosité générale",
+            "Il désactive les ombres"
+        ],
+        correctAnswer: 0,
+        explanation: "Le pré-multiplied alpha réduit le ghosting et les artefacts sur les bords des transparences."
+    },
+    {
+        id: "shader-expert-7",
+        category: "Shaders",
+        level: "expert",
+        question: "Pourquoi et comment utiliser le 'Shader Keyword Stripping' dans Unity ?",
+        options: [
+            "Pour réduire la taille du build en supprimant les variantes de shader inutilisées via la configuration dans le pipeline",
+            "Pour augmenter la taille du build",
+            "Pour ajouter plus de variantes",
+            "Pour débugger le pipeline de build"
+        ],
+        correctAnswer: 0,
+        explanation: "Stripping enlève les variantes non utilisées, réduisant build size et amélioration du temps de chargement."
+    },
+    {
+        id: "shader-expert-8",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment gérer un shader multi-pass performant quand on doit appliquer des effets spécifiques à certaines passes ?",
+        options: [
+            "Minimiser les passes, grouper les effets connexes, et optimiser les passes pour éviter des draw calls excessifs",
+            "Créer une passe par pixel",
+            "Utiliser uniquement des shaders Unlit",
+            "Utiliser des scripts C# pour le rendu"
+        ],
+        correctAnswer: 0,
+        explanation: "Optimiser le nombre de passes et leur contenu réduit la charge GPU et maintient la qualité visuelle."
+    },
+    {
+        id: "shader-expert-9",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment utiliser un Compute Shader dans Unity pour des effets visuels avancés ?",
+        options: [
+            "Écrire un Compute Shader HLSL, le dispatch dans un script C# et utiliser ses résultats dans un shader de rendu classique",
+            "Utiliser un shader standard",
+            "Ignorer le GPU",
+            "Compresser la texture"
+        ],
+        correctAnswer: 0,
+        explanation: "Compute Shader permet de faire des calculs massivement parallèles pour des effets avancés."
+    },
+    {
+        id: "shader-expert-10",
+        category: "Shaders",
+        level: "expert",
+        question: "Quelle méthode permet de déboguer un shader HLSL personnalisé pour détecter erreurs de compilation et comportements erratiques ?",
+        options: [
+            "Utiliser les messages de compilation dans Unity, shader compiler logs, et tools externes comme RenderDoc",
+            "Redémarrer Unity",
+            "Changer le pipeline",
+            "Supprimer les textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Les logs de compilation et outils de profiling sont indispensables pour débugger les shaders custom."
+    },
+    {
+        id: "shader-expert-11",
+        category: "Shaders",
+        level: "expert",
+        question: "Qu’est-ce que le 'SubShader' dans un shader Unity et pourquoi est-il important ?",
+        options: [
+            "Un SubShader définit une alternative compatible pour différents matériels et situations de rendu",
+            "Un SubShader est un type d’animation",
+            "Un SubShader est une texture",
+            "Un SubShader est un composant audio"
+        ],
+        correctAnswer: 0,
+        explanation: "Les SubShaders permettent à Unity de choisir celui compatible avec la plateforme ou matériel."
+    },
+    {
+        id: "shader-expert-12",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment implémenter un effet de parallaxe avancé dans un shader custom ?",
+        options: [
+            "En utilisant des maps de hauteur (height maps) et décalant les UVs selon la vue de la caméra",
+            "En changeant la couleur du mesh",
+            "En modifiant la lumière uniquement",
+            "En augmentant la résolution des textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Le parallaxe simule la profondeur en décalant les coordonnées de texture selon la caméra et hauteur."
+    },
+    {
+        id: "shader-expert-13",
+        category: "Shaders",
+        level: "expert",
+        question: "Quelle est la différence entre 'Forward Rendering' et 'Deferred Rendering' concernant les shaders ?",
+        options: [
+            "Forward calcule les lumières par objet, Deferred sépare la géométrie et le calcul lumière pour gérer plus de sources efficacement",
+            "Forward est plus lent que Deferred toujours",
+            "Deferred ne supporte pas les shadows",
+            "Forward ne supporte pas les textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Deferred rendering permet d’optimiser le calcul des lumières multiples, surtout pour scènes complexes."
+    },
+    {
+        id: "shader-expert-14",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment gérer la compatibilité entre Shader Graph et Custom Render Pipeline personnalisée ?",
+        options: [
+            "Créer des nodes personnalisés et adapter les templates Shader Graph à la pipeline custom",
+            "Utiliser uniquement Shader Graph standard",
+            "Ignorer la pipeline custom",
+            "Utiliser des shaders Legacy"
+        ],
+        correctAnswer: 0,
+        explanation: "Adapter Shader Graph nécessite souvent d’étendre ou modifier ses templates pour la pipeline."
+    },
+    {
+        id: "shader-expert-15",
+        category: "Shaders",
+        level: "expert",
+        question: "Pourquoi limiter les instructions 'branch' (if/else) dans un shader ?",
+        options: [
+            "Car elles peuvent provoquer des divergences de threads GPU, dégradant la performance",
+            "Pour simplifier le code source",
+            "Pour améliorer la qualité visuelle",
+            "Pour réduire la taille du build"
+        ],
+        correctAnswer: 0,
+        explanation: "Branches provoquent souvent des warps de threads GPU, ce qui ralentit le calcul."
+    },
+    {
+        id: "shader-expert-16",
+        category: "Shaders",
+        level: "expert",
+        question: "Quel est le rôle du 'GrabPass' dans un shader Unity ?",
+        options: [
+            "Capturer l’image déjà rendue pour créer des effets de transparence et reflets",
+            "Augmenter la luminosité globale",
+            "Déclencher un événement",
+            "Changer la physique du mesh"
+        ],
+        correctAnswer: 0,
+        explanation: "GrabPass sert à prendre un screenshot temporaire du frame buffer pour des effets comme les reflets."
+    },
+    {
+        id: "shader-expert-17",
+        category: "Shaders",
+        level: "expert",
+        question: "Que signifie 'Alpha-to-Coverage' et quand l’utiliser ?",
+        options: [
+            "Technique pour améliorer le rendu des textures avec transparence partielle en utilisant le multisampling",
+            "Ajouter plus d’alpha à une texture",
+            "Augmenter la résolution des textures",
+            "Modifier la lumière globale"
+        ],
+        correctAnswer: 0,
+        explanation: "Alpha-to-Coverage utilise l’anti-aliasing multisample pour gérer les textures alpha partielle (ex: feuillages)."
+    },
+    {
+        id: "shader-expert-18",
+        category: "Shaders",
+        level: "expert",
+        question: "Comment réduire le 'overdraw' causé par des matériaux transparents dans Unity ?",
+        options: [
+            "Limiter le nombre d’objets transparents, optimiser la géométrie, utiliser le mode d’écriture de profondeur correct",
+            "Augmenter la résolution",
+            "Désactiver la lumière",
+            "Supprimer les textures"
+        ],
+        correctAnswer: 0,
+        explanation: "Overdraw cause des pertes de performance ; bien gérer la profondeur et limiter les transparents aide."
+    },
+    {
+        id: "shader-expert-19",
+        category: "Shaders",
+        level: "expert",
+        question: "Quelle fonction HLSL est utilisée pour interpoler linéairement entre deux valeurs dans un shader ?",
+        options: [
+            "lerp()",
+            "dot()",
+            "normalize()",
+            "cross()"
+        ],
+        correctAnswer: 0,
+        explanation: "lerp() fait une interpolation linéaire entre deux valeurs avec un facteur donné."
+    },
+    {
+        id: "shader-expert-20",
+        category: "Shaders",
+        level: "expert",
+        question: "Quel est l’intérêt de l’utilisation de 'Multi Compile' dans un shader Unity ?",
+        options: [
+            "Générer plusieurs variantes du shader selon les keywords pour différentes configurations matérielles ou graphiques",
+            "Compresser la texture",
+            "Augmenter la résolution",
+            "Changer la couleur du mesh"
+        ],
+        correctAnswer: 0,
+        explanation: "Multi Compile crée plusieurs variantes précompilées pour optimiser la compatibilité et performance."
     },
 
 // Networking/Multiplayer

@@ -19,6 +19,7 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
   // Active qu’une seule catégorie, mais déjà prêt pour la suite
   const categories = [
     { id: 'fundamentals', label: 'Fundamentals' },
+    { id: 'mixed', label: 'Mixte' },
     { id: 'UI', label: 'UI' },
     { id: 'XR', label: 'XR / AR / VR' },
     { id: 'Scripting', label: 'Scripting / C#' },
@@ -26,18 +27,18 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
     { id: 'Asset Management', label: 'Asset Management' },
     { id: 'Lighting/Rendering', label: 'Éclairage' },
     { id: 'Profiling/Debugging', label: 'Profiling / Optimisation' },
-    /*{ id: 'Animation', label: 'Animation' },
+    { id: 'Version Control', label: 'Version Control' },
+    { id: 'Testing/QA', label: 'Testing/QA' },
+    { id: 'Build', label: 'Build / Déploiement' },
+    { id: 'Animation', label: 'Animation' },
     { id: 'Shaders', label: 'Shaders / Matériaux' },
     { id: 'Audio', label: 'Audio' },
-    { id: 'Input', label: 'Input / Contrôles' },
+    /*{ id: 'Input', label: 'Input / Contrôles' },
     { id: 'AI', label: 'Navigation / IA' },
     { id: 'Scene', label: 'Scene Management' },
-    { id: 'Build', label: 'Build / Déploiement' },
-    { id: 'VersionControl', label: 'Version Control' },
     { id: 'Editor', label: 'Editor Scripting' },
     { id: '2D3D', label: '2D vs 3D' },
-    { id: 'Misc', label: 'Divers' },
-    { id: 'mixed', label: 'Mixte' }*/
+    { id: 'Misc', label: 'Divers' },*/
   ];
 
   const handleStartQuiz = () => {
