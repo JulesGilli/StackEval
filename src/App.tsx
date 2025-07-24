@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
-import { questionsData } from './data/Questions';
+import { questionsData, Question } from './data/Questions';
 
 // Mélange un tableau (Fisher–Yates)
 function shuffle<T>(arr: T[]): T[] {
@@ -19,33 +19,39 @@ function getRandomQuestions<T>(questions: T[], count: number): T[] {
   return shuffle(questions).slice(0, count);
 }
 
+// Sélectionne N questions par filtrage sur catégorie ET niveau
+function pickQuestions(
+    allQuestions: Question[],
+    category: string,
+    level: string,
+    count: number
+): Question[] {
+  if (category === "mixed") {
+    // On mélange toutes les catégories pour ce niveau
+    const filtered = allQuestions.filter(q => q.level === level);
+    return getRandomQuestions(filtered, count);
+  }
+  // Sinon : filtrage normal sur la catégorie choisie
+  const filtered = allQuestions.filter(q => q.category === category && q.level === level);
+  return getRandomQuestions(filtered, count);
+}
+
 export function App() {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [quizSettings, setQuizSettings] = useState({
-    difficulty: '',
-    mode: ''
+    level: '',     // correspond à "user", "pro", "expert"
+    category: ''   // ex: "UI", "Animation", "XR/AR", "mixed"
   });
-  const [userAnswers, setUserAnswers] = useState<Array<number | null>>(Array(20).fill(null));
-  const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
+  const [userAnswers, setUserAnswers] = useState<Array<number | null>>([]);
+  const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
 
-  const startQuiz = (difficulty: string, mode: string) => {
-    setQuizSettings({ difficulty, mode });
-    setUserAnswers(Array(20).fill(null));
+  const startQuiz = (category: string, level: string) => {
+    setQuizSettings({ category, level });
+    // Sélectionne les questions filtrées et mélangées
+    const questions = pickQuestions(questionsData, category, level, 20);
+    setSelectedQuestions(questions);
+    setUserAnswers(Array(questions.length).fill(null));
     setCurrentScreen('quiz');
-
-    let qs: any[] = [];
-    if (mode === 'mixed') {
-      // Mélange toutes les questions Unity + C# pour ce niveau, en pioche 20
-      const all = [
-        ...(questionsData[difficulty]?.unity || []),
-        ...(questionsData[difficulty]?.csharp || []),
-      ];
-      qs = getRandomQuestions(all, 20);
-    } else {
-      // Mélange toutes les questions du mode choisi, en pioche 20
-      qs = getRandomQuestions(questionsData[difficulty]?.[mode] || [], 20);
-    }
-    setSelectedQuestions(qs);
   };
 
   const submitAnswer = (questionIndex: number, answerIndex: number) => {
