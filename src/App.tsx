@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
+import SplashCursor from './components/SplashCursor'; 
+
 export function App() {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [quizSettings, setQuizSettings] = useState({
