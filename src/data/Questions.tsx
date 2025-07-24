@@ -148,6 +148,146 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                     options: ["TextMeshPro", "Rigidbody", "MeshRenderer", "Animator"],
                     correctAnswer: 0,
                     explanation: "TextMeshPro sert à afficher du texte dans Unity."
+                },
+                {
+                    id: 21,
+                    question: "Quel composant Unity permet d’éclairer une scène en 3D ?",
+                    options: ["Light", "MeshRenderer", "Canvas", "Camera"],
+                    correctAnswer: 0,
+                    explanation: "Le composant Light éclaire la scène en 2D/3D."
+                },
+                {
+                    id: 22,
+                    question: "Dans quel panneau ajoute-t-on des dossiers pour organiser les assets ?",
+                    options: ["Inspector", "Hierarchy", "Project", "Console"],
+                    correctAnswer: 2,
+                    explanation: "On gère les dossiers et assets dans le panneau Project."
+                },
+                {
+                    id: 23,
+                    question: "Quelle extension de fichier est associée à un prefab Unity ?",
+                    options: [".prefab", ".unity", ".asset", ".scene"],
+                    correctAnswer: 0,
+                    explanation: "Les prefabs sont des fichiers .prefab."
+                },
+                {
+                    id: 24,
+                    question: "Quelle action permet de renommer un GameObject dans la Hierarchy ?",
+                    options: ["Double-clic sur le nom", "Clic droit > Rename", "Sélectionner puis F2", "Toutes ces réponses"],
+                    correctAnswer: 3,
+                    explanation: "Toutes ces méthodes permettent de renommer un objet."
+                },
+                {
+                    id: 25,
+                    question: "À quoi sert le bouton 'Lock' (cadenas) dans l’Inspector ?",
+                    options: ["Empêcher la sélection dans la scène", "Verrouiller l’affichage sur un objet", "Cacher l’objet dans la scène", "Mettre l’objet en lecture seule"],
+                    correctAnswer: 1,
+                    explanation: "Le cadenas verrouille l’Inspector sur l’objet sélectionné."
+                },
+                {
+                    id: 26,
+                    question: "Comment déplace-t-on un GameObject dans la vue Scene ?",
+                    options: ["Avec l’outil Move (W)", "En modifiant le Transform", "En drag & drop dans la vue", "Toutes ces réponses"],
+                    correctAnswer: 3,
+                    explanation: "Tous ces moyens permettent de déplacer un GameObject."
+                },
+                {
+                    id: 27,
+                    question: "Quel composant faut-il pour entendre un son dans Unity ?",
+                    options: ["AudioSource", "MeshRenderer", "Camera", "BoxCollider"],
+                    correctAnswer: 0,
+                    explanation: "AudioSource diffuse le son dans la scène."
+                },
+                {
+                    id: 28,
+                    question: "Quel bouton du panneau Game permet de redémarrer la scène ?",
+                    options: ["Play", "Pause", "Step", "Aucun, il faut sortir et relancer Play"],
+                    correctAnswer: 3,
+                    explanation: "Il faut arrêter puis relancer le mode Play pour redémarrer la scène."
+                },
+                {
+                    id: 29,
+                    question: "Quelle option permet d’afficher ou masquer les objets enfants dans la Hierarchy ?",
+                    options: ["Clic sur la petite flèche à gauche du nom", "Ctrl+Click sur le parent", "Double clic sur l’objet", "Aucune"],
+                    correctAnswer: 0,
+                    explanation: "La flèche permet de déplier/replier les enfants dans la Hierarchy."
+                },
+                {
+                    id: 30,
+                    question: "Comment activer ou désactiver un composant (ex : Renderer) dans l’Inspector ?",
+                    options: ["Coche à côté du nom du composant", "Bouton droit sur le composant", "Option View", "Aucun, c’est impossible"],
+                    correctAnswer: 0,
+                    explanation: "On peut cocher/décocher le composant directement dans l’Inspector."
+                },
+                {
+                    id: 31,
+                    question: "Quel composant est utilisé pour afficher une image sur l’UI ?",
+                    options: ["Image", "RawImage", "SpriteRenderer", "Text"],
+                    correctAnswer: 0,
+                    explanation: "Le composant Image affiche des sprites sur l’UI Unity."
+                },
+                {
+                    id: 32,
+                    question: "Dans le menu GameObject > 3D Object, que crée-t-on ?",
+                    options: ["Un GameObject 3D préconfiguré", "Un asset", "Un script", "Une lumière"],
+                    correctAnswer: 0,
+                    explanation: "Ce menu permet de créer rapidement des objets 3D courants."
+                },
+                {
+                    id: 33,
+                    question: "Quelle touche supprime un GameObject sélectionné dans la scène ?",
+                    options: ["Delete", "Backspace", "Suppr", "Toutes ces réponses"],
+                    correctAnswer: 3,
+                    explanation: "Toutes ces touches peuvent servir selon l’OS/clavier."
+                },
+                {
+                    id: 34,
+                    question: "Dans Unity, à quoi sert l’outil Rect Tool ?",
+                    options: ["Redimensionner et déplacer des objets 2D/UI", "Créer des lumières", "Dessiner des textures", "Aucun usage"],
+                    correctAnswer: 0,
+                    explanation: "Rect Tool sert pour la transformation des objets 2D/UI."
+                },
+                {
+                    id: 35,
+                    question: "Que se passe-t-il si on met l’échelle (Scale) d’un GameObject à zéro ?",
+                    options: ["L’objet devient invisible", "Il plante Unity", "Il double sa taille", "Il passe derrière la caméra"],
+                    correctAnswer: 0,
+                    explanation: "Un scale à zéro rend l’objet invisible dans la scène."
+                },
+                {
+                    id: 36,
+                    question: "Quel panneau Unity affiche les logs, warnings et erreurs ?",
+                    options: ["Hierarchy", "Console", "Inspector", "Project"],
+                    correctAnswer: 1,
+                    explanation: "La Console centralise tous les messages système/logs/scripts."
+                },
+                {
+                    id: 37,
+                    question: "Que signifie le gizmo bleu sur l’axe Z d’un objet sélectionné ?",
+                    options: ["C’est l’axe Z, profondeur (avant/arrière)", "Il permet de bouger l’objet sur Y", "C’est le raccourci Undo", "Aucun rapport"],
+                    correctAnswer: 0,
+                    explanation: "L’axe bleu est l’axe Z (profondeur) dans Unity."
+                },
+                {
+                    id: 38,
+                    question: "Quel composant est indispensable pour afficher du texte avec des polices riches ?",
+                    options: ["TextMeshPro", "Text", "Canvas", "Image"],
+                    correctAnswer: 0,
+                    explanation: "TextMeshPro est recommandé pour afficher du texte riche (stylé) dans Unity."
+                },
+                {
+                    id: 39,
+                    question: "Comment dézoomer dans la vue Scene ?",
+                    options: ["Molette de la souris", "Bouton Zoom Out", "Ctrl+Scroll", "Impossible"],
+                    correctAnswer: 0,
+                    explanation: "La molette permet de zoomer/dézoomer dans la vue Scene."
+                },
+                {
+                    id: 40,
+                    question: "Quel type d’objet est utilisé pour organiser des objets dans la Hierarchy sans composant visible ?",
+                    options: ["Empty GameObject", "Camera", "Canvas", "Prefab"],
+                    correctAnswer: 0,
+                    explanation: "Un GameObject vide sert de parent/organisation dans la Hierarchy."
                 }
             ],
             csharp: [
@@ -290,24 +430,148 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                     options: ["array", "list", "[]", "tableau"],
                     correctAnswer: 2,
                     explanation: "On utilise les crochets `[]` pour déclarer un tableau en C#."
+                },
+                {
+                    id: 21,
+                    question: "Quel mot-clé sert à déclarer une méthode statique en C# ?",
+                    options: ["static", "public", "void", "method"],
+                    correctAnswer: 0,
+                    explanation: "`static` indique qu'une méthode appartient à la classe et non à une instance."
+                },
+                {
+                    id: 22,
+                    question: "Quel type C# permet de stocker un nombre entier positif ou négatif ?",
+                    options: ["int", "string", "bool", "double"],
+                    correctAnswer: 0,
+                    explanation: "`int` stocke des entiers signés (positifs ou négatifs)."
+                },
+                {
+                    id: 23,
+                    question: "Que permet de faire l’opérateur '==' en C# ?",
+                    options: ["Comparer l’égalité", "Ajouter", "Soustraire", "Diviser"],
+                    correctAnswer: 0,
+                    explanation: "L’opérateur '==' compare deux valeurs pour l’égalité."
+                },
+                {
+                    id: 24,
+                    question: "Comment commence-t-on un commentaire multi-ligne en C# ?",
+                    options: ["/*", "//", "--", "#"],
+                    correctAnswer: 0,
+                    explanation: "`/*` ouvre un commentaire multi-ligne."
+                },
+                {
+                    id: 25,
+                    question: "Quel est le type C# pour une variable à virgule flottante ?",
+                    options: ["float", "bool", "string", "int"],
+                    correctAnswer: 0,
+                    explanation: "`float` permet de stocker des nombres à virgule flottante."
+                },
+                {
+                    id: 26,
+                    question: "Quelle syntaxe est correcte pour affecter la valeur 10 à une variable nommée x ?",
+                    options: ["x = 10;", "x == 10;", "10 = x;", "let x 10;"],
+                    correctAnswer: 0,
+                    explanation: "On affecte une valeur avec '=' en C#."
+                },
+                {
+                    id: 27,
+                    question: "Quelle est la portée d'une variable déclarée à l’intérieur d’une boucle for ?",
+                    options: ["Seulement à l’intérieur de la boucle", "Partout dans la classe", "Dans toute la méthode", "Globale au programme"],
+                    correctAnswer: 0,
+                    explanation: "Une variable déclarée dans une boucle existe uniquement à l'intérieur de celle-ci."
+                },
+                {
+                    id: 28,
+                    question: "Quel mot-clé permet de définir une méthode qui ne retourne aucune valeur ?",
+                    options: ["void", "return", "static", "empty"],
+                    correctAnswer: 0,
+                    explanation: "`void` indique l’absence de valeur de retour."
+                },
+                {
+                    id: 29,
+                    question: "Quel est le type booléen en C# ?",
+                    options: ["bool", "boolean", "logic", "bit"],
+                    correctAnswer: 0,
+                    explanation: "Le type bool stocke vrai ou faux (true/false)."
+                },
+                {
+                    id: 30,
+                    question: "Comment écrit-on une instruction conditionnelle en C# ?",
+                    options: ["if (condition) { ... }", "if condition: ...", "if [condition] then ...", "if condition then ..."],
+                    correctAnswer: 0,
+                    explanation: "La syntaxe est `if (condition) { ... }`."
+                },
+                {
+                    id: 31,
+                    question: "Quel opérateur sert à la négation logique (inverser un booléen) ?",
+                    options: ["!", "&", "|", "^"],
+                    correctAnswer: 0,
+                    explanation: "Le point d’exclamation '!' inverse la valeur d’un booléen."
+                },
+                {
+                    id: 32,
+                    question: "Comment termine-t-on un bloc d’instructions en C# ?",
+                    options: ["}", "]", "end", "close"],
+                    correctAnswer: 0,
+                    explanation: "Un bloc est fermé par l’accolade droite '}'."
+                },
+                {
+                    id: 33,
+                    question: "Quel type C# permet de stocker un caractère unique ?",
+                    options: ["char", "string", "int", "byte"],
+                    correctAnswer: 0,
+                    explanation: "`char` stocke un caractère unique."
+                },
+                {
+                    id: 34,
+                    question: "Quel mot-clé permet de déclarer une variable accessible uniquement dans la classe courante ?",
+                    options: ["private", "public", "protected", "internal"],
+                    correctAnswer: 0,
+                    explanation: "`private` limite l'accès à la classe où la variable est déclarée."
+                },
+                {
+                    id: 35,
+                    question: "Quelle méthode affiche une valeur dans la console en C# ?",
+                    options: ["Console.WriteLine()", "Debug.Log()", "System.Out()", "Print()"],
+                    correctAnswer: 0,
+                    explanation: "`Console.WriteLine()` affiche un message dans la console (hors Unity)."
+                },
+                {
+                    id: 36,
+                    question: "Que signifie le mot-clé 'new' devant une instance de classe ?",
+                    options: ["Créer une nouvelle instance", "Supprimer une instance", "Accéder à un membre", "Finir une boucle"],
+                    correctAnswer: 0,
+                    explanation: "`new` sert à créer une nouvelle instance d’une classe ou objet."
+                },
+                {
+                    id: 37,
+                    question: "Que fait l’opérateur '%' en C# ?",
+                    options: ["Calcule le reste d’une division", "Additionne deux nombres", "Inverse un booléen", "Fait une comparaison"],
+                    correctAnswer: 0,
+                    explanation: "L’opérateur '%' calcule le modulo (reste de la division entière)."
+                },
+                {
+                    id: 38,
+                    question: "Quel type de boucle permet de répéter tant qu’une condition est vraie ?",
+                    options: ["while", "for", "foreach", "switch"],
+                    correctAnswer: 0,
+                    explanation: "La boucle while répète tant que la condition reste vraie."
+                },
+                {
+                    id: 39,
+                    question: "Comment appelle-t-on la valeur par défaut d’un type bool en C# ?",
+                    options: ["false", "0", "null", "vide"],
+                    correctAnswer: 0,
+                    explanation: "Le booléen est false (faux) par défaut."
+                },
+                {
+                    id: 40,
+                    question: "Quel mot-clé permet de sortir immédiatement d’une boucle en C# ?",
+                    options: ["break", "return", "continue", "exit"],
+                    correctAnswer: 0,
+                    explanation: "`break` interrompt la boucle immédiatement."
                 }
-            ],
-        mixed: [
-            {
-                id: 1,
-                question: "Quel fichier contient le code C# attaché à un GameObject dans Unity ?",
-                options: [".scene", ".unity", ".cs", ".prefab"],
-                correctAnswer: 2,
-                explanation: "Les scripts C# sont des fichiers `.cs`."
-            },
-            {
-                id: 2,
-                question: "Quel événement est appelé automatiquement au démarrage d’un script dans Unity ?",
-                options: ["Awake()", "Init()", "Begin()", "StartUp()"],
-                correctAnswer: 0,
-                explanation: "`Awake()` est appelé en premier lors de l'activation du script."
-            }
-        ]
+            ]
     },
     easy: {
         unity: [
@@ -450,6 +714,146 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 options: ["S", "Q", "E", "R"],
                 correctAnswer: 3,
                 explanation: "R active l’outil Scale Tool pour redimensionner un objet."
+            },
+            {
+                id: 21,
+                question: "Quel composant doit obligatoirement être présent pour afficher un Sprite dans une scène 2D ?",
+                options: ["SpriteRenderer", "Image", "MeshRenderer", "Animator"],
+                correctAnswer: 0,
+                explanation: "SpriteRenderer est indispensable pour afficher un sprite dans la vue 2D."
+            },
+            {
+                id: 22,
+                question: "Quelle action du menu contextuel permet de renommer un GameObject dans la Hierarchy ?",
+                options: ["Renommer", "Edit Name", "F2", "Modifier"],
+                correctAnswer: 2,
+                explanation: "Le raccourci F2 permet de renommer un GameObject sélectionné."
+            },
+            {
+                id: 23,
+                question: "Quelle extension de fichier correspond à un asset d’image importé dans Unity ?",
+                options: [".png", ".wav", ".fbx", ".cs"],
+                correctAnswer: 0,
+                explanation: "Les images importées sont généralement au format .png, .jpg, etc."
+            },
+            {
+                id: 24,
+                question: "Comment afficher les coordonnées locales d’un GameObject dans l’Inspector ?",
+                options: ["Regarder le Transform", "Regarder le MeshRenderer", "Ouvrir la Console", "Utiliser Scene View"],
+                correctAnswer: 0,
+                explanation: "Le composant Transform affiche la position, la rotation et l’échelle locales."
+            },
+            {
+                id: 25,
+                question: "Que fait le bouton 'Maximize On Play' dans la fenêtre Game ?",
+                options: ["Agrandit la fenêtre Game pendant l’exécution", "Ferme l’éditeur", "Maximise la fenêtre Scene", "Change la résolution du jeu"],
+                correctAnswer: 0,
+                explanation: "Maximize On Play agrandit automatiquement la fenêtre Game pendant le Play."
+            },
+            {
+                id: 26,
+                question: "Où place-t-on un script pour qu’il s’exécute dans une scène Unity ?",
+                options: ["Sur un GameObject", "Dans le dossier Editor", "Dans la racine du projet", "Dans Player Settings"],
+                correctAnswer: 0,
+                explanation: "Un script doit être attaché à un GameObject pour être exécuté en jeu."
+            },
+            {
+                id: 27,
+                question: "Quel composant permet de jouer une animation simple sans transitions complexes ?",
+                options: ["Animation", "Animator", "AudioSource", "MeshRenderer"],
+                correctAnswer: 0,
+                explanation: "Le composant Animation sert à lire des animations simples."
+            },
+            {
+                id: 28,
+                question: "Comment réinitialiser la rotation d’un GameObject depuis l’Inspector ?",
+                options: ["Mettre Rotation à (0,0,0)", "Supprimer le GameObject", "Changer le Tag", "Clic droit > Duplicate"],
+                correctAnswer: 0,
+                explanation: "Mettre Rotation à (0,0,0) remet l’orientation à plat."
+            },
+            {
+                id: 29,
+                question: "Quelle option permet d’afficher ou cacher les axes de transformation dans la Scene ?",
+                options: ["Gizmos", "Console", "Inspector", "Project"],
+                correctAnswer: 0,
+                explanation: "Le bouton Gizmos affiche/masque les repères et axes de la scène."
+            },
+            {
+                id: 30,
+                question: "Que permet l’outil Rect Tool dans la vue Scene ?",
+                options: ["Redimensionner et déplacer des objets UI", "Ajouter des composants", "Afficher des logs", "Changer le Layer"],
+                correctAnswer: 0,
+                explanation: "Rect Tool est utilisé pour manipuler la taille et la position des objets 2D/UI."
+            },
+            {
+                id: 31,
+                question: "Comment cacher un GameObject dans la scène sans le détruire ?",
+                options: ["Le désactiver (SetActive false)", "Supprimer son Transform", "Changer sa couleur", "Changer son nom"],
+                correctAnswer: 0,
+                explanation: "SetActive(false) cache le GameObject sans le supprimer."
+            },
+            {
+                id: 32,
+                question: "Quel est le rôle du composant Canvas dans Unity ?",
+                options: ["Contenir toute l’UI", "Afficher une lumière", "Jouer un son", "Gérer la physique"],
+                correctAnswer: 0,
+                explanation: "Le Canvas est le conteneur principal de l’interface utilisateur (UI)."
+            },
+            {
+                id: 33,
+                question: "Où doit-on placer les fichiers .cs pour qu’ils soient reconnus par Unity ?",
+                options: ["Dans n’importe quel dossier sous Assets", "Dans Editor uniquement", "À la racine du disque", "Uniquement dans Scripts"],
+                correctAnswer: 0,
+                explanation: "Tout dossier sous Assets est reconnu, mais on conseille de les organiser dans 'Scripts'."
+            },
+            {
+                id: 34,
+                question: "Quel raccourci clavier permet de passer en mode Scale Tool ?",
+                options: ["R", "S", "E", "W"],
+                correctAnswer: 0,
+                explanation: "La touche R active le Scale Tool."
+            },
+            {
+                id: 35,
+                question: "Que fait le composant Light dans une scène Unity ?",
+                options: ["Eclaire les objets", "Joue des sons", "Change le Tag", "Détecte les collisions"],
+                correctAnswer: 0,
+                explanation: "Light éclaire la scène et rend visibles les objets."
+            },
+            {
+                id: 36,
+                question: "Comment ajouter un nouveau composant à un GameObject ?",
+                options: ["Bouton Add Component dans l’Inspector", "Clic droit > New Asset", "Depuis la Console", "En éditant le fichier ProjectSettings"],
+                correctAnswer: 0,
+                explanation: "On ajoute un composant via le bouton 'Add Component' dans l’Inspector."
+            },
+            {
+                id: 37,
+                question: "Quelle est la fonction de 'Play Mode' dans Unity ?",
+                options: ["Permet de tester le jeu dans l’éditeur", "Ajoute un GameObject", "Ouvre la Console", "Sauve le projet"],
+                correctAnswer: 0,
+                explanation: "Play Mode permet de lancer le jeu dans l’éditeur Unity pour tester les fonctionnalités."
+            },
+            {
+                id: 38,
+                question: "Quel fichier contient les paramètres principaux du projet Unity ?",
+                options: ["ProjectSettings", "Main.unity", "BuildSettings", "Readme.txt"],
+                correctAnswer: 0,
+                explanation: "ProjectSettings contient les paramètres globaux du projet."
+            },
+            {
+                id: 39,
+                question: "Comment changer la couleur d’arrière-plan de la fenêtre Game ?",
+                options: ["Modifier la couleur de la Camera", "Changer le Theme de l’éditeur", "Changer le Layer du GameObject", "Modifier le Lighting Settings"],
+                correctAnswer: 0,
+                explanation: "La couleur de fond est réglée via le composant Camera."
+            },
+            {
+                id: 40,
+                question: "Quel composant Unity détecte la présence de la souris sur un élément UI ?",
+                options: ["EventSystem", "MeshRenderer", "BoxCollider", "AudioListener"],
+                correctAnswer: 0,
+                explanation: "EventSystem gère les interactions souris/clavier sur l’UI."
             }
         ],
         csharp: [
@@ -592,22 +996,186 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 options: ["array", "list", "struct", "class"],
                 correctAnswer: 3,
                 explanation: "Une classe permet de stocker des propriétés de types différents."
-            }
-        ],
-        mixed: [
-            {
-                id: 1,
-                question: "Dans Unity, comment lit-on l'entrée clavier pour la touche E ?",
-                options: ["Input.EKey()", "Input.GetKey('E')", "Input.GetKey(KeyCode.E)", "Input.Check('E')"],
-                correctAnswer: 2,
-                explanation: "La bonne méthode est `Input.GetKey(KeyCode.E)`."
             },
             {
-                id: 2,
-                question: "Quel mot-clé est utilisé pour accéder à un autre composant dans Unity ?",
-                options: ["Find()", "Locate()", "GetComponent<>", "use"],
+                id: 21,
+                question: "Quel est le mot-clé pour déclarer une méthode qui retourne un booléen en C# ?",
+                options: ["return", "bool", "boolean", "bit"],
+                correctAnswer: 1,
+                explanation: "Le mot-clé 'bool' sert à déclarer une méthode retournant un booléen."
+            },
+            {
+                id: 22,
+                question: "Comment écrire un commentaire sur une seule ligne en C# ?",
+                options: ["// commentaire", "<!-- commentaire -->", "# commentaire", "-- commentaire --"],
+                correctAnswer: 0,
+                explanation: "Les commentaires sur une ligne commencent par // en C#."
+            },
+            {
+                id: 23,
+                question: "Quelle est la portée d’une variable déclarée dans un bloc 'if' ?",
+                options: ["Globale", "Locale au bloc", "Publique", "Disponible partout dans la fonction"],
+                correctAnswer: 1,
+                explanation: "Une variable déclarée dans un bloc if est locale à ce bloc."
+            },
+            {
+                id: 24,
+                question: "Quel mot-clé permet de sortir d’une boucle en C# ?",
+                options: ["stop", "break", "return", "continue"],
+                correctAnswer: 1,
+                explanation: "Le mot-clé 'break' termine la boucle en cours."
+            },
+            {
+                id: 25,
+                question: "Quel type permet de stocker des nombres entiers en C# ?",
+                options: ["double", "string", "int", "bool"],
                 correctAnswer: 2,
-                explanation: "On utilise `GetComponent<Type>()` pour accéder à un autre composant."
+                explanation: "'int' est le type standard pour les entiers en C#."
+            },
+            {
+                id: 26,
+                question: "Comment déclare-t-on un tableau de 3 chaînes de caractères en C# ?",
+                options: [
+                    "string[3] names;",
+                    "string[] names = new string[3];",
+                    "string names = {3};",
+                    "array<string> names = 3;"
+                ],
+                correctAnswer: 1,
+                explanation: "string[] names = new string[3]; déclare un tableau de trois chaînes."
+            },
+            {
+                id: 27,
+                question: "Quel opérateur permet de soustraire deux variables ?",
+                options: ["+", "-", "*", "%"],
+                correctAnswer: 1,
+                explanation: "L’opérateur '-' sert à soustraire en C#."
+            },
+            {
+                id: 28,
+                question: "Comment faire une condition 'OU' logique entre deux booléens a et b ?",
+                options: [
+                    "a or b",
+                    "a || b",
+                    "a && b",
+                    "a xor b"
+                ],
+                correctAnswer: 1,
+                explanation: "'||' réalise un OU logique en C#."
+            },
+            {
+                id: 29,
+                question: "Quel est le mot-clé pour définir une variable qui ne changera jamais ?",
+                options: ["const", "final", "var", "fixed"],
+                correctAnswer: 0,
+                explanation: "'const' déclare une constante immuable."
+            },
+            {
+                id: 30,
+                question: "Comment appeler une fonction 'Display' sans paramètre ?",
+                options: [
+                    "call Display;",
+                    "Display[];",
+                    "Display();",
+                    "Display{};"
+                ],
+                correctAnswer: 2,
+                explanation: "On appelle la fonction avec Display(); en C#."
+            },
+            {
+                id: 31,
+                question: "Quel type permet de stocker un nombre décimal en C# ?",
+                options: ["int", "bool", "float", "char"],
+                correctAnswer: 2,
+                explanation: "'float' sert à stocker un nombre à virgule flottante."
+            },
+            {
+                id: 32,
+                question: "Comment créer une boucle qui s’exécute 5 fois ?",
+                options: [
+                    "for (int i = 0; i < 5; i++) { }",
+                    "repeat 5 times { }",
+                    "loop(5) { }",
+                    "while i < 5 { }"
+                ],
+                correctAnswer: 0,
+                explanation: "La structure for (int i = 0; i < 5; i++) répète 5 fois."
+            },
+            {
+                id: 33,
+                question: "Quel mot-clé permet de définir une classe en C# ?",
+                options: ["class", "define", "function", "struct"],
+                correctAnswer: 0,
+                explanation: "'class' sert à déclarer une nouvelle classe."
+            },
+            {
+                id: 34,
+                question: "Comment déclarer une variable qui peut contenir vrai ou faux ?",
+                options: [
+                    "bool flag;",
+                    "boolean flag;",
+                    "bit flag;",
+                    "logic flag;"
+                ],
+                correctAnswer: 0,
+                explanation: "'bool' est le type standard pour stocker true ou false."
+            },
+            {
+                id: 35,
+                question: "Quel opérateur sert à multiplier deux nombres ?",
+                options: ["+", "-", "*", "/"],
+                correctAnswer: 2,
+                explanation: "L’opérateur '*' fait la multiplication."
+            },
+            {
+                id: 36,
+                question: "Quelle instruction permet d’afficher 'Hello' dans la console C# ?",
+                options: [
+                    "Console.WriteLine(\"Hello\");",
+                    "print('Hello');",
+                    "Debug.Log('Hello');",
+                    "log('Hello');"
+                ],
+                correctAnswer: 0,
+                explanation: "Console.WriteLine affiche du texte dans la console standard."
+            },
+            {
+                id: 37,
+                question: "Comment écrire une condition pour vérifier si x n’est PAS égal à 5 ?",
+                options: [
+                    "if (x != 5)",
+                    "if (x <> 5)",
+                    "if (x =! 5)",
+                    "if (x =/= 5)"
+                ],
+                correctAnswer: 0,
+                explanation: "'!=' est le comparateur de différence en C#."
+            },
+            {
+                id: 38,
+                question: "Quel mot-clé permet de créer une méthode qui ne retourne rien ?",
+                options: ["void", "empty", "none", "noresult"],
+                correctAnswer: 0,
+                explanation: "'void' indique l’absence de valeur de retour."
+            },
+            {
+                id: 39,
+                question: "Quel opérateur permet de diviser deux nombres ?",
+                options: ["+", "-", "*", "/"],
+                correctAnswer: 3,
+                explanation: "'/' est l’opérateur de division."
+            },
+            {
+                id: 40,
+                question: "Comment écrire une condition qui s’exécute seulement si y est supérieur à 10 ?",
+                options: [
+                    "if (y > 10)",
+                    "if y > 10 then",
+                    "if (y gt 10)",
+                    "if (y => 10)"
+                ],
+                correctAnswer: 0,
+                explanation: "La syntaxe correcte en C# est if (y > 10)."
             }
         ]
     },
@@ -842,6 +1410,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 ],
                 correctAnswer: 0,
                 explanation: "GetComponent<Type>() permet d’accéder à un autre composant du même GameObject."
+            },
+            {
+                id: 21,
+                question: "Quelle méthode Unity permet d’activer un GameObject désactivé dans la scène ?",
+                options: [
+                    "SetActive(true)",
+                    "Enable()",
+                    "Activate()",
+                    "Show()"
+                ],
+                correctAnswer: 0,
+                explanation: "SetActive(true) active un GameObject désactivé."
+            },
+            {
+                id: 22,
+                question: "Quel composant permet d’afficher une vidéo dans une UI Unity ?",
+                options: [
+                    "VideoPlayer",
+                    "MovieTexture",
+                    "Canvas",
+                    "VideoComponent"
+                ],
+                correctAnswer: 0,
+                explanation: "Le composant natif est VideoPlayer."
+            },
+            {
+                id: 23,
+                question: "Quel est le rôle de la fonction Awake() dans un script Unity ?",
+                options: [
+                    "S’exécute avant Start() pour initialiser le script",
+                    "S’exécute à chaque frame",
+                    "Lance une coroutine",
+                    "Réinitialise le GameObject"
+                ],
+                correctAnswer: 0,
+                explanation: "Awake() s’exécute avant Start, pour l’initialisation précoce."
+            },
+            {
+                id: 24,
+                question: "Quel composant permet d’animer une propriété de GameObject (ex: couleur, position) ?",
+                options: [
+                    "Animator",
+                    "Animation",
+                    "Tween",
+                    "Controller"
+                ],
+                correctAnswer: 1,
+                explanation: "Le composant Animation permet d’animer des propriétés précises."
+            },
+            {
+                id: 25,
+                question: "Quelle différence entre Update() et LateUpdate() ?",
+                options: [
+                    "LateUpdate() est appelée après Update(), utile pour la caméra",
+                    "Update() est appelée après LateUpdate()",
+                    "Aucune différence",
+                    "Update() est réservée à l’UI"
+                ],
+                correctAnswer: 0,
+                explanation: "LateUpdate() sert pour les traitements post-logique (ex: suivi de caméra)."
+            },
+            {
+                id: 26,
+                question: "Que fait la fonction Physics.Raycast en Unity ?",
+                options: [
+                    "Lance un rayon pour détecter les collisions sur un chemin",
+                    "Déplace un GameObject",
+                    "Fait tourner un objet",
+                    "Charge une scène"
+                ],
+                correctAnswer: 0,
+                explanation: "Raycast détecte les collisions le long d’un rayon."
+            },
+            {
+                id: 27,
+                question: "Quel composant permet d’éclairer une scène en temps réel ?",
+                options: [
+                    "Light",
+                    "Camera",
+                    "Image",
+                    "Transform"
+                ],
+                correctAnswer: 0,
+                explanation: "Le composant Light gère l’éclairage en temps réel."
+            },
+            {
+                id: 28,
+                question: "Quel raccourci clavier permet de sélectionner plusieurs objets dans la Hierarchy ?",
+                options: [
+                    "Ctrl + clic",
+                    "Shift + clic",
+                    "Alt + clic",
+                    "Ctrl + A"
+                ],
+                correctAnswer: 0,
+                explanation: "Ctrl + clic permet de sélectionner plusieurs éléments un par un."
+            },
+            {
+                id: 29,
+                question: "Quelle méthode permet de faire pivoter un GameObject autour d’un axe donné ?",
+                options: [
+                    "transform.Rotate()",
+                    "transform.Move()",
+                    "transform.Scale()",
+                    "transform.Spin()"
+                ],
+                correctAnswer: 0,
+                explanation: "transform.Rotate() permet de faire tourner un objet."
+            },
+            {
+                id: 30,
+                question: "Quel composant faut-il pour jouer un effet sonore 3D attaché à un objet ?",
+                options: [
+                    "AudioSource",
+                    "AudioListener",
+                    "AudioClip",
+                    "SoundManager"
+                ],
+                correctAnswer: 0,
+                explanation: "AudioSource joue des sons dans l’espace 3D."
+            },
+            {
+                id: 31,
+                question: "Quelle propriété permet de rendre un Collider uniquement détectable mais non bloquant ?",
+                options: [
+                    "isTrigger",
+                    "isStatic",
+                    "isEnabled",
+                    "isPhysical"
+                ],
+                correctAnswer: 0,
+                explanation: "isTrigger rend le collider détectable sans collision physique."
+            },
+            {
+                id: 32,
+                question: "Quelle fonction Unity permet de lancer une coroutine ?",
+                options: [
+                    "StartCoroutine()",
+                    "RunCoroutine()",
+                    "BeginCoroutine()",
+                    "LaunchCoroutine()"
+                ],
+                correctAnswer: 0,
+                explanation: "StartCoroutine() lance une coroutine."
+            },
+            {
+                id: 33,
+                question: "Quel composant permet d’afficher une image sur un bouton UI ?",
+                options: [
+                    "Image",
+                    "SpriteRenderer",
+                    "RawImage",
+                    "Material"
+                ],
+                correctAnswer: 0,
+                explanation: "Le composant Image s’utilise sur un bouton UI."
+            },
+            {
+                id: 34,
+                question: "Quelle méthode permet de détecter une sortie de souris d’un GameObject en UI ?",
+                options: [
+                    "OnPointerExit",
+                    "OnMouseExit",
+                    "OnPointerLeave",
+                    "OnExit"
+                ],
+                correctAnswer: 0,
+                explanation: "OnPointerExit est utilisée pour l’UI."
+            },
+            {
+                id: 35,
+                question: "Que fait la fonction DontDestroyOnLoad(gameObject) ?",
+                options: [
+                    "Conserve le GameObject lors des changements de scène",
+                    "Détruit le GameObject à la fin du niveau",
+                    "Désactive le GameObject",
+                    "Recrée le GameObject"
+                ],
+                correctAnswer: 0,
+                explanation: "DontDestroyOnLoad garde l’objet vivant entre les scènes."
+            },
+            {
+                id: 36,
+                question: "Quel composant Unity faut-il pour appliquer une texture à un objet 2D ?",
+                options: [
+                    "SpriteRenderer",
+                    "MeshRenderer",
+                    "RawImage",
+                    "Image"
+                ],
+                correctAnswer: 0,
+                explanation: "SpriteRenderer s’utilise pour les objets 2D."
+            },
+            {
+                id: 37,
+                question: "Quelle méthode permet de récupérer la position globale d’un GameObject ?",
+                options: [
+                    "transform.position",
+                    "transform.localPosition",
+                    "gameObject.position",
+                    "transform.GetPosition()"
+                ],
+                correctAnswer: 0,
+                explanation: "transform.position donne la position globale."
+            },
+            {
+                id: 38,
+                question: "Quel événement détecte l’entrée de la souris sur un élément UI ?",
+                options: [
+                    "OnPointerEnter",
+                    "OnMouseOver",
+                    "OnHover",
+                    "OnPointerDown"
+                ],
+                correctAnswer: 0,
+                explanation: "OnPointerEnter est l’événement UI pour l’entrée du pointeur."
+            },
+            {
+                id: 39,
+                question: "Comment désactive-t-on un composant Renderer via script ?",
+                options: [
+                    "renderer.enabled = false;",
+                    "renderer.disable();",
+                    "renderer.SetActive(false);",
+                    "renderer.hide();"
+                ],
+                correctAnswer: 0,
+                explanation: "renderer.enabled = false; désactive le Renderer."
+            },
+            {
+                id: 40,
+                question: "Que permet de faire la méthode SetParent sur un Transform ?",
+                options: [
+                    "Changer le parent dans la hiérarchie",
+                    "Changer la couleur de l’objet",
+                    "Supprimer le GameObject",
+                    "Lancer une animation"
+                ],
+                correctAnswer: 0,
+                explanation: "SetParent permet de changer le parent d’un objet dans la hiérarchie."
             }
         ],
         csharp: [
@@ -1034,22 +1842,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 options: ["sealed", "private", "static", "override"],
                 correctAnswer: 0,
                 explanation: "sealed bloque l’héritage d’une classe."
-            }
-        ],
-        mixed: [
-            {
-                id: 1,
-                question: "Quelle fonction est appelée chaque frame dans Unity ?",
-                options: ["Awake()", "Start()", "Loop()", "Update()"],
-                correctAnswer: 3,
-                explanation: "Update() est appelée automatiquement chaque frame."
             },
             {
-                id: 2,
-                question: "Quelle syntaxe est correcte pour afficher un message dans la console Unity ?",
-                options: ["console.log('Hello')", "Debug.Log('Hello')", "print('Hello')", "Console.WriteLine('Hello')"],
-                correctAnswer: 1,
-                explanation: "La bonne méthode est `Debug.Log()`."
+                id: 21,
+                question: "Quel est l’intérêt principal d’utiliser un dictionnaire (`Dictionary<TKey, TValue>`) plutôt qu’une liste en C# ?",
+                options: [
+                    "Le dictionnaire permet un accès direct via une clé",
+                    "Il consomme moins de mémoire",
+                    "Il permet d’ordonner les éléments automatiquement",
+                    "Il empêche les doublons de valeurs"
+                ],
+                correctAnswer: 0,
+                explanation: "Un dictionnaire permet un accès rapide par clé, contrairement à une liste qui utilise l’index."
+            },
+            {
+                id: 22,
+                question: "Que permet la méthode `String.Split()` en C# ?",
+                options: [
+                    "Diviser une chaîne en plusieurs sous-chaînes selon un séparateur",
+                    "Supprimer une sous-chaîne",
+                    "Remplacer des caractères",
+                    "Concaténer des chaînes"
+                ],
+                correctAnswer: 0,
+                explanation: "`Split()` découpe une chaîne selon un ou plusieurs séparateurs."
+            },
+            {
+                id: 23,
+                question: "Comment déclare-t-on une constante globale en C# ?",
+                options: [
+                    "const int X = 10;",
+                    "var X = 10;",
+                    "static int X = 10;",
+                    "#define X 10"
+                ],
+                correctAnswer: 0,
+                explanation: "On utilise le mot-clé `const`."
+            },
+            {
+                id: 24,
+                question: "Quel est le mot-clé pour empêcher une méthode d’être redéfinie dans une classe dérivée ?",
+                options: [
+                    "sealed",
+                    "override",
+                    "static",
+                    "final"
+                ],
+                correctAnswer: 0,
+                explanation: "`sealed` empêche la redéfinition de la méthode dans les classes filles."
+            },
+            {
+                id: 25,
+                question: "À quoi sert le mot-clé `base` dans une méthode d’une classe dérivée ?",
+                options: [
+                    "Appeler une méthode ou un constructeur de la classe parente",
+                    "Déclarer une base de données",
+                    "Créer une instance",
+                    "Cacher un champ de la classe parente"
+                ],
+                correctAnswer: 0,
+                explanation: "`base` sert à accéder aux membres de la classe parente."
+            },
+            {
+                id: 26,
+                question: "Quelle méthode du type `List<T>` permet de vérifier si un élément existe dans la liste ?",
+                options: [
+                    "Contains",
+                    "Exists",
+                    "Has",
+                    "Check"
+                ],
+                correctAnswer: 0,
+                explanation: "`Contains` vérifie la présence d’un élément dans la liste."
+            },
+            {
+                id: 27,
+                question: "Que permet la syntaxe `string interpolation` avec le signe `$` en C# ?",
+                options: [
+                    "Insérer directement des variables dans une chaîne",
+                    "Déclarer une chaîne vide",
+                    "Commenter une ligne",
+                    "Créer un tableau de chaînes"
+                ],
+                correctAnswer: 0,
+                explanation: "Exemple : `$\"Score : {score}\"` insère la valeur de la variable dans la chaîne."
+            },
+            {
+                id: 28,
+                question: "Comment transformer une chaîne de caractères en majuscules en C# ?",
+                options: [
+                    "str.ToUpper()",
+                    "str.UpperCase()",
+                    "toUpper(str)",
+                    "str.toCaps()"
+                ],
+                correctAnswer: 0,
+                explanation: "`ToUpper()` convertit toute la chaîne en majuscules."
+            },
+            {
+                id: 29,
+                question: "Quelle interface faut-il implémenter pour permettre à une classe d’être comparée et triée ?",
+                options: [
+                    "IComparable",
+                    "IEnumerable",
+                    "ICloneable",
+                    "IDisposable"
+                ],
+                correctAnswer: 0,
+                explanation: "IComparable permet de définir un ordre de tri pour une classe."
+            },
+            {
+                id: 30,
+                question: "Quel est le rôle du mot-clé `using` au début d’un fichier .cs ?",
+                options: [
+                    "Inclure un espace de noms (namespace) externe",
+                    "Déclarer une variable",
+                    "Créer une boucle",
+                    "Définir une classe abstraite"
+                ],
+                correctAnswer: 0,
+                explanation: "`using` permet d’importer des namespaces pour accéder à leurs types."
+            },
+            {
+                id: 31,
+                question: "Que fait la méthode `List<T>.RemoveAt(index)` ?",
+                options: [
+                    "Supprime l’élément à l’index donné",
+                    "Supprime tous les éléments de la liste",
+                    "Inverse l’ordre des éléments",
+                    "Ajoute un élément à la fin"
+                ],
+                correctAnswer: 0,
+                explanation: "`RemoveAt(index)` supprime l’élément à la position indexée."
+            },
+            {
+                id: 32,
+                question: "Comment déclare-t-on un tableau de chaînes de 3 éléments en C# ?",
+                options: [
+                    "string[] arr = new string[3];",
+                    "var arr = [3]string;",
+                    "array<string> arr = 3;",
+                    "new string arr[3];"
+                ],
+                correctAnswer: 0,
+                explanation: "`string[] arr = new string[3];` est la bonne syntaxe."
+            },
+            {
+                id: 33,
+                question: "À quoi sert le mot-clé `params` dans la déclaration d’une méthode ?",
+                options: [
+                    "Permet de passer un nombre variable d’arguments",
+                    "Déclarer une propriété",
+                    "Indiquer une méthode privée",
+                    "Rendre la méthode statique"
+                ],
+                correctAnswer: 0,
+                explanation: "`params` autorise un nombre arbitraire d’arguments dans l’appel."
+            },
+            {
+                id: 34,
+                question: "Que fait l’opérateur `!` devant une expression booléenne en C# ?",
+                options: [
+                    "Inverse la valeur (négation logique)",
+                    "Arrête l’exécution",
+                    "Ajoute une valeur",
+                    "Déclare une variable"
+                ],
+                correctAnswer: 0,
+                explanation: "`!true` devient `false`, c’est l’opérateur NOT logique."
+            },
+            {
+                id: 35,
+                question: "Que signifie la portée `protected` sur un membre d’une classe ?",
+                options: [
+                    "Accessible uniquement par la classe et ses dérivées",
+                    "Accessible partout",
+                    "Accessible uniquement par la classe elle-même",
+                    "Accessible uniquement par les interfaces"
+                ],
+                correctAnswer: 0,
+                explanation: "`protected` permet l’accès à la classe et à ses classes filles."
+            },
+            {
+                id: 36,
+                question: "Quelle méthode permet d’obtenir la longueur d’un tableau nommé `arr` en C# ?",
+                options: [
+                    "arr.Length",
+                    "arr.Count()",
+                    "arr.Size()",
+                    "arr.length()"
+                ],
+                correctAnswer: 0,
+                explanation: "`Length` est la propriété pour la taille d’un tableau."
+            },
+            {
+                id: 37,
+                question: "Comment appelle-t-on une méthode statique d’une classe `Utils` en C# ?",
+                options: [
+                    "Utils.MaMethode()",
+                    "new Utils().MaMethode()",
+                    "MaMethode.Utils()",
+                    "Utils->MaMethode()"
+                ],
+                correctAnswer: 0,
+                explanation: "Une méthode statique s’appelle via le nom de la classe directement."
+            },
+            {
+                id: 38,
+                question: "Que fait le mot-clé `virtual` sur une méthode dans une classe parente ?",
+                options: [
+                    "Autorise la redéfinition de la méthode dans une classe dérivée",
+                    "Rend la méthode privée",
+                    "Empêche l’héritage",
+                    "Crée une méthode abstraite"
+                ],
+                correctAnswer: 0,
+                explanation: "`virtual` permet l’override dans une classe fille."
+            },
+            {
+                id: 39,
+                question: "Comment créer un objet de la classe `Personne` en C# ?",
+                options: [
+                    "Personne p = new Personne();",
+                    "Personne p = Personne();",
+                    "p = Personne.new();",
+                    "new Personne p();"
+                ],
+                correctAnswer: 0,
+                explanation: "On instancie la classe avec `new` : `Personne p = new Personne();`"
+            },
+            {
+                id: 40,
+                question: "Quel est le rôle du mot-clé `override` en C# ?",
+                options: [
+                    "Redéfinir une méthode virtuelle ou abstraite d’une classe parente",
+                    "Empêcher l’héritage",
+                    "Créer une nouvelle classe",
+                    "Définir une propriété statique"
+                ],
+                correctAnswer: 0,
+                explanation: "`override` permet de redéfinir une méthode virtuelle ou abstraite héritée."
             }
         ]
     },
@@ -1294,6 +2326,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 ],
                 correctAnswer: 0,
                 explanation: "OnDisable() est appelée lors de la désactivation du GameObject ou du script."
+            },
+            {
+                id: 21,
+                question: "Quelle méthode Unity permet de détecter la désactivation d’un GameObject mais aussi la fermeture de l’application ?",
+                options: [
+                    "OnDisable()",
+                    "OnDestroy()",
+                    "OnApplicationQuit()",
+                    "OnRemove()"
+                ],
+                correctAnswer: 1,
+                explanation: "OnDestroy() est appelée lors de la destruction de l’objet (désactivation définitive ou fermeture de l’application)."
+            },
+            {
+                id: 22,
+                question: "Quel attribut permet d’empêcher la modification d’une variable publique dans l’Inspector Unity ?",
+                options: [
+                    "[HideInInspector]",
+                    "[ReadOnly]",
+                    "[NonEditable]",
+                    "[SerializeField]"
+                ],
+                correctAnswer: 0,
+                explanation: "[HideInInspector] cache la variable dans l’Inspector même si elle est publique."
+            },
+            {
+                id: 23,
+                question: "Quel composant Unity permet de générer dynamiquement des meshes à l’exécution ?",
+                options: [
+                    "MeshFilter",
+                    "MeshCollider",
+                    "MeshRenderer",
+                    "Mesh"
+                ],
+                correctAnswer: 3,
+                explanation: "La classe Mesh permet de générer/modifier un mesh à l’exécution."
+            },
+            {
+                id: 24,
+                question: "Dans quel cas doit-on impérativement utiliser FixedUpdate() plutôt qu’Update() ?",
+                options: [
+                    "Pour la logique réseau",
+                    "Pour la gestion des animations",
+                    "Pour le calcul de la physique",
+                    "Pour l’affichage des UI"
+                ],
+                correctAnswer: 2,
+                explanation: "FixedUpdate() sert aux calculs physiques pour rester cohérent avec la simulation du moteur."
+            },
+            {
+                id: 25,
+                question: "Que permet la propriété `Application.persistentDataPath` dans Unity ?",
+                options: [
+                    "Accéder au chemin des assets dans le build",
+                    "Obtenir un chemin de stockage persistant pour l’appareil de l’utilisateur",
+                    "Récupérer le dossier Assets en mode éditeur",
+                    "Accéder aux scripts en lecture seule"
+                ],
+                correctAnswer: 1,
+                explanation: "persistentDataPath donne un chemin de sauvegarde spécifique à la plateforme et persistant."
+            },
+            {
+                id: 26,
+                question: "Quel risque important existe si on utilise `DontDestroyOnLoad` sur trop d’objets ?",
+                options: [
+                    "Fuites mémoire et accumulation d’objets non détruits lors des changements de scènes",
+                    "Blocage du rendu",
+                    "Suppression des assets",
+                    "Duplication automatique de la scène"
+                ],
+                correctAnswer: 0,
+                explanation: "Trop d’objets ‘persistants’ non nettoyés peuvent provoquer des fuites mémoire et des conflits."
+            },
+            {
+                id: 27,
+                question: "Quel est l’intérêt de regrouper les objets UI sous un même Canvas dans Unity ?",
+                options: [
+                    "Optimiser le rendu et réduire le nombre de passes de recalcul",
+                    "Obligatoire pour afficher du texte",
+                    "Permet d’éviter les memory leaks",
+                    "Permet de charger plus vite le projet"
+                ],
+                correctAnswer: 0,
+                explanation: "Un seul Canvas limite les recalculs, améliore les performances et évite les surcoûts de rendu."
+            },
+            {
+                id: 28,
+                question: "Comment référencer un asset d’une scène depuis un script sans drag-and-drop dans l’Inspector ?",
+                options: [
+                    "Resources.Load",
+                    "AssetDatabase.FindAsset",
+                    "GameObject.Find",
+                    "Tous ces choix"
+                ],
+                correctAnswer: 0,
+                explanation: "Resources.Load permet de charger dynamiquement un asset depuis le dossier Resources."
+            },
+            {
+                id: 29,
+                question: "Quel événement système doit-on écouter pour gérer un changement d’orientation écran sur mobile ?",
+                options: [
+                    "Application.orientationChanged",
+                    "Screen.orientationChanged",
+                    "DeviceOrientation.OnChange",
+                    "Aucun, il faut vérifier Screen.orientation manuellement dans Update"
+                ],
+                correctAnswer: 3,
+                explanation: "Unity ne propose pas d’événement, il faut vérifier manuellement Screen.orientation à chaque frame."
+            },
+            {
+                id: 30,
+                question: "Comment s’assurer qu’une coroutine s’arrête proprement quand on quitte une scène ?",
+                options: [
+                    "La relancer dans la nouvelle scène",
+                    "Mettre un yield return null en fin de coroutine",
+                    "Arrêter explicitement la coroutine dans OnDestroy()",
+                    "Impossible d’arrêter une coroutine"
+                ],
+                correctAnswer: 2,
+                explanation: "Il faut explicitement stopper les coroutines dans OnDestroy sinon elles peuvent rester actives et générer des bugs."
+            },
+            {
+                id: 31,
+                question: "Quelle méthode permet de vérifier si un objet existe toujours dans la scène (après destruction) ?",
+                options: [
+                    "obj != null",
+                    "GameObject.Exists(obj)",
+                    "Object.ReferenceEquals(obj, null)",
+                    "obj.IsValid()"
+                ],
+                correctAnswer: 0,
+                explanation: "En C#, après un Destroy Unity, la référence devient null (test standard)."
+            },
+            {
+                id: 32,
+                question: "Quel est l’effet de cocher 'Static' sur un GameObject dans l’Inspector ?",
+                options: [
+                    "Il ne peut plus bouger en runtime",
+                    "Il sera pris en compte par le baking (occlusion, lightmaps, etc.)",
+                    "Il ne sera plus rendu",
+                    "Il sera ignoré par la physique"
+                ],
+                correctAnswer: 1,
+                explanation: "Le mode Static permet à Unity de le traiter pour le baking, l’optimisation, etc."
+            },
+            {
+                id: 33,
+                question: "Quelle méthode est la plus performante pour détecter des collisions entre de nombreux objets dynamiques ?",
+                options: [
+                    "Physics.OverlapSphere",
+                    "Collision par Layer et PhysicMaterial combinés",
+                    "Utiliser un système de spatialisation (quad tree, octree, grid...) en complément",
+                    "Physics.RaycastAll"
+                ],
+                correctAnswer: 2,
+                explanation: "Pour de très grands volumes, la spatialisation externe permet de filtrer avant les appels physiques Unity."
+            },
+            {
+                id: 34,
+                question: "Quel est le risque de modifier directement la position d’un Rigidbody dans Update() ?",
+                options: [
+                    "Risque de glitchs physiques, pertes de collisions et incohérences",
+                    "Cela améliore la physique",
+                    "Rien du tout, c’est équivalent à MovePosition",
+                    "Cela déclenche un recalcul des assets"
+                ],
+                correctAnswer: 0,
+                explanation: "Modifier la position d’un Rigidbody en dehors de FixedUpdate casse la simulation physique."
+            },
+            {
+                id: 35,
+                question: "Pourquoi utiliser un `ScriptableObject` pour stocker une configuration globale ?",
+                options: [
+                    "Pour partager la config entre toutes les scènes sans singleton",
+                    "Pour mieux profiler la mémoire",
+                    "Pour accélérer la compilation",
+                    "Parce qu’on ne peut pas utiliser de MonoBehaviour pour ça"
+                ],
+                correctAnswer: 0,
+                explanation: "Un ScriptableObject sert de conteneur de données partagé entre toutes les scènes sans pattern singleton."
+            },
+            {
+                id: 36,
+                question: "Comment garantir qu’un script s’exécute avant tous les autres au lancement de la scène ?",
+                options: [
+                    "Mettre [DefaultExecutionOrder(-100)]",
+                    "Utiliser Start() au lieu de Awake()",
+                    "Nommer le script AAA en début de projet",
+                    "Placer le script en haut de la hiérarchie"
+                ],
+                correctAnswer: 0,
+                explanation: "[DefaultExecutionOrder] permet de forcer l’ordre d’exécution des scripts."
+            },
+            {
+                id: 37,
+                question: "Quel est l’impact du mode 'Dynamic Batching' dans les Player Settings ?",
+                options: [
+                    "Réduit le nombre de draw calls en regroupant certains objets dynamiquement",
+                    "Augmente la qualité des textures",
+                    "Désactive le garbage collector",
+                    "Accélère la compilation des scripts"
+                ],
+                correctAnswer: 0,
+                explanation: "Dynamic Batching regroupe les objets compatibles pour limiter le nombre de draw calls au GPU."
+            },
+            {
+                id: 38,
+                question: "Pourquoi faut-il éviter d’utiliser Update() vide dans beaucoup de scripts sur un projet ?",
+                options: [
+                    "Ça consomme inutilement du CPU à chaque frame",
+                    "Ça bloque la sauvegarde de la scène",
+                    "Ça empêche la compilation",
+                    "Unity l’interdit désormais"
+                ],
+                correctAnswer: 0,
+                explanation: "Même vide, Update() est appelée chaque frame, ce qui coûte cher sur des centaines d’objets."
+            },
+            {
+                id: 39,
+                question: "Comment détecter dans un script si on est en mode éditeur ou en build ?",
+                options: [
+                    "#if UNITY_EDITOR",
+                    "Application.IsEditor()",
+                    "EditorUtility.IsEditor()",
+                    "if (Debug.isEditor)"
+                ],
+                correctAnswer: 0,
+                explanation: "Les directives de compilation (#if UNITY_EDITOR) permettent de cibler code runtime ou éditeur."
+            },
+            {
+                id: 40,
+                question: "Quel avantage majeur offre l’utilisation du Profiler intégré de Unity lors de l’optimisation d’un jeu ?",
+                options: [
+                    "Identifier précisément l’origine des ralentissements (CPU, GPU, mémoire, etc.)",
+                    "Accélérer le rendu graphique",
+                    "Automatiser le build",
+                    "Créer des assets plus rapidement"
+                ],
+                correctAnswer: 0,
+                explanation: "Le Profiler Unity permet de cibler et visualiser l’origine des bottlenecks en temps réel."
             }
         ],
         csharp: [
@@ -1516,22 +2788,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 ],
                 correctAnswer: 1,
                 explanation: "Select transforme chaque élément selon la fonction passée en paramètre."
-            }
-        ],
-        mixed: [
-            {
-                id: 1,
-                question: "Quel type de coroutine Unity retourne ?",
-                options: ["Thread", "IEnumerator", "Task", "Action"],
-                correctAnswer: 1,
-                explanation: "Les coroutines Unity utilisent `IEnumerator` pour fonctionner avec `yield`."
             },
             {
-                id: 2,
-                question: "Quelle est la bonne syntaxe pour attendre 1 seconde dans une coroutine ?",
-                options: ["Wait(1)", "Delay(1f)", "yield return new WaitForSeconds(1f)", "Thread.Sleep(1000)"],
+                id: 21,
+                question: "Quel est le rôle de l’interface IDisposable en C# ?",
+                options: [
+                    "Gérer le polymorphisme",
+                    "Permettre le tri d’objets",
+                    "Fournir une méthode de libération des ressources non managées",
+                    "Créer des événements"
+                ],
                 correctAnswer: 2,
-                explanation: "C’est `yield return new WaitForSeconds(1f)` dans une coroutine."
+                explanation: "IDisposable définit la méthode Dispose() pour libérer explicitement des ressources (ex : fichiers, connexions...)."
+            },
+            {
+                id: 22,
+                question: "Quel est l’effet d’utiliser l’opérateur 'as' pour un cast sur un type incompatible ?",
+                options: [
+                    "Lève une exception",
+                    "Retourne null",
+                    "Retourne false",
+                    "Crée une nouvelle instance"
+                ],
+                correctAnswer: 1,
+                explanation: "L’opérateur 'as' retourne null si le cast échoue (pas d’exception levée)."
+            },
+            {
+                id: 23,
+                question: "Quel attribut rend une méthode accessible via la réflexion mais pas via l’interface publique ?",
+                options: [
+                    "[Internal]",
+                    "[NonPublic]",
+                    "Aucun attribut, il faut déclarer la méthode comme 'private' ou 'internal'",
+                    "[Reflectable]"
+                ],
+                correctAnswer: 2,
+                explanation: "Il n’existe pas d’attribut dédié : le contrôle se fait via le niveau d’accès (private, internal…)."
+            },
+            {
+                id: 24,
+                question: "À quoi sert le mot-clé 'volatile' en C# ?",
+                options: [
+                    "Empêcher la surcharge d’une méthode",
+                    "Optimiser l’accès mémoire pour le multi-thread",
+                    "Déclarer une variable constante",
+                    "Gérer la mémoire vidéo"
+                ],
+                correctAnswer: 1,
+                explanation: "volatile force le CPU à lire/écrire en RAM et pas dans le cache du thread."
+            },
+            {
+                id: 25,
+                question: "Quel est le comportement de la méthode 'GetHashCode()' en C# ?",
+                options: [
+                    "Retourne l’adresse mémoire",
+                    "Retourne une valeur de hash calculée pour l’objet",
+                    "Sert à comparer l’égalité de deux objets",
+                    "Efface l’objet"
+                ],
+                correctAnswer: 1,
+                explanation: "GetHashCode() fournit un code de hachage utilisé dans les collections type dictionnaire ou hashset."
+            },
+            {
+                id: 26,
+                question: "À quoi sert le mot-clé 'partial' devant une classe ?",
+                options: [
+                    "Permettre d’étendre une classe sur plusieurs fichiers",
+                    "Optimiser le build",
+                    "Rendre la classe non héritée",
+                    "Créer une copie de la classe"
+                ],
+                correctAnswer: 0,
+                explanation: "partial permet de définir la classe sur plusieurs fichiers source."
+            },
+            {
+                id: 27,
+                question: "Quel est le principal danger des variables statiques dans un projet multi-threadé ?",
+                options: [
+                    "Perte de données",
+                    "Accès concurrents non sécurisés menant à des conditions de course",
+                    "Fuite mémoire",
+                    "Erreur de compilation"
+                ],
+                correctAnswer: 1,
+                explanation: "Sans verrouillage, plusieurs threads peuvent modifier une variable statique en même temps (race condition)."
+            },
+            {
+                id: 28,
+                question: "Quel mot-clé empêche une méthode d’être surchargée dans une classe dérivée ?",
+                options: [
+                    "sealed",
+                    "override",
+                    "static",
+                    "final"
+                ],
+                correctAnswer: 0,
+                explanation: "sealed empêche la redéfinition d’une méthode dans les sous-classes."
+            },
+            {
+                id: 29,
+                question: "Quelle est la différence entre une exception checked et unchecked en C# ?",
+                options: [
+                    "Toutes les exceptions sont unchecked en C#",
+                    "Toutes les exceptions sont checked",
+                    "C# ne supporte pas les exceptions",
+                    "Il n’y a pas de différence"
+                ],
+                correctAnswer: 0,
+                explanation: "C# ne force pas la gestion d’exceptions à la compilation (contrairement à Java, tout est unchecked)."
+            },
+            {
+                id: 30,
+                question: "Que fait l’opérateur '??=' ajouté en C# 8 ?",
+                options: [
+                    "Compare deux valeurs",
+                    "Assigne une valeur uniquement si la variable est actuellement null",
+                    "Efface la variable si elle vaut null",
+                    "Retourne la valeur par défaut d’un type"
+                ],
+                correctAnswer: 1,
+                explanation: "'a ??= b' assigne b à a seulement si a est null."
+            },
+            {
+                id: 31,
+                question: "Qu’est-ce qu’une expression lambda en C# ?",
+                options: [
+                    "Une classe interne",
+                    "Une fonction anonyme souvent utilisée comme callback ou délégué",
+                    "Une structure de données",
+                    "Un type particulier d’interface"
+                ],
+                correctAnswer: 1,
+                explanation: "Les lambdas servent à définir des fonctions anonymes, notamment pour LINQ ou les events."
+            },
+            {
+                id: 32,
+                question: "Quelle est la différence principale entre une struct et une class en C# ?",
+                options: [
+                    "struct = type valeur ; class = type référence",
+                    "struct est toujours héritée de class",
+                    "class est toujours immuable",
+                    "struct permet la surcharge d’opérateurs, class non"
+                ],
+                correctAnswer: 0,
+                explanation: "struct = type valeur (stack), class = type référence (heap)."
+            },
+            {
+                id: 33,
+                question: "Quel est l’effet du mot-clé 'yield break' dans une méthode IEnumerator ?",
+                options: [
+                    "Retourne une valeur",
+                    "Met fin à l’itération de la coroutine",
+                    "Ignore une exception",
+                    "Rend la méthode synchrone"
+                ],
+                correctAnswer: 1,
+                explanation: "yield break arrête la séquence générée par l’IEnumerator."
+            },
+            {
+                id: 34,
+                question: "Quelle est la portée d’une variable déclarée dans un bloc 'using' ?",
+                options: [
+                    "Globale",
+                    "Limitée au bloc using",
+                    "Limitée à la classe",
+                    "Accessible dans tous les threads"
+                ],
+                correctAnswer: 1,
+                explanation: "Une variable dans un bloc using n’existe que dans ce bloc."
+            },
+            {
+                id: 35,
+                question: "Pourquoi utiliser la sérialisation binaire est déconseillée en C# moderne ?",
+                options: [
+                    "Risques de sécurité et problèmes de compatibilité cross-plateforme",
+                    "Problèmes de performances",
+                    "Trop rapide",
+                    "Pas supportée par .NET Core"
+                ],
+                correctAnswer: 0,
+                explanation: "La binaire peut être exploitée pour exécuter du code malicieux et pose problème pour la compatibilité."
+            },
+            {
+                id: 36,
+                question: "Quel attribut permet d’exposer une propriété privée dans l’inspecteur Unity ?",
+                options: [
+                    "[ExposeProperty]",
+                    "[InspectorVisible]",
+                    "[SerializeField]",
+                    "[ShowPrivate]"
+                ],
+                correctAnswer: 2,
+                explanation: "[SerializeField] rend une propriété privée éditable dans l’Inspector."
+            },
+            {
+                id: 37,
+                question: "Qu’est-ce qu’un indexeur dans une classe C# ?",
+                options: [
+                    "Un type d’interface",
+                    "Une propriété qui permet d’accéder à une collection via [] sur la classe",
+                    "Une fonction d’initialisation",
+                    "Un type d’énumération"
+                ],
+                correctAnswer: 1,
+                explanation: "Un indexeur permet d’accéder à la classe comme un tableau via [] (ex: myObj[5])."
+            },
+            {
+                id: 38,
+                question: "Quelle est la différence principale entre une interface et une classe abstraite ?",
+                options: [
+                    "Interface ne contient pas d’implémentation (sauf default methods C# 8+), classe abstraite peut en avoir",
+                    "Interface ne peut pas être héritée",
+                    "Classe abstraite ne supporte pas l’héritage multiple",
+                    "Interface ne peut pas contenir de propriétés"
+                ],
+                correctAnswer: 0,
+                explanation: "Interface = contrat pur ; classe abstraite = peut contenir code partagé."
+            },
+            {
+                id: 39,
+                question: "Comment rendre un événement thread-safe lors de l’appel (invocation) ?",
+                options: [
+                    "Utiliser l’opérateur null-conditional (?.) lors de l’invocation",
+                    "Utiliser 'lock' autour de l’événement",
+                    "Créer une nouvelle instance à chaque abonnement",
+                    "Aucune solution"
+                ],
+                correctAnswer: 0,
+                explanation: "eventHandler?.Invoke(args) évite le race condition sur la nullité."
+            },
+            {
+                id: 40,
+                question: "Que fait le mot-clé 'in' devant un paramètre de méthode en C# 7.2+ ?",
+                options: [
+                    "Passe l’argument par valeur",
+                    "Passe l’argument par référence en lecture seule",
+                    "Crée une variable locale",
+                    "Indique un paramètre optionnel"
+                ],
+                correctAnswer: 1,
+                explanation: "in passe un paramètre par référence, mais interdit la modification dans la méthode."
             }
         ]
     },
@@ -1776,6 +3272,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 ],
                 correctAnswer: 0,
                 explanation: "FindObjectOfType fait un scan complet de la scène, c’est un tueur de perfs en prod."
+            },
+            {
+                id: 21,
+                question: "Comment Unity gère-t-il la détection des modifications d’un ScriptableObject dans l’éditeur ?",
+                options: [
+                    "En utilisant OnValidate()",
+                    "Grâce à Update()",
+                    "Par une recompilation automatique",
+                    "Via le bouton Play uniquement"
+                ],
+                correctAnswer: 0,
+                explanation: "OnValidate() est appelée à chaque modification d’un ScriptableObject dans l’éditeur."
+            },
+            {
+                id: 22,
+                question: "Quel est l’avantage d’utiliser des 'Assembly Definition Files' (.asmdef) dans un gros projet Unity ?",
+                options: [
+                    "Réduire le temps de compilation et mieux structurer le code",
+                    "Augmenter la performance d’exécution",
+                    "Obliger l’utilisation de C# 8+",
+                    "Ajouter des assets plus rapidement"
+                ],
+                correctAnswer: 0,
+                explanation: "Les .asmdef séparent les assemblies, ce qui accélère la compilation et isole les dépendances."
+            },
+            {
+                id: 23,
+                question: "Qu’apporte le système 'Jobs' de Unity par rapport au multi-threading classique en C# ?",
+                options: [
+                    "Une gestion sécurisée de la mémoire et du parallélisme pour les calculs massifs",
+                    "Il remplace totalement les coroutines",
+                    "Il empêche l’accès à la physique",
+                    "Il sert uniquement pour l’UI"
+                ],
+                correctAnswer: 0,
+                explanation: "Le système Jobs permet du multi-threading optimisé et sécurisé dans Unity."
+            },
+            {
+                id: 24,
+                question: "Quel risque principal avec la désérialisation manuelle de JSON sur des types UnityEngine.Object ?",
+                options: [
+                    "Perte de références et comportement imprévisible",
+                    "Fuite mémoire",
+                    "Crash immédiat de l’éditeur",
+                    "Rien, tout fonctionne"
+                ],
+                correctAnswer: 0,
+                explanation: "Les références UnityEngine.Object ne sont pas restaurées lors d’une désérialisation JSON classique."
+            },
+            {
+                id: 25,
+                question: "Quelle méthode native Unity utiliser pour profiler le temps d’exécution d’un morceau de code précis ?",
+                options: [
+                    "Profiler.BeginSample() et Profiler.EndSample()",
+                    "Debug.LogWarning()",
+                    "Application.timeScale",
+                    "MonoBehaviour.Benchmark()"
+                ],
+                correctAnswer: 0,
+                explanation: "BeginSample/EndSample délimitent des blocs mesurables dans le Profiler Unity."
+            },
+            {
+                id: 26,
+                question: "Quel est le piège classique lors du chargement de scènes additives avec des objets singleton (ex: GameManager) ?",
+                options: [
+                    "Duper le singleton, donc plusieurs instances en mémoire",
+                    "Rien ne change",
+                    "Cela supprime la première scène",
+                    "Les scripts singleton ne sont pas exécutés"
+                ],
+                correctAnswer: 0,
+                explanation: "Si on ne gère pas le pattern, plusieurs instances de singleton peuvent apparaître en multi-scène."
+            },
+            {
+                id: 27,
+                question: "Pourquoi faut-il éviter d’utiliser directement Application.Quit() sur mobile ?",
+                options: [
+                    "Le système d’exploitation gère la fermeture de l’application, l’appel peut ne rien faire ou causer un comportement inattendu",
+                    "Cela efface les PlayerPrefs",
+                    "Cela supprime les assets",
+                    "Cela bloque le garbage collector"
+                ],
+                correctAnswer: 0,
+                explanation: "Sur mobile, l’OS contrôle le cycle de vie, Application.Quit() n’est pas toujours pris en compte."
+            },
+            {
+                id: 28,
+                question: "Quel outil Unity permet de détecter les leaks mémoire liés aux assets chargés/déchargés ?",
+                options: [
+                    "Memory Profiler",
+                    "Physics Debugger",
+                    "Lighting Explorer",
+                    "Profiler en mode Deep Profile seulement"
+                ],
+                correctAnswer: 0,
+                explanation: "Le Memory Profiler permet d’analyser précisément les allocations et fuites d’assets."
+            },
+            {
+                id: 29,
+                question: "Quelle propriété d’un AssetBundle peut causer des crashs s’il est mal géré ?",
+                options: [
+                    "Unload(false) laissant des références orphelines",
+                    "Unload(true) qui ne libère rien",
+                    "La taille du bundle",
+                    "Son extension de fichier"
+                ],
+                correctAnswer: 0,
+                explanation: "Unload(false) ne libère pas les assets encore référencés, d’où crash potentiel."
+            },
+            {
+                id: 30,
+                question: "Quel est le meilleur moyen de garantir l’exécution d’un code à chaque démarrage d’Unity Editor (avant toute scène) ?",
+                options: [
+                    "[InitializeOnLoad] sur une classe statique",
+                    "OnValidate() sur tous les scripts",
+                    "Ajouter un MonoBehaviour à chaque scène",
+                    "Aucun moyen"
+                ],
+                correctAnswer: 0,
+                explanation: "[InitializeOnLoad] sur une classe statique permet d’exécuter du code dès l’ouverture de l’éditeur."
+            },
+            {
+                id: 31,
+                question: "Dans le pipeline de rendu URP, quel composant gère le post-traitement ?",
+                options: [
+                    "Volume et ses profils",
+                    "MeshRenderer",
+                    "Animator",
+                    "RenderTexture"
+                ],
+                correctAnswer: 0,
+                explanation: "Le Volume (profil URP) centralise tous les effets de post-processing dans URP."
+            },
+            {
+                id: 32,
+                question: "Quel est le principal intérêt d’utiliser ScriptableRenderPipeline (SRP) ?",
+                options: [
+                    "Personnaliser entièrement le pipeline de rendu selon les besoins du projet",
+                    "Améliorer la physique",
+                    "Ajouter plus d’audio",
+                    "Gérer les PlayerPrefs"
+                ],
+                correctAnswer: 0,
+                explanation: "SRP permet un contrôle total sur le pipeline de rendu, idéal pour les besoins spécifiques AAA."
+            },
+            {
+                id: 33,
+                question: "Comment garantir la compatibilité multiplateforme d’un shader personnalisé ?",
+                options: [
+                    "N’utiliser que les instructions supportées par toutes les cibles et tester sur chaque plateforme",
+                    "Utiliser n’importe quelle fonction HLSL",
+                    "Écrire le shader en C#",
+                    "Déclarer le shader comme 'portable'"
+                ],
+                correctAnswer: 0,
+                explanation: "Il faut limiter le code aux instructions supportées par toutes les plateformes visées et bien tester."
+            },
+            {
+                id: 34,
+                question: "Quel type d’asset Unity permet le plus facilement la sauvegarde de données structurées côté éditeur ?",
+                options: [
+                    "ScriptableObject",
+                    "MonoBehaviour",
+                    "Prefab",
+                    "Material"
+                ],
+                correctAnswer: 0,
+                explanation: "ScriptableObject est l’outil dédié au stockage de données customisées et éditables dans Unity."
+            },
+            {
+                id: 35,
+                question: "Pourquoi le 'deep profiling' dans le Profiler Unity n’est-il pas conseillé en permanence ?",
+                options: [
+                    "Il ralentit énormément l’exécution et augmente la taille des logs",
+                    "Il casse les builds",
+                    "Il efface les breakpoints",
+                    "Il réduit la résolution graphique"
+                ],
+                correctAnswer: 0,
+                explanation: "Le deep profile logge TOUT et ralentit drastiquement l’édition/jeu."
+            },
+            {
+                id: 36,
+                question: "Quel pattern logiciel permet d’organiser un projet Unity complexe avec beaucoup de logique métier réutilisable ?",
+                options: [
+                    "Modèle ECS (Entity Component System)",
+                    "Single MonoBehaviour",
+                    "Utilisation massive des static",
+                    "Pattern MVC exclusif"
+                ],
+                correctAnswer: 0,
+                explanation: "ECS (DOTS) permet de séparer données, logique, rendu et optimiser la réutilisation des systèmes."
+            },
+            {
+                id: 37,
+                question: "Quelle propriété ou méthode utiliser pour savoir si un asset a été modifié en dehors de Unity (ex : image, son) ?",
+                options: [
+                    "AssetDatabase.Refresh()",
+                    "EditorUtility.CheckAssetChange()",
+                    "Application.UpdateAssets()",
+                    "Importer automatiquement les assets"
+                ],
+                correctAnswer: 0,
+                explanation: "AssetDatabase.Refresh() force Unity à rescanner les assets et détecter les changements."
+            },
+            {
+                id: 38,
+                question: "Comment limiter l’impact CPU d’un grand nombre de scripts Update() sur des objets inactifs ?",
+                options: [
+                    "Désactiver le GameObject ou le MonoBehaviour concerné",
+                    "Créer des coroutines à la place",
+                    "Tout déplacer dans FixedUpdate",
+                    "Rien, Unity gère tout automatiquement"
+                ],
+                correctAnswer: 0,
+                explanation: "Update() n’est appelée que sur les scripts actifs. Désactiver = pas de coût."
+            },
+            {
+                id: 39,
+                question: "Quel est le meilleur outil intégré pour automatiser la génération de builds sur plusieurs plateformes dans Unity ?",
+                options: [
+                    "Unity Cloud Build",
+                    "GitHub Actions",
+                    "Command Line classique",
+                    "MonoDevelop"
+                ],
+                correctAnswer: 0,
+                explanation: "Unity Cloud Build gère automatiquement les builds multi-plateformes avec intégration continue."
+            },
+            {
+                id: 40,
+                question: "Pourquoi faut-il désactiver le 'Editor Analytics' dans un projet pro sensible ?",
+                options: [
+                    "Pour éviter la fuite de données internes, stats de projet ou code source chez Unity",
+                    "Cela ralentit l’éditeur",
+                    "Cela empêche les builds",
+                    "Ça change la couleur de l’interface"
+                ],
+                correctAnswer: 0,
+                explanation: "Editor Analytics peut envoyer des infos projet/statistiques chez Unity. Sur projet confidentiel = à désactiver."
             }
         ],
         csharp: [
@@ -2018,22 +3754,246 @@ export const questionsData: Record<string, Record<string, Question[]>> = {
                 ],
                 correctAnswer: 1,
                 explanation: "LINQ est lazy : les requêtes ne sont évaluées que lors de l’itération, pas à la déclaration."
-            }
-        ],
-        mixed: [
-            {
-                id: 1,
-                question: "Quel pattern est utilisé par Unity pour les événements `OnCollisionEnter` ?",
-                options: ["Observer", "Command", "Strategy", "Factory"],
-                correctAnswer: 0,
-                explanation: "Unity applique le pattern Observer pour réagir à des événements comme les collisions."
             },
             {
-                id: 2,
-                question: "Comment lier un événement C# à une méthode dans Unity ?",
-                options: ["Via une coroutine", "Avec un `delegate`", "En surchargant `Update()`", "Via un `yield return`"],
-                correctAnswer: 1,
-                explanation: "Un `delegate` ou un `event` permet d’attacher une méthode à un événement."
+                id: 21,
+                question: "Qu’apporte l’utilisation des 'Records' en C# 9+ par rapport aux classes classiques ?",
+                options: [
+                    "Immutabilité facile et égalité structurelle automatique",
+                    "Permet d’utiliser le pattern singleton",
+                    "Autorise l’héritage multiple",
+                    "Empêche la sérialisation"
+                ],
+                correctAnswer: 0,
+                explanation: "Les records offrent l’immuabilité et l’égalité structurelle sans surcharger Equals/GetHashCode."
+            },
+            {
+                id: 22,
+                question: "Quel est le principal intérêt de la méthode 'Span<T>' par rapport à un tableau classique ?",
+                options: [
+                    "Manipuler des segments de mémoire sans allocation supplémentaire",
+                    "Remplacer tous les types de collections",
+                    "Obliger l’utilisation du GC",
+                    "Créer des threads"
+                ],
+                correctAnswer: 0,
+                explanation: "Span<T> permet de manipuler des tranches de mémoire sans copie ni allocation, optimisant la perf."
+            },
+            {
+                id: 23,
+                question: "Que permet l’opérateur 'is not' apparu en C# 9 ?",
+                options: [
+                    "Vérifier qu’une valeur n’est PAS d’un certain type ou n’est pas null",
+                    "Effectuer un cast implicite",
+                    "Créer une instance",
+                    "Remplacer l’opérateur '=='"
+                ],
+                correctAnswer: 0,
+                explanation: "'is not' teste l’inverse du pattern matching 'is'."
+            },
+            {
+                id: 24,
+                question: "Quelle est la conséquence de marquer une méthode async sans aucun 'await' à l’intérieur ?",
+                options: [
+                    "Elle est exécutée de manière synchrone et génère un avertissement",
+                    "Elle ne compile pas",
+                    "Elle bloque l’application",
+                    "Elle crée un thread dédié"
+                ],
+                correctAnswer: 0,
+                explanation: "Une méthode async sans await s’exécute de façon synchrone et peut déclencher un warning."
+            },
+            {
+                id: 25,
+                question: "Que fait le mot-clé 'init' sur une propriété en C# 9+ ?",
+                options: [
+                    "Permet de n'assigner la propriété que lors de l’initialisation de l’objet",
+                    "Rend la propriété immutable pour toujours",
+                    "Force l’initialisation à zéro",
+                    "Désactive la sérialisation"
+                ],
+                correctAnswer: 0,
+                explanation: "'init' autorise l’assignation dans l’initialiseur ou le constructeur, jamais après."
+            },
+            {
+                id: 26,
+                question: "Quel est le piège à éviter avec les méthodes d’extension LINQ sur des requêtes lazy ?",
+                options: [
+                    "Chaque appel LINQ crée une nouvelle énumération, donc attention aux recalculs coûteux",
+                    "Les méthodes d’extension modifient la collection d’origine",
+                    "LINQ ne fonctionne pas avec IEnumerable",
+                    "Aucun, tout est optimisé"
+                ],
+                correctAnswer: 0,
+                explanation: "Chaque foreach sur une requête LINQ lazy réexécute tout le pipeline (effet de bord, perf)."
+            },
+            {
+                id: 27,
+                question: "Quel est le but de l’attribut [CallerMemberName] en C# ?",
+                options: [
+                    "Obtenir automatiquement le nom de la méthode ou propriété appelante",
+                    "Ajouter du code natif",
+                    "Définir un argument obligatoire",
+                    "Initialiser un champ readonly"
+                ],
+                correctAnswer: 0,
+                explanation: "Permet d’obtenir le nom du membre appelant sans l’écrire explicitement (log, notification, debug)."
+            },
+            {
+                id: 28,
+                question: "Quelle différence majeure entre les interfaces normales et les interfaces explicites (explicit interface implementation) ?",
+                options: [
+                    "L’implémentation explicite n’est accessible que via le cast interface",
+                    "Aucune différence",
+                    "L’explicite empêche l’héritage",
+                    "Les explicites sont publiques par défaut"
+                ],
+                correctAnswer: 0,
+                explanation: "Seul un cast vers l’interface donne accès aux membres explicitement implémentés."
+            },
+            {
+                id: 29,
+                question: "Comment fonctionne le 'pattern matching' avec 'switch' en C# 8+ ?",
+                options: [
+                    "On peut matcher sur le type, la valeur, et des conditions directement dans le switch",
+                    "Uniquement sur des int",
+                    "Uniquement avec des enums",
+                    "Cela génère toujours une erreur en cas de valeur nulle"
+                ],
+                correctAnswer: 0,
+                explanation: "Le pattern matching enrichit switch avec des conditions et des types."
+            },
+            {
+                id: 30,
+                question: "Quel danger en C# avec l’utilisation de 'dynamic' dans du code critique ?",
+                options: [
+                    "Perte de vérification à la compilation, erreurs potentielles au runtime",
+                    "Impossibilité d'utiliser les delegates",
+                    "Empêche l’héritage",
+                    "Crée une fuite mémoire"
+                ],
+                correctAnswer: 0,
+                explanation: "dynamic retire la sécurité du typage et reporte toutes les erreurs au runtime."
+            },
+            {
+                id: 31,
+                question: "Pourquoi 'IDisposable' est-il essentiel pour la gestion de ressources en C# ?",
+                options: [
+                    "Pour garantir la libération manuelle de ressources non managées (fichiers, DB, sockets...)",
+                    "Pour créer des threads",
+                    "Pour gérer le garbage collector",
+                    "Pour optimiser le bytecode"
+                ],
+                correctAnswer: 0,
+                explanation: "IDisposable permet de nettoyer explicitement les ressources non managées."
+            },
+            {
+                id: 32,
+                question: "Qu’apporte le mot-clé 'with' sur les records C# 9+ ?",
+                options: [
+                    "Permet de créer une copie modifiée d’un record (immutabilité + clone)",
+                    "Ajoute la serialisation automatique",
+                    "Permet la surcharge des opérateurs",
+                    "Rend la propriété mutable"
+                ],
+                correctAnswer: 0,
+                explanation: "'with' crée une nouvelle instance basée sur un record existant, avec modification sélective."
+            },
+            {
+                id: 33,
+                question: "Pourquoi les exceptions doivent-elles être catchées par type spécifique plutôt que par 'Exception' général ?",
+                options: [
+                    "Pour gérer précisément chaque cas d’erreur, éviter de masquer des bugs ou de fausses récupérations",
+                    "Pour des performances",
+                    "Cela génère moins de code IL",
+                    "Cela empêche la compilation"
+                ],
+                correctAnswer: 0,
+                explanation: "Catcher Exception masque les vrais bugs et rend le debug difficile."
+            },
+            {
+                id: 34,
+                question: "Quel est l'intérêt d’un 'struct readonly' ?",
+                options: [
+                    "Garantir l’immutabilité et optimiser certaines opérations (inlining, pas de mutation accidentelle)",
+                    "Permet de modifier les champs en dehors du constructeur",
+                    "Oblige à passer par le GC",
+                    "Remplace totalement les classes"
+                ],
+                correctAnswer: 0,
+                explanation: "readonly struct = immuable et potentiellement plus optimisé par le JIT."
+            },
+            {
+                id: 35,
+                question: "À quoi sert l’attribut [MethodImpl(MethodImplOptions.AggressiveInlining)] ?",
+                options: [
+                    "Suggérer au compilateur d’inliner une méthode pour réduire l’overhead d’appel",
+                    "Obliger une méthode à être static",
+                    "Permettre l’accès à la mémoire non managée",
+                    "Rendre la méthode privée"
+                ],
+                correctAnswer: 0,
+                explanation: "AggressiveInlining pousse le JIT à intégrer la méthode dans le code appelant si possible."
+            },
+            {
+                id: 36,
+                question: "Quelle est la différence entre 'ref struct' et 'struct' classique en C# ?",
+                options: [
+                    "ref struct ne peut être stockée sur le heap ni capturée par une lambda/closure",
+                    "Aucune différence",
+                    "ref struct est automatiquement readonly",
+                    "ref struct ne supporte pas les propriétés"
+                ],
+                correctAnswer: 0,
+                explanation: "ref struct est stack-only et ne peut être utilisée que dans certains contextes sûrs (Span, stackalloc…)."
+            },
+            {
+                id: 37,
+                question: "Pourquoi utiliser les 'expression-bodied members' (=>) dans les classes et interfaces ?",
+                options: [
+                    "Raccourcir la syntaxe et améliorer la lisibilité du code simple",
+                    "Augmenter les performances",
+                    "Obliger l’utilisation de LINQ",
+                    "Remplacer les delegates"
+                ],
+                correctAnswer: 0,
+                explanation: "Les membres à expression simplifient la déclaration de propriétés ou méthodes simples."
+            },
+            {
+                id: 38,
+                question: "Qu’apporte la clause 'where T : unmanaged' dans une contrainte générique ?",
+                options: [
+                    "Limiter le type T aux types non managés (structs purs, pas de référence, perf/interop)",
+                    "Obliger T à hériter de IDisposable",
+                    "Permettre T d’être nullable",
+                    "Restreindre T aux classes uniquement"
+                ],
+                correctAnswer: 0,
+                explanation: "'where T : unmanaged' s’assure que le type n’est composé que de champs valeurs purs, pratique pour l’interop natif."
+            },
+            {
+                id: 39,
+                question: "Quel est le rôle du mot-clé 'default' dans une déclaration générique ?",
+                options: [
+                    "Retourner la valeur par défaut du type (0, null, false, etc.)",
+                    "Obliger l’initialisation à zéro",
+                    "Créer un nouvel objet",
+                    "Forcer le garbage collector"
+                ],
+                correctAnswer: 0,
+                explanation: "default(T) renvoie la valeur par défaut de T, peu importe le type générique."
+            },
+            {
+                id: 40,
+                question: "Quel piège avec l’usage des closures sur des variables de boucle dans une lambda en C# <7 ?",
+                options: [
+                    "La variable de boucle est partagée, donc toutes les closures capturent la même valeur (piège classique)",
+                    "Les closures ne fonctionnent pas en boucle",
+                    "Cela provoque une fuite mémoire",
+                    "Les lambdas ne peuvent pas utiliser de variables de boucle"
+                ],
+                correctAnswer: 0,
+                explanation: "Avant C# 7, chaque lambda partage la même instance de variable de boucle. Il faut la dupliquer dans le scope pour éviter des bugs."
             }
         ]
     }

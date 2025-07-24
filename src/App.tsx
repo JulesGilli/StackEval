@@ -14,12 +14,9 @@ function shuffle<T>(arr: T[]): T[] {
   return array;
 }
 
-// Prend 20 questions aléatoires, mélangées, des deux catégories pour "mixed"
-function getMixedQuestions(data: any, difficulty: string, count: number) {
-  const unity = data[difficulty]?.unity || [];
-  const csharp = data[difficulty]?.csharp || [];
-  const all = shuffle([...unity, ...csharp]);
-  return all.slice(0, count);
+// Sélectionne N questions aléatoires d'une liste
+function getRandomQuestions<T>(questions: T[], count: number): T[] {
+  return shuffle(questions).slice(0, count);
 }
 
 export function App() {
@@ -35,11 +32,19 @@ export function App() {
     setQuizSettings({ difficulty, mode });
     setUserAnswers(Array(20).fill(null));
     setCurrentScreen('quiz');
-    // SELECTION DES QUESTIONS AU DEMARRAGE SEULEMENT
-    const qs =
-        mode === 'mixed'
-            ? getMixedQuestions(questionsData, difficulty, 20)
-            : (questionsData[difficulty]?.[mode] || []);
+
+    let qs: any[] = [];
+    if (mode === 'mixed') {
+      // Mélange toutes les questions Unity + C# pour ce niveau, en pioche 20
+      const all = [
+        ...(questionsData[difficulty]?.unity || []),
+        ...(questionsData[difficulty]?.csharp || []),
+      ];
+      qs = getRandomQuestions(all, 20);
+    } else {
+      // Mélange toutes les questions du mode choisi, en pioche 20
+      qs = getRandomQuestions(questionsData[difficulty]?.[mode] || [], 20);
+    }
     setSelectedQuestions(qs);
   };
 
