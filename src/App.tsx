@@ -29,17 +29,18 @@ export function App() {
     mode: ''
   });
   const [userAnswers, setUserAnswers] = useState<Array<number | null>>(Array(20).fill(null));
-
-  // Sélection dynamique des questions selon le mode (mixed = random des deux)
-  const questions =
-      quizSettings.mode === 'mixed'
-          ? getMixedQuestions(questionsData, quizSettings.difficulty, 20)
-          : (questionsData[quizSettings.difficulty]?.[quizSettings.mode] || []);
+  const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
 
   const startQuiz = (difficulty: string, mode: string) => {
     setQuizSettings({ difficulty, mode });
-    setCurrentScreen('quiz');
     setUserAnswers(Array(20).fill(null));
+    setCurrentScreen('quiz');
+    // SELECTION DES QUESTIONS AU DEMARRAGE SEULEMENT
+    const qs =
+        mode === 'mixed'
+            ? getMixedQuestions(questionsData, difficulty, 20)
+            : (questionsData[difficulty]?.[mode] || []);
+    setSelectedQuestions(qs);
   };
 
   const submitAnswer = (questionIndex: number, answerIndex: number) => {
@@ -61,7 +62,7 @@ export function App() {
         {currentScreen === 'home' && <HomePage onStartQuiz={startQuiz} />}
         {currentScreen === 'quiz' && (
             <QuizPage
-                questions={questions}
+                questions={selectedQuestions}
                 userAnswers={userAnswers}
                 onSubmitAnswer={submitAnswer}
                 onFinishQuiz={finishQuiz}
@@ -70,7 +71,7 @@ export function App() {
         )}
         {currentScreen === 'results' && (
             <ResultsPage
-                questions={questions}
+                questions={selectedQuestions}
                 userAnswers={userAnswers}
                 onRestartQuiz={restartQuiz}
                 quizSettings={quizSettings}
