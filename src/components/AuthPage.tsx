@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { UserData } from '../types/user';
-import { setupUserProfileIfNeeded } from '../utils/setupUserProfile';
+import { UserData, QuizResult } from './AuthPage';
+import { setupUserProfileIfNeeded } from '../utils/supabaseApi';
 
 interface AuthPageProps {
     onLogin: (userData: UserData) => void;
@@ -11,6 +11,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLogin, setIsLogin] = useState(true);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -95,7 +96,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
 
                 <div className="mt-6 text-center">
                     <p className="text-sm text-gray-600">
-                        Le compte est créé automatiquement si l’adresse est valide.
+                        Pas encore de compte ? Créez-en un via le lien d’inscription.
                     </p>
                 </div>
             </div>

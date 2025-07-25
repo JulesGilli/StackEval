@@ -1,46 +1,47 @@
-﻿import { supabase } from '../lib/supabaseClient';
-import { UserData } from '../types/user';
+﻿// utils/setupUserProfile.ts
+import { supabase } from '../lib/supabaseClient'
+import { UserData } from '../components/AuthPage'
 
-/**
- * Récupère ou crée un profil utilisateur dans Supabase.
- */
-export async function setupUserProfileIfNeeded(userId: string, email: string): Promise<UserData | null> {
+export async function setupUserProfileIfNeeded(user: {
+    id: string;
+    email: string | null;
+}): Promise<UserData | null> {
     // 1. Vérifie si un profil existe déjà
     const { data: profile, error } = await supabase
         .from('profile')
         .select('username, unlockedLevels')
-        .eq('id', userId)
-        .single();
+        .eq('id', user.id)
+        .single()
 
     if (!error && profile) {
         return {
-            id: userId,
+            id: user.id,
             username: profile.username || '',
-            email,
-            quizHistory: [], // à charger ailleurs si besoin
-            unlockedLevels: profile.unlockedLevels || [],
-        };
+            email: user.email || '',
+            password: '',
+            quizHistory: [],
+            unlockedLevels: profile.unlockedLevels || []
+        }
     }
 
-    // 2. Si pas trouvé, le créer
-    const { error: insertError } = await supabase
-        .from('profile')
-        .insert({
-            id: userId,
-            username: '',
-            unlockedLevels: [],
-        });
+    // 2. Sinon on le crée (username vide si inconnu)
+    const insertRes = await supabase.from('profile').insert({
+        id: user.id,
+        username: '',
+        unlockedLevels: []
+    })
 
-    if (insertError) {
-        console.error('[Supabase] Erreur création profil :', insertError.message);
-        return null;
+    if (insertRes.error) {
+        console.error("Erreur création profil :", insertRes.error.message)
+        return null
     }
 
     return {
-        id: userId,
+        id: user.id,
         username: '',
-        email,
+        email: user.email || '',
+        password: '',
         quizHistory: [],
-        unlockedLevels: [],
-    };
+        unlockedLevels: []
+    }
 }

@@ -37,7 +37,7 @@ export async function saveQuizResultToDB({
     correctAnswers: number
 }) {
     // 1. Insert du résultat
-    const { error: insertError } = await supabase.from('quiz_results').insert({
+    const { error: insertError } = await supabase.from('quiz_result').insert({
         user_id,
         mode,
         difficulty,

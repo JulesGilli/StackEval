@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
+import AuthPage, { UserData, QuizResult } from './components/AuthPage';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
-import AuthPage from './components/AuthPage';
-import { UserData, QuizResult } from './types/user';
 import { questionsData, Question } from './data/Questions';
-import { unlockNextLevelIfNeeded } from './utils/unlockLevels';
-import { updateUserQuizHistory } from './utils/updateUser';  
+import { updateUserQuizHistory } from './utils/supabaseHelpers';
 
 
 function shuffle<T>(arr: T[]): T[] {
@@ -53,6 +51,11 @@ export function App() {
   const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
 
   const handleLogin = (userData: UserData) => {
+    setUser(userData);
+    setCurrentScreen('home');
+  };
+
+  const handleRegister = (userData: UserData) => {
     setUser(userData);
     setCurrentScreen('home');
   };
@@ -104,14 +107,8 @@ export function App() {
 
       try {
         await updateUserQuizHistory(user.id, updatedHistory);
-        await unlockNextLevelIfNeeded(
-            user.id,
-            quizSettings.difficulty,
-            quizSettings.mode,
-            newResult.score
-        );
       } catch (err) {
-        console.error('Erreur en sauvegardant ou débloquant :', err);
+        console.error('Erreur en sauvegardant les résultats du quiz :', err);
       }
     }
 
@@ -139,7 +136,7 @@ export function App() {
         )}
 
         {currentScreen === 'home' && user && (
-            <HomePage onStartNewQuiz={startQuiz} />
+            <HomePage onStartQuiz={startQuiz} />
         )}
 
         {currentScreen === 'quiz' && user && (
