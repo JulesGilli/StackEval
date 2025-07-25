@@ -22,6 +22,8 @@ interface QuizPageProps {
   };
 }
 
+const TOTAL_QUESTIONS = 10;
+
 const QuizPage: React.FC<QuizPageProps> = ({
                                              questions,
                                              userAnswers,
@@ -32,7 +34,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < TOTAL_QUESTIONS - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -44,102 +46,98 @@ const QuizPage: React.FC<QuizPageProps> = ({
   };
 
   const handleSubmit = () => {
-    const unansweredQuestions = userAnswers.filter(answer => answer === null).length;
-    if (unansweredQuestions > 0) {
-      if (!window.confirm(`Vous avez ${unansweredQuestions} question(s) sans réponse. Voulez-vous vraiment terminer le quiz ?`)) {
-        return;
-      }
+    const unanswered = userAnswers.filter(a => a === null).length;
+    if (unanswered > 0) {
+      const confirmMsg = `Vous avez ${unanswered} question${unanswered > 1 ? 's' : ''} sans réponse. Voulez-vous continuer ?`;
+      if (!window.confirm(confirmMsg)) return;
     }
     onFinishQuiz();
   };
 
-  // Labels: à adapter si tu changes ta logique plus tard
   const getModeLabel = (mode: string) => {
-    const modeMap: Record<string, string> = {
-      unity: 'Unity',
-      csharp: 'C#',
-      mixed: 'Mixte'
+    const map: Record<string, string> = {
+      fundamentals: 'Fondamentaux',
+      scripting: 'Scripting & C#',
+      mixed: 'Mixte',
     };
-    return modeMap[mode] || mode;
+    return map[mode] || mode;
   };
+
   const getDifficultyLabel = (difficulty: string) => {
-    const difficultyMap: Record<string, string> = {
-      beginner: 'Débutant',
-      easy: 'Facile',
-      medium: 'Moyen',
-      hard: 'Difficile',
-      expert: 'Expert'
+    const map: Record<string, string> = {
+      user: 'Certified User',
+      associate: 'Certified Associate',
+      pro: 'Certified Professional'
     };
-    return difficultyMap[difficulty] || difficulty;
+    return map[difficulty] || difficulty;
   };
 
   const currentQuestion = questions[currentQuestionIndex];
-  const answeredCount = userAnswers.filter(answer => answer !== null).length;
-  const progressPercentage = answeredCount / questions.length * 100;
+  const answeredCount = userAnswers.filter(a => a !== null).length;
+  const progress = (answeredCount / TOTAL_QUESTIONS) * 100;
 
   return (
       <div className="min-h-screen flex flex-col bg-gray-50">
         <header className="bg-white border-b border-gray-200 py-4">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="flex justify-between items-center">
-              <h1 className="text-lg font-medium text-gray-900">
-                Quiz: {getModeLabel(quizSettings.mode)}
-              </h1>
-              <div className="text-sm text-gray-600">
-                Niveau: {getDifficultyLabel(quizSettings.difficulty)}
-              </div>
+          <div className="container mx-auto px-4 max-w-3xl flex justify-between items-center">
+            <h1 className="text-lg font-medium text-gray-900">
+              {getModeLabel(quizSettings.mode)}
+            </h1>
+            <div className="text-sm text-gray-600">
+              Niveau : {getDifficultyLabel(quizSettings.difficulty)}
             </div>
           </div>
         </header>
+
         <main className="flex-grow container mx-auto px-4 py-6 max-w-3xl">
           <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
             <div className="mb-6">
               <div className="flex justify-between text-sm text-gray-600 mb-3">
-              <span>
-                {answeredCount}/{questions.length} questions répondues
-              </span>
-                <span>
-                Question {currentQuestionIndex + 1}/{questions.length}
-              </span>
+                <span>{answeredCount}/{TOTAL_QUESTIONS} répondues</span>
+                <span>Question {currentQuestionIndex + 1}/{TOTAL_QUESTIONS}</span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-1.5">
                 <div
                     className="bg-gray-900 h-1.5 rounded-full transition-all duration-300"
-                    style={{ width: `${progressPercentage}%` }}
-                ></div>
+                    style={{ width: `${progress}%` }}
+                />
               </div>
             </div>
+
             <QuestionCard
                 question={currentQuestion}
                 selectedAnswer={userAnswers[currentQuestionIndex]}
                 onSelectAnswer={answerIndex => onSubmitAnswer(currentQuestionIndex, answerIndex)}
                 showCorrectAnswer={false}
             />
+
             <div className="flex justify-between mt-8">
               <button
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handlePrevious}
                   disabled={currentQuestionIndex === 0}
+                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
               >
                 Précédente
               </button>
-              {currentQuestionIndex < questions.length - 1 ? (
+
+              {currentQuestionIndex < TOTAL_QUESTIONS - 1 ? (
                   <button
-                      className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
                       onClick={handleNext}
+                      className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
                   >
                     Suivante
                   </button>
               ) : (
                   <button
-                      className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
                       onClick={handleSubmit}
+                      className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
                   >
                     Terminer
                   </button>
               )}
             </div>
           </div>
+
           <div className="text-center">
             <button
                 className="text-gray-600 hover:text-gray-900 text-sm font-medium"

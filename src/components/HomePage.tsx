@@ -9,36 +9,22 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
   const [level, setLevel] = useState('');
   const [error, setError] = useState('');
 
-  // Labels certif Unity
   const levels = [
-    { id: 'user', label: 'Certified User' },          // débutant
-    { id: 'pro', label: 'Certified Associate' },  // intermédiaire
-    { id: 'expert', label: 'Certified Professional' },      // expert/senior
+    { id: 'user', label: 'Certified User' },
+    { id: 'associate', label: 'Certified Associate' },
+    { id: 'pro', label: 'Certified Professional' },
   ];
 
-  // Active qu’une seule catégorie, mais déjà prêt pour la suite
   const categories = [
-    { id: 'fundamentals', label: 'Fundamentals' },
+    { id: 'fundamentals', label: 'Fondamentaux' },
+    { id: 'scripting', label: 'Scripting & C#' },
+    /*{ id: 'ui', label: 'Interface Utilisateur' },
+    { id: 'animation', label: 'Animation' },
+    { id: 'gameplay', label: 'Gameplay & Physique' },
+    { id: 'graphics', label: 'Graphismes & Rendu' },
+    { id: 'performance', label: 'Optimisation & Performances' },
+    { id: 'build', label: 'Build & Publication' },*/
     { id: 'mixed', label: 'Mixte' },
-    { id: 'UI', label: 'UI' },
-    { id: 'XR', label: 'XR / AR / VR' },
-    { id: 'Scripting', label: 'Scripting / C#' },
-    { id: 'Physique', label: 'Physique' },
-    { id: 'Asset Management', label: 'Asset Management' },
-    { id: 'Lighting/Rendering', label: 'Éclairage' },
-    { id: 'Profiling/Debugging', label: 'Profiling / Optimisation' },
-    { id: 'Version Control', label: 'Version Control' },
-    { id: 'Testing/QA', label: 'Testing/QA' },
-    { id: 'Build', label: 'Build / Déploiement' },
-    { id: 'Animation', label: 'Animation' },
-    { id: 'Shaders', label: 'Shaders / Matériaux' },
-    { id: 'Audio', label: 'Audio' },
-    /*{ id: 'Input', label: 'Input / Contrôles' },
-    { id: 'AI', label: 'Navigation / IA' },
-    { id: 'Scene', label: 'Scene Management' },
-    { id: 'Editor', label: 'Editor Scripting' },
-    { id: '2D3D', label: '2D vs 3D' },
-    { id: 'Misc', label: 'Divers' },*/
   ];
 
   const handleStartQuiz = () => {
@@ -62,19 +48,21 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
               Quiz Interactif Unity
             </h1>
             <p className="text-gray-600 text-center">
-              Sélectionnez la catégorie et le niveau de certification pour commencer
+              Choisissez une catégorie et un niveau pour répondre à 10 questions aléatoires
             </p>
           </header>
           <section className="space-y-8">
             <div>
-              <h2 className="text-lg font-medium text-gray-900 mb-4">
-                Niveau de certification
-              </h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-4">Niveau de certification</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {levels.map(item => (
                     <button
                         key={item.id}
-                        className={`py-2 px-3 rounded-md border transition-colors font-semibold ${level === item.id ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'}`}
+                        className={`py-2 px-3 rounded-md border transition-colors font-semibold ${
+                            level === item.id
+                                ? 'bg-gray-900 text-white border-gray-900'
+                                : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+                        }`}
                         onClick={() => setLevel(item.id)}
                     >
                       {item.label}
@@ -83,14 +71,16 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
               </div>
             </div>
             <div>
-              <h2 className="text-lg font-medium text-gray-900 mb-4">
-                Catégorie
-              </h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-4">Catégorie</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {categories.map(item => (
                     <button
                         key={item.id}
-                        className={`py-3 px-4 rounded-md border transition-colors font-semibold text-sm ${category === item.id ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'}`}
+                        className={`py-3 px-4 rounded-md border transition-colors font-semibold text-sm ${
+                            category === item.id
+                                ? 'bg-gray-900 text-white border-gray-900'
+                                : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
+                        }`}
                         onClick={() => setCategory(item.id)}
                     >
                       {item.label}
