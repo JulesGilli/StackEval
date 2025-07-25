@@ -1,53 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import { QuizResult } from './AuthPage';
-import { fetchUserQuizHistory } from '../utils/supabaseHelpers';
+import React from 'react';
+import { UserData } from './AuthPage';
 
 interface ProfilePageProps {
-    userData: {
-        id: string;
-        email: string;
-    };
+    userData: UserData;
     onLogout: () => void;
     onStartNewQuiz: () => void;
 }
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNewQuiz }) => {
-    const [username, setUsername] = useState('');
-    const [unlockedLevels, setUnlockedLevels] = useState<string[]>([]);
-    const [quizHistory, setQuizHistory] = useState<QuizResult[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadProfile = async () => {
-            setLoading(true);
-            try {
-                const { data: profileData, error: profileError } = await supabase
-                    .from('profiles')
-                    .select('username, unlockedLevels')
-                    .eq('id', userData.id)
-                    .single();
-
-                if (profileError) throw new Error(profileError.message);
-
-                setUsername(profileData.username || '');
-                setUnlockedLevels(profileData.unlockedLevels || []);
-
-                const history = await fetchUserQuizHistory(userData.id);
-                setQuizHistory(history);
-            } catch (err) {
-                console.error("Erreur lors du chargement du profil :", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadProfile();
-    }, [userData.id]);
+const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onStartNewQuiz }) => {
+    const { username, email, unlockedLevels, quizHistory } = userData;
 
     const totalQuizzes = quizHistory.length;
     const averageScore =
-        totalQuizzes > 0 ? quizHistory.reduce((sum, quiz) => sum + quiz.score, 0) / totalQuizzes : 0;
+        totalQuizzes > 0
+            ? quizHistory.reduce((sum, quiz) => sum + quiz.score, 0) / totalQuizzes
+            : 0;
+
     const recentQuizzes = [...quizHistory]
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .slice(0, 5);
@@ -60,14 +28,14 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNe
             easy: 'Facile',
             medium: 'Moyen',
             hard: 'Difficile',
-            expert: 'Expert'
+            expert: 'Expert',
         });
 
     const getModeLabel = (mode: string) =>
         getLabel(mode, {
             unity: 'Unity',
             csharp: 'C#',
-            mixed: 'Mixte'
+            mixed: 'Mixte',
         });
 
     const formatDate = (dateString: string) => {
@@ -77,7 +45,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNe
             month: '2-digit',
             year: 'numeric',
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
         }).format(date);
     };
 
@@ -94,17 +62,13 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNe
     const modeStats = computeStats('mode');
     const difficultyStats = computeStats('difficulty');
 
-    if (loading) {
-        return <div className="text-center py-12 text-gray-500">Chargement du profil…</div>;
-    }
-
     return (
         <div className="min-h-screen bg-gray-50">
             <main className="container mx-auto px-4 py-8 max-w-4xl">
                 <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
                     <header className="mb-8">
                         <h1 className="text-2xl font-bold text-gray-900 mb-2">Profil de {username}</h1>
-                        <p className="text-gray-600">{userData.email}</p>
+                        <p className="text-gray-600">{email}</p>
                     </header>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -141,7 +105,9 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNe
                                     <tr key={mode} className="border-b">
                                         <td className="py-2 px-4">{getModeLabel(mode)}</td>
                                         <td className="py-2 px-4 text-center">{stats.count}</td>
-                                        <td className="py-2 px-4 text-center">{(stats.totalScore / stats.count).toFixed(1)}%</td>
+                                        <td className="py-2 px-4 text-center">
+                                            {(stats.totalScore / stats.count).toFixed(1)}%
+                                        </td>
                                     </tr>
                                 ))}
                                 </tbody>
@@ -166,7 +132,9 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userData, onLogout, onStartNe
                                     <tr key={difficulty} className="border-b">
                                         <td className="py-2 px-4">{getDifficultyLabel(difficulty)}</td>
                                         <td className="py-2 px-4 text-center">{stats.count}</td>
-                                        <td className="py-2 px-4 text-center">{(stats.totalScore / stats.count).toFixed(1)}%</td>
+                                        <td className="py-2 px-4 text-center">
+                                            {(stats.totalScore / stats.count).toFixed(1)}%
+                                        </td>
                                     </tr>
                                 ))}
                                 </tbody>
