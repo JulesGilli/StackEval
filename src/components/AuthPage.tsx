@@ -8,7 +8,7 @@ export interface UserData {
     email: string;
     password: string;
     quizHistory: QuizResult[];
-    unlockedLevels: string[]; // ✅ ajout manquant
+    unlockedLevels: string[];
 }
 
 export interface QuizResult {

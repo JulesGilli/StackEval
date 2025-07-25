@@ -39,7 +39,7 @@ function pickQuestions(
 }
 
 export function App() {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [currentScreen, setCurrentScreen] = useState<'auth' | 'home' | 'quiz' | 'results' | 'profile'>('auth');
 
   const [quizSettings, setQuizSettings] = useState({
@@ -159,7 +159,7 @@ export function App() {
 
         {currentScreen === 'profile' && user && (
             <ProfilePage
-                userData={user}
+                userData={{ id: user.id, email: user.email }}
                 onLogout={handleLogout}
                 onStartNewQuiz={() => setCurrentScreen('home')}
             />
