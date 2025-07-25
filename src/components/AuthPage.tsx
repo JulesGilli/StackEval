@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {supabase} from '../lib/supabaseClient'
+import { fetchUserQuizHistory } from '../utils/supabaseHelpers';
 
 export interface UserData {
     id: string
@@ -59,7 +60,7 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
                     username: user.user_metadata?.username || '',
                     email: user.email || '',
                     password: '',
-                    quizHistory: [],
+                    quizHistory: await fetchUserQuizHistory(user.id),
                 }
                 onLogin(userData)
             } else {
