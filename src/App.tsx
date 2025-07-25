@@ -6,7 +6,7 @@ import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
 import { questionsData, Question } from './data/Questions';
-import { updateUserQuizHistory } from './utils/supabaseHelpers';
+import {saveQuizResult} from "./utils/supabaseHelpers.ts";
 
 
 function shuffle<T>(arr: T[]): T[] {
@@ -81,6 +81,7 @@ export function App() {
     setUserAnswers(newAnswers);
   };
 
+
   const finishQuiz = async () => {
     const correct = selectedQuestions.filter(
         (q, i) => userAnswers[i] === q.correctAnswer
@@ -97,16 +98,14 @@ export function App() {
     };
 
     if (user) {
-      const updatedHistory = [...user.quizHistory, newResult];
       const updatedUser = {
         ...user,
-        quizHistory: updatedHistory
+        quizHistory: [...user.quizHistory, newResult]
       };
-
       setUser(updatedUser);
 
       try {
-        await updateUserQuizHistory(user.id, updatedHistory);
+        await saveQuizResult(user.id, newResult); 
       } catch (err) {
         console.error('Erreur en sauvegardant les résultats du quiz :', err);
       }
@@ -114,7 +113,6 @@ export function App() {
 
     setCurrentScreen('results');
   };
-
 
   const restartQuiz = () => {
     setCurrentScreen('home');

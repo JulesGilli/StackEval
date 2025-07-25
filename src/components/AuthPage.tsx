@@ -1,86 +1,86 @@
-import React, {useState} from 'react'
-import {supabase} from '../lib/supabaseClient'
+import React, { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 import { fetchUserQuizHistory } from '../utils/supabaseHelpers';
 
 export interface UserData {
-    id: string
-    username: string
-    email: string
-    password: string
-    quizHistory: QuizResult[]
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+    quizHistory: QuizResult[];
+    unlockedLevels: string[]; // ✅ ajout manquant
 }
 
 export interface QuizResult {
-    id: string
-    date: string
-    mode: string
-    difficulty: string
-    score: number
-    totalQuestions: number
-    correctAnswers: number
+    id: string;
+    date: string;
+    mode: string;
+    difficulty: string;
+    score: number;
+    totalQuestions: number;
+    correctAnswers: number;
 }
 
 interface AuthPageProps {
-    onLogin: (userData: UserData) => void
-    onRegister: (userData: UserData) => void
+    onLogin: (userData: UserData) => void;
+    onRegister: (userData: UserData) => void;
 }
 
-const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
-    const [isLogin, setIsLogin] = useState(true)
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
+    const [isLogin, setIsLogin] = useState(true);
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError('')
+        e.preventDefault();
 
         if (!email || !password || (!isLogin && !username)) {
-            setError('Veuillez remplir tous les champs')
-            return
+            setError("Veuillez remplir tous les champs.");
+            return;
         }
 
-        if (!isLogin && password.length < 6) {
-            setError('Le mot de passe doit contenir au moins 6 caractères')
-            return
+        const { data: authData, error: authError } = isLogin
+            ? await supabase.auth.signInWithPassword({ email, password })
+            : await supabase.auth.signUp({ email, password });
+
+        if (authError || !authData.user?.id) {
+            setError(authError?.message || "Erreur d'authentification");
+            return;
         }
 
-        try {
-            if (isLogin) {
-                const {data, error} = await supabase.auth.signInWithPassword({
-                    email,
-                    password,
-                })
-                if (error) throw error
+        const userId = authData.user.id;
 
-                const user = data.user
-                const userData: UserData = {
-                    id: user.id,
-                    username: user.user_metadata?.username || '',
-                    email: user.email || '',
-                    password: '',
-                    quizHistory: await fetchUserQuizHistory(user.id),
-                }
-                onLogin(userData)
-            } else {
-                const { error } = await supabase.auth.signUp({
-                    email,
-                    password,
-                    options: {
-                        data: { username },
-                    },
-                })
-
-                if (error) throw error
-
-                setError("Un lien de confirmation a été envoyé à votre adresse email. Veuillez confirmer votre compte avant de vous connecter.")
-                return // BLOQUE l'accès, pas de onRegister
-            }
-        } catch (err: any) {
-            setError(err.message || 'Erreur inconnue')
+        // Si inscription : on crée le profil en DB
+        if (!isLogin) {
+            await supabase.from('profiles').insert({
+                id: userId,
+                username,
+                unlockedLevels: ['user'] // ou [] selon ce que tu veux
+            });
         }
-    }
+
+        // On récupère le profil depuis Supabase
+        const { data: profileData } = await supabase
+            .from('profiles')
+            .select('username, unlockedLevels')
+            .eq('id', userId)
+            .single();
+
+        const unlockedLevels: string[] = profileData?.unlockedLevels ?? [];
+        const loadedUsername = profileData?.username ?? '';
+        const quizHistory = await fetchUserQuizHistory(userId);
+
+        onLogin({
+            id: userId,
+            username: loadedUsername,
+            email,
+            password,
+            quizHistory,
+            unlockedLevels,
+        });
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
@@ -161,7 +161,7 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AuthPage
+export default AuthPage;

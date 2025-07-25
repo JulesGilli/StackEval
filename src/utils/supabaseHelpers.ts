@@ -36,3 +36,17 @@ export const unlockNextLevel = async (userId: string, newLevel: string): Promise
 
     if (updateError) throw new Error(updateError.message);
 };
+
+export const saveQuizResult = async (userId: string, result: QuizResult): Promise<void> => {
+    const { error } = await supabase.from('quiz_results').insert({
+        user_id: userId,
+        date: result.date,
+        mode: result.mode,
+        difficulty: result.difficulty,
+        score: result.score,
+        totalQuestions: result.totalQuestions,
+        correctAnswers: result.correctAnswers,
+    });
+
+    if (error) throw new Error(error.message);
+};

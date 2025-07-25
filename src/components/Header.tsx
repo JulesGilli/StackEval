@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({
                             className="text-gray-700 hover:text-gray-900"
                             onClick={onProfile}
                         >
-                            {username}
+                            {username || 'Profil'}
                         </button>
                         <button
                             className="text-sm text-gray-600 hover:text-gray-900"
