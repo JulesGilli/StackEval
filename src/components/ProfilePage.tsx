@@ -1,10 +1,35 @@
-import React, {} from 'react'
-import { UserData } from './AuthPage'
+import { useEffect, useState } from 'react'
+import { QuizResult, UserData } from '../types/user'
+import { supabase } from '../lib/supabaseClient'
+
 interface ProfilePageProps {
     userData: UserData
     onLogout: () => void
     onStartNewQuiz: () => void
 }
+
+const [quizHistory, setQuizHistory] = useState<QuizResult[]>([])
+
+
+useEffect(() => {
+    const loadHistory = async () => {
+        const { data, error } = await supabase
+            .from('quiz_results')
+            .select('*')
+            .eq('user_id', userData.id)
+            .order('date', { ascending: false })
+
+        if (error) {
+            console.error('Erreur chargement historique quiz :', error.message)
+            return
+        }
+
+        setQuizHistory(data || [])
+    }
+
+    loadHistory()
+}, [userData.id])
+
 const ProfilePage: React.FC<ProfilePageProps> = ({
                                                      userData,
                                                      onStartNewQuiz,
