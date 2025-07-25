@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 interface QuestionCardProps {
     question: {
-        id: number;
+        id: string;
         question: string;
         options: string[];
         correctAnswer: number;
@@ -43,6 +43,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         if (index === shuffledOptions.findIndex(opt => opt.originalIndex === question.correctAnswer)) {
             return 'bg-green-50 border-green-200 ' + baseClasses;
         } else if (selectedAnswer === shuffledOptions[index].originalIndex) {
+            
             return 'bg-red-50 border-red-200 ' + baseClasses;
         } else {
             return 'border-gray-200 ' + baseClasses;

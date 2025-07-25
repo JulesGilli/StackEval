@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import QuestionCard from './QuestionCard';
+import { saveQuizResultToDB } from '../utils/supabaseApi';
+import { supabase } from '../lib/supabaseClient';  
+
 
 interface Question {
   id: string;
@@ -20,6 +23,7 @@ interface QuizPageProps {
     difficulty: string;
     mode: string;
   };
+  userId: string;
 }
 
 const TOTAL_QUESTIONS = 10;
@@ -29,7 +33,8 @@ const QuizPage: React.FC<QuizPageProps> = ({
                                              userAnswers,
                                              onSubmitAnswer,
                                              onFinishQuiz,
-                                             quizSettings
+                                             quizSettings,
+                                             userId
                                            }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -45,14 +50,45 @@ const QuizPage: React.FC<QuizPageProps> = ({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const unanswered = userAnswers.filter(a => a === null).length;
     if (unanswered > 0) {
       const confirmMsg = `Vous avez ${unanswered} question${unanswered > 1 ? 's' : ''} sans réponse. Voulez-vous continuer ?`;
       if (!window.confirm(confirmMsg)) return;
     }
+
+    const correctAnswers = questions.reduce((count, q, i) => {
+      return userAnswers[i] === q.correctAnswer ? count + 1 : count;
+    }, 0);
+
+    const score = Math.round((correctAnswers / TOTAL_QUESTIONS) * 100);
+
+    try {
+      await saveQuizResultToDB({
+        user_id: userId,
+        mode: quizSettings.mode,
+        difficulty: quizSettings.difficulty,
+        score,
+        totalQuestions: TOTAL_QUESTIONS,
+        correctAnswers
+      });
+
+      // Déblocage si score >= 80
+      if (score >= 80) {
+        await unlockNextLevel(userId, quizSettings.difficulty);
+      }
+
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error("Erreur enregistrement résultat :", err.message);
+      } else {
+        console.error("Erreur inconnue :", err);
+      }
+    }
+
     onFinishQuiz();
   };
+
 
   const getModeLabel = (mode: string) => {
     const map: Record<string, string> = {

@@ -6,6 +6,8 @@ import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
 import { questionsData, Question } from './data/Questions';
+import { updateUserQuizHistory } from './utils/supabaseHelpers';
+
 
 function shuffle<T>(arr: T[]): T[] {
   const array = arr.slice();
@@ -79,7 +81,7 @@ export function App() {
     setUserAnswers(newAnswers);
   };
 
-  const finishQuiz = () => {
+  const finishQuiz = async () => {
     const correct = selectedQuestions.filter(
         (q, i) => userAnswers[i] === q.correctAnswer
     ).length;
@@ -91,18 +93,28 @@ export function App() {
       difficulty: quizSettings.difficulty,
       score: (correct / selectedQuestions.length) * 100,
       totalQuestions: selectedQuestions.length,
-      correctAnswers: correct
+      correctAnswers: correct,
     };
 
     if (user) {
-      setUser({
+      const updatedHistory = [...user.quizHistory, newResult];
+      const updatedUser = {
         ...user,
-        quizHistory: [...user.quizHistory, newResult]
-      });
+        quizHistory: updatedHistory
+      };
+
+      setUser(updatedUser);
+
+      try {
+        await updateUserQuizHistory(user.id, updatedHistory);
+      } catch (err) {
+        console.error('Erreur en sauvegardant les résultats du quiz :', err);
+      }
     }
 
     setCurrentScreen('results');
   };
+
 
   const restartQuiz = () => {
     setCurrentScreen('home');
@@ -134,6 +146,7 @@ export function App() {
                 onSubmitAnswer={submitAnswer}
                 onFinishQuiz={finishQuiz}
                 quizSettings={quizSettings}
+                userId={user.id}
             />
         )}
 

@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-interface AuthPageProps {
-    onLogin: (userData: UserData) => void
-    onRegister: (userData: UserData) => void
-}
+import React, {useState} from 'react'
+import {supabase} from '../lib/supabaseClient'
+
 export interface UserData {
     id: string
     username: string
@@ -10,6 +8,7 @@ export interface UserData {
     password: string
     quizHistory: QuizResult[]
 }
+
 export interface QuizResult {
     id: string
     date: string
@@ -19,53 +18,69 @@ export interface QuizResult {
     totalQuestions: number
     correctAnswers: number
 }
-const AuthPage: React.FC<AuthPageProps> = ({ onLogin, onRegister }) => {
+
+interface AuthPageProps {
+    onLogin: (userData: UserData) => void
+    onRegister: (userData: UserData) => void
+}
+
+const AuthPage: React.FC<AuthPageProps> = ({onLogin, onRegister}) => {
     const [isLogin, setIsLogin] = useState(true)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const handleSubmit = (e: React.FormEvent) => {
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setError('')
-        if (isLogin) {
-            // Validation for login
-            if (!email || !password) {
-                setError('Veuillez remplir tous les champs')
-                return
+
+        if (!email || !password || (!isLogin && !username)) {
+            setError('Veuillez remplir tous les champs')
+            return
+        }
+
+        if (!isLogin && password.length < 6) {
+            setError('Le mot de passe doit contenir au moins 6 caractères')
+            return
+        }
+
+        try {
+            if (isLogin) {
+                const {data, error} = await supabase.auth.signInWithPassword({
+                    email,
+                    password,
+                })
+                if (error) throw error
+
+                const user = data.user
+                const userData: UserData = {
+                    id: user.id,
+                    username: user.user_metadata?.username || '',
+                    email: user.email || '',
+                    password: '',
+                    quizHistory: [],
+                }
+                onLogin(userData)
+            } else {
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        data: { username },
+                    },
+                })
+
+                if (error) throw error
+
+                setError("Un lien de confirmation a été envoyé à votre adresse email. Veuillez confirmer votre compte avant de vous connecter.")
+                return // BLOQUE l'accès, pas de onRegister
             }
-            // In a real app, we would call an API here
-            // For demo, we'll simulate login with mock data
-            const userData: UserData = {
-                id: '1',
-                username: email.split('@')[0],
-                email,
-                password,
-                quizHistory: [],
-            }
-            onLogin(userData)
-        } else {
-            // Validation for register
-            if (!username || !email || !password) {
-                setError('Veuillez remplir tous les champs')
-                return
-            }
-            if (password.length < 6) {
-                setError('Le mot de passe doit contenir au moins 6 caractères')
-                return
-            }
-            // In a real app, we would call an API here
-            // For demo, we'll simulate registration with mock data
-            const userData: UserData = {
-                id: Date.now().toString(),
-                username,
-                email,
-                password,
-                quizHistory: [],
-            }
-            onRegister(userData)
+        } catch (err: any) {
+            setError(err.message || 'Erreur inconnue')
         }
     }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
             <div className="w-full max-w-md bg-white rounded-lg shadow-sm p-6 sm:p-8">
@@ -82,10 +97,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin, onRegister }) => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {!isLogin && (
                         <div>
-                            <label
-                                htmlFor="username"
-                                className="block text-sm font-medium text-gray-700 mb-1"
-                            >
+                            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
                                 Nom d'utilisateur
                             </label>
                             <input
@@ -99,10 +111,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin, onRegister }) => {
                         </div>
                     )}
                     <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700 mb-1"
-                        >
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                             Email
                         </label>
                         <input
@@ -115,10 +124,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin, onRegister }) => {
                         />
                     </div>
                     <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-sm font-medium text-gray-700 mb-1"
-                        >
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                             Mot de passe
                         </label>
                         <input
@@ -156,4 +162,5 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin, onRegister }) => {
         </div>
     )
 }
+
 export default AuthPage
