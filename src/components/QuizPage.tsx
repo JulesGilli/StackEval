@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import QuestionCard from './QuestionCard';
 import { saveQuizResultToDB } from '../utils/supabaseApi';
-import { supabase } from '../lib/supabaseClient';  
-
 
 interface Question {
   id: string;
@@ -34,7 +32,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
                                              onSubmitAnswer,
                                              onFinishQuiz,
                                              quizSettings,
-                                             userId
+                                             userId,
                                            }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -70,25 +68,20 @@ const QuizPage: React.FC<QuizPageProps> = ({
         difficulty: quizSettings.difficulty,
         score,
         totalQuestions: TOTAL_QUESTIONS,
-        correctAnswers
+        correctAnswers,
       });
-
-      // Déblocage si score >= 80
-      if (score >= 80) {
-        await unlockNextLevel(userId, quizSettings.difficulty);
-      }
-
     } catch (err) {
-      if (err instanceof Error) {
-        console.error("Erreur enregistrement résultat :", err.message);
-      } else {
-        console.error("Erreur inconnue :", err);
-      }
+      const message =
+          err instanceof Error
+              ? err.message
+              : typeof err === 'string'
+                  ? err
+                  : 'Erreur inconnue';
+      console.error('Erreur enregistrement résultat :', message);
     }
 
     onFinishQuiz();
   };
-
 
   const getModeLabel = (mode: string) => {
     const map: Record<string, string> = {
@@ -103,7 +96,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
     const map: Record<string, string> = {
       user: 'Certified User',
       associate: 'Certified Associate',
-      pro: 'Certified Professional'
+      pro: 'Certified Professional',
     };
     return map[difficulty] || difficulty;
   };
@@ -143,7 +136,9 @@ const QuizPage: React.FC<QuizPageProps> = ({
             <QuestionCard
                 question={currentQuestion}
                 selectedAnswer={userAnswers[currentQuestionIndex]}
-                onSelectAnswer={answerIndex => onSubmitAnswer(currentQuestionIndex, answerIndex)}
+                onSelectAnswer={answerIndex =>
+                    onSubmitAnswer(currentQuestionIndex, answerIndex)
+                }
                 showCorrectAnswer={false}
             />
 
