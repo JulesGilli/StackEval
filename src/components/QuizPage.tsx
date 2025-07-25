@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import QuestionCard from './QuestionCard';
 import { saveQuizResultToDB } from '../utils/supabaseApi';
-import { supabase } from '../lib/supabaseClient';  
 
 
 interface Question {
@@ -74,9 +73,9 @@ const QuizPage: React.FC<QuizPageProps> = ({
       });
 
       // Déblocage si score >= 80
-      if (score >= 80) {
+      /*if (score >= 80) {
         await unlockNextLevel(userId, quizSettings.difficulty);
-      }
+      }*/
 
     } catch (err) {
       if (err instanceof Error) {

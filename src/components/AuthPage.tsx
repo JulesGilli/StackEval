@@ -24,7 +24,7 @@ interface AuthPageProps {
     onRegister: (userData: UserData) => void
 }
 
-const AuthPage: React.FC<AuthPageProps> = ({onLogin, onRegister}) => {
+const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
     const [isLogin, setIsLogin] = useState(true)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -63,7 +63,7 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin, onRegister}) => {
                 }
                 onLogin(userData)
             } else {
-                const { data, error } = await supabase.auth.signUp({
+                const { error } = await supabase.auth.signUp({
                     email,
                     password,
                     options: {
