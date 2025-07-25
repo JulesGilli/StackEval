@@ -132,7 +132,7 @@ export function App() {
         )}
 
         {currentScreen === 'auth' && (
-            <AuthPage onLogin={handleLogin}  />
+            <AuthPage onLogin={handleLogin} onRegister={handleRegister} />
         )}
 
         {currentScreen === 'home' && user && (
