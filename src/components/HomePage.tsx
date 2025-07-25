@@ -45,10 +45,10 @@ const HomePage: React.FC<HomePageProps> = ({ onStartQuiz }) => {
         <div className="w-full max-w-xl bg-white rounded-lg shadow-sm p-6 sm:p-8">
           <header className="mb-10">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 text-center">
-              Quiz Interactif Unity
+              StackEval
             </h1>
             <p className="text-gray-600 text-center">
-              Choisissez une catégorie et un niveau pour répondre à 10 questions aléatoires
+              Êtes-vous prêt pour la certif ? Faites le test.
             </p>
           </header>
           <section className="space-y-8">

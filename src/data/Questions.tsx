@@ -710,7 +710,157 @@ export const questionsData: Question[] = [
         explanation: "SetActive(false) rend un GameObject inactif dans la hiérarchie. Cela désactive également tous ses enfants, et empêche tous les MonoBehaviours associés de recevoir des callbacks comme Update.",
         category: "scripting",
         level: "associate"
+    },
+    {
+        id: "scripting-21",
+        question: "Pourquoi est-il déconseillé d’utiliser des exceptions pour contrôler le flux logique dans Unity ?",
+        options: [
+            "Car cela masque les erreurs de compilation",
+            "Car cela entraîne un surcoût important en performances et complique le profiling",
+            "Car Unity ne supporte pas le bloc try/catch dans les builds",
+            "Car cela empêche l’accès aux GameObjects"
+        ],
+        correctAnswer: 1,
+        explanation: "Utiliser les exceptions pour la logique de contrôle est lourd en termes de performance, nuit à la lisibilité et complique le debugging et le profiling. Les exceptions doivent être réservées aux cas inattendus.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-22",
+        question: "Quelle est une des limitations critiques du mot-clé 'async' dans un contexte Unity classique ?",
+        options: [
+            "Il empêche l’usage des coroutines",
+            "Il ne fonctionne pas avec le Garbage Collector",
+            "Il ne garantit pas l’exécution sur le thread principal",
+            "Il bloque la boucle de rendu tant que la tâche n’est pas terminée"
+        ],
+        correctAnswer: 2,
+        explanation: "Le mot-clé 'async' peut exécuter du code sur des threads secondaires, mais Unity ne permet pas d'accéder à son API (ex: GameObject, Transform...) hors du thread principal, ce qui introduit des risques si mal géré.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-23",
+        question: "Quel est l’avantage principal d’utiliser un struct `readonly` pour représenter des données en Unity ?",
+        options: [
+            "Il permet l’héritage multiple",
+            "Il autorise les champs privés dans l’Inspector",
+            "Il évitant les mutations involontaires",
+            "Il est automatiquement sérialisé par Unity"
+        ],
+        correctAnswer: 2,
+        explanation: "Un struct `readonly` est immuable : il garantit que ses champs ne peuvent pas être modifiés après construction, ce qui réduit les effets de bord, facilite le raisonnement sur le code et peut améliorer la sécurité multithread.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-24",
+        question: "Pourquoi est-il déconseillé d'utiliser `FindObjectOfType<T>()` dans des méthodes appelées fréquemment (ex : Update) ?",
+        options: [
+            "Parce qu’elle retourne une référence temporaire",
+            "Parce qu’elle est incompatible avec les interfaces",
+            "Parce qu’elle est coûteuse en performances à chaque appel",
+            "Parce qu’elle modifie l’ordre d’exécution des scripts"
+        ],
+        correctAnswer: 2,
+        explanation: "`FindObjectOfType<T>()` parcourt tous les objets actifs dans la scène à chaque appel, ce qui peut provoquer des ralentissements importants si utilisé dans des boucles fréquentes comme `Update`. Il vaut mieux mettre en cache la référence au démarrage.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-25",
+        question: "Quelle est une limite importante de l'utilisation de `ScriptableObject` pour gérer un état dynamique partagé ?",
+        options: [
+            "Ils ne peuvent pas être utilisés dans des builds",
+            "Leurs données persistent entre les sessions Play dans l’éditeur",
+            "Ils n’ont pas accès au système de serialization de Unity",
+            "Ils ne peuvent pas référencer d’autres assets Unity"
+        ],
+        correctAnswer: 1,
+        explanation: "Les `ScriptableObject` conservent les modifications en mémoire même après l’arrêt du mode Play dans l’éditeur, ce qui peut provoquer des comportements inattendus si on les utilise pour stocker des états dynamiques sans les réinitialiser correctement.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-26",
+        question: "Quelle est la conséquence d’un appel `Destroy(this)` dans une coroutine sur le comportement du script ?",
+        options: [
+            "La coroutine s'arrête immédiatement",
+            "L’objet est détruit au frame suivant mais la coroutine continue jusqu’au bout",
+            "L’objet est désactivé mais pas détruit",
+            "La coroutine est mise en pause jusqu’à la destruction complète"
+        ],
+        correctAnswer: 1,
+        explanation: "`Destroy(this)` planifie la destruction du MonoBehaviour pour la fin du frame. Les coroutines en cours continuent donc à s’exécuter jusqu’à la destruction effective, ce qui peut entraîner des effets de bord si on s'attend à un arrêt immédiat.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-27",
+        question: "Quelle est une contrainte courante liée à l’utilisation du polymorphisme avec des `MonoBehaviour` dans Unity ?",
+        options: [
+            "Unity ne supporte pas les classes abstraites dans les scripts",
+            "L’Inspector ne sait pas gérer les champs d’interface ou de classe parente.",
+            "Il est impossible d’appeler des méthodes virtuelles depuis `Update()`",
+            "Les composants polymorphes causent des fuites mémoire"
+        ],
+        correctAnswer: 1,
+        explanation: "L’Inspector Unity ne permet pas de sérialiser automatiquement des champs de type interface ou classe de base. Résultat : on ne peut pas assigner facilement des implémentations polymorphes dans l’éditeur, sauf en utilisant des hacks comme les `ScriptableObject`, des wrappers ou de la sérialisation custom.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-28",
+        question: "Pourquoi est-il déconseillé de capturer une variable locale dans une lambda utilisée avec un event Unity ?",
+        options: [
+            "Cela empêche la compilation sur certaines plateformes",
+            "La variable capturée peut entraîner une fuite mémoire ou un comportement inattendu",
+            "Unity bloque automatiquement ce type de capture pour des raisons de sécurité",
+            "Les lambdas capturent uniquement des variables globales, jamais locales"
+        ],
+        correctAnswer: 1,
+        explanation: "Capturer une variable locale dans une lambda enregistrée sur un event (comme `button.onClick`) peut provoquer une fuite mémoire si l’événement n’est pas correctement nettoyé, car la fermeture retient la variable capturée même après la fin du scope.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-29",
+        question: "Quelle est une limite importante à connaître lorsqu’on utilise des méthodes async/await dans Unity ?",
+        options: [
+            "Elles ne sont pas compatibles avec les types génériques",
+            "Unity interdit totalement l’usage de async dans le Player",
+            "Le contexte Unity n’est pas automatiquement restauré après un await",
+            "Le garbage collector est désactivé dans les méthodes async"
+        ],
+        correctAnswer: 2,
+        explanation: "Après un `await`, l’exécution reprend sur un thread arbitraire si `ConfigureAwait(false)` est utilisé ou si le contexte n’est pas Unity. Cela peut causer des erreurs si l’on manipule des objets Unity (non thread-safe) hors du Main Thread.",
+        category: "scripting",
+        level: "pro"
+    },
+    {
+        id: "scripting-30",
+        question: "Pourquoi l'utilisation d'un `Span<T>` n'est-elle pas courante dans les projets Unity C# actuels ?",
+        options: [
+            "Car `Span<T>` est incompatible avec la gestion de mémoire managée de Unity",
+            "Car Unity ne permet pas d'utiliser `Span<T>` dans les builds WebGL",
+            "Car `Span<T>` impose l’usage du GC",
+            "Car `Span<T>` nécessite une allocation mémoire explicite à chaque appel"
+        ],
+        correctAnswer: 1,
+        explanation: "`Span<T>` repose sur des fonctionnalités de bas niveau non supportées dans tous les backends Unity, en particulier WebGL. De plus, certaines versions de Mono utilisées par Unity ne le supportent pas pleinement.",
+        category: "scripting",
+        level: "pro"
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
