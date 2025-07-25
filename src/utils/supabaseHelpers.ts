@@ -1,5 +1,5 @@
 ﻿import {supabase} from "../lib/supabaseClient.ts";
-import {QuizResult} from "../components/AuthPage.tsx";
+import { QuizResult } from '../types/user';
 
 export const fetchUserQuizHistory = async (userId: string): Promise<QuizResult[]> => {
     const { data, error } = await supabase
@@ -37,7 +37,9 @@ export const unlockNextLevel = async (userId: string, newLevel: string): Promise
     if (updateError) throw new Error(updateError.message);
 };
 
-export const saveQuizResult = async (userId: string, result: QuizResult): Promise<void> => {
+export const saveQuizResult = async (userId: string, result: QuizResult) => {
+    console.log('➡️ Saving quiz result:', { userId, result });
+
     const { error } = await supabase.from('quiz_results').insert({
         user_id: userId,
         date: result.date,
@@ -45,8 +47,12 @@ export const saveQuizResult = async (userId: string, result: QuizResult): Promis
         difficulty: result.difficulty,
         score: result.score,
         totalQuestions: result.totalQuestions,
-        correctAnswers: result.correctAnswers,
+        correctAnswers: result.correctAnswers
     });
 
-    if (error) throw new Error(error.message);
+    if (error) {
+        console.error('❌ Supabase insert error:', error);
+        throw error;
+    }
 };
+

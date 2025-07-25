@@ -1,29 +1,8 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { fetchUserQuizHistory } from '../utils/supabaseHelpers';
-
-export interface UserData {
-    id: string;
-    username: string;
-    email: string;
-    password: string;
-    quizHistory: QuizResult[];
-    unlockedLevels: string[];
-}
-
-export interface QuizResult {
-    id: string;
-    date: string;
-    mode: string;
-    difficulty: string;
-    score: number;
-    totalQuestions: number;
-    correctAnswers: number;
-}
 
 interface AuthPageProps {
-    onLogin: (userData: UserData) => void;
-    onRegister: (userData: UserData) => void;
+    onLogin: (userId: string) => void;
 }
 
 const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
@@ -52,34 +31,15 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
 
         const userId = authData.user.id;
 
-        // Si inscription : on crée le profil en DB
         if (!isLogin) {
             await supabase.from('profiles').insert({
                 id: userId,
                 username,
-                unlockedLevels: ['user'] // ou [] selon ce que tu veux
+                unlockedLevels: ['user']
             });
         }
 
-        // On récupère le profil depuis Supabase
-        const { data: profileData } = await supabase
-            .from('profiles')
-            .select('username, unlockedLevels')
-            .eq('id', userId)
-            .single();
-
-        const unlockedLevels: string[] = profileData?.unlockedLevels ?? [];
-        const loadedUsername = profileData?.username ?? '';
-        const quizHistory = await fetchUserQuizHistory(userId);
-
-        onLogin({
-            id: userId,
-            username: loadedUsername,
-            email,
-            password,
-            quizHistory,
-            unlockedLevels,
-        });
+        onLogin(userId);
     };
 
     return (

@@ -1,4 +1,4 @@
-import { QuizResult } from '../components/AuthPage'
+import { QuizResult } from '../types/user';
 import { supabase } from '../lib/supabaseClient'
 
 /**

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import AuthPage, { UserData, QuizResult } from './components/AuthPage';
+import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
 import { questionsData, Question } from './data/Questions';
-import {saveQuizResult} from "./utils/supabaseHelpers.ts";
+import { saveQuizResult } from './utils/supabaseHelpers';
 
+import { QuizResult } from './types/user';
 
 function shuffle<T>(arr: T[]): T[] {
   const array = arr.slice();
@@ -39,7 +40,7 @@ function pickQuestions(
 }
 
 export function App() {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [currentScreen, setCurrentScreen] = useState<'auth' | 'home' | 'quiz' | 'results' | 'profile'>('auth');
 
   const [quizSettings, setQuizSettings] = useState({
@@ -50,18 +51,13 @@ export function App() {
   const [userAnswers, setUserAnswers] = useState<Array<number | null>>([]);
   const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
 
-  const handleLogin = (userData: UserData) => {
-    setUser(userData);
-    setCurrentScreen('home');
-  };
-
-  const handleRegister = (userData: UserData) => {
-    setUser(userData);
+  const handleLogin = (id: string) => {
+    setUserId(id);
     setCurrentScreen('home');
   };
 
   const handleLogout = () => {
-    setUser(null);
+    setUserId(null);
     setCurrentScreen('auth');
     setUserAnswers([]);
     setSelectedQuestions([]);
@@ -81,7 +77,6 @@ export function App() {
     setUserAnswers(newAnswers);
   };
 
-
   const finishQuiz = async () => {
     const correct = selectedQuestions.filter(
         (q, i) => userAnswers[i] === q.correctAnswer
@@ -97,15 +92,9 @@ export function App() {
       correctAnswers: correct,
     };
 
-    if (user) {
-      const updatedUser = {
-        ...user,
-        quizHistory: [...user.quizHistory, newResult]
-      };
-      setUser(updatedUser);
-
+    if (userId) {
       try {
-        await saveQuizResult(user.id, newResult); 
+        await saveQuizResult(userId, newResult);
       } catch (err) {
         console.error('Erreur en sauvegardant les résultats du quiz :', err);
       }
@@ -120,35 +109,35 @@ export function App() {
 
   return (
       <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-        {user && (
+        {userId && (
             <Header
-                isAuthenticated={!!user}
-                username={user.username}
+                isAuthenticated={true}
+                username={''} // à améliorer si tu veux afficher le nom
                 onLogout={handleLogout}
                 onProfile={() => setCurrentScreen('profile')}
             />
         )}
 
         {currentScreen === 'auth' && (
-            <AuthPage onLogin={handleLogin} onRegister={handleRegister} />
+            <AuthPage onLogin={handleLogin} />
         )}
 
-        {currentScreen === 'home' && user && (
+        {currentScreen === 'home' && userId && (
             <HomePage onStartQuiz={startQuiz} />
         )}
 
-        {currentScreen === 'quiz' && user && (
+        {currentScreen === 'quiz' && userId && (
             <QuizPage
                 questions={selectedQuestions}
                 userAnswers={userAnswers}
                 onSubmitAnswer={submitAnswer}
                 onFinishQuiz={finishQuiz}
                 quizSettings={quizSettings}
-                userId={user.id}
+                userId={userId}
             />
         )}
 
-        {currentScreen === 'results' && user && (
+        {currentScreen === 'results' && userId && (
             <ResultsPage
                 questions={selectedQuestions}
                 userAnswers={userAnswers}
@@ -157,14 +146,13 @@ export function App() {
             />
         )}
 
-        {currentScreen === 'profile' && user && (
+        {currentScreen === 'profile' && userId && (
             <ProfilePage
-                userData={user}
+                userId={userId}
                 onLogout={handleLogout}
                 onStartNewQuiz={() => setCurrentScreen('home')}
             />
         )}
-
       </div>
   );
 }
