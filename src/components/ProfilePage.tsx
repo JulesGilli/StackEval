@@ -10,34 +10,45 @@ interface ProfilePageProps {
 
 const ProfilePage: React.FC<ProfilePageProps> = ({ userId, onStartNewQuiz }) => {
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
+    const [email] = useState('');
     const [unlockedLevels, setUnlockedLevels] = useState<string[]>([]);
     const [quizHistory, setQuizHistory] = useState<QuizResult[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProfile = async () => {
+            console.log('🔎 Tentative de chargement du profil pour userId :', userId);
             setLoading(true);
             try {
                 const { data: profile, error: profileError } = await supabase
                     .from('profiles')
-                    .select('username, unlockedLevels')
+                    .select('username,unlockedLevels') // ✅ sans guillemets !
                     .eq('id', userId)
-                    .single();
+                    .maybeSingle();
+
                 if (profileError) throw profileError;
-                setUsername(profile.username || '');
-                setEmail(profile.email || '');
-                setUnlockedLevels(profile.unlockedLevels || []);
+
+                if (!profile) {
+                    console.warn('⚠️ Aucun profil trouvé pour cet utilisateur dans Supabase.');
+                    setUsername('');
+                    setUnlockedLevels([]);
+                    return;
+                }
+
+                setUsername(profile.username ?? '');
+                setUnlockedLevels(profile.unlockedLevels ?? []);
 
                 const { data: results, error: resultsError } = await supabase
                     .from('quiz_results')
                     .select('*')
                     .eq('user_id', userId)
                     .order('date', { ascending: false });
+
                 if (resultsError) throw resultsError;
+
                 setQuizHistory(results || []);
-            } catch (err) {
-                console.error('Erreur chargement profil :', err);
+            } catch (err: any) {
+                console.error('❌ Erreur chargement profil :', err.message || err);
             } finally {
                 setLoading(false);
             }

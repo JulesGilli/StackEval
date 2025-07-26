@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import React, {useState} from 'react';
+import {supabase} from '../lib/supabaseClient';
+import {createProfileIfMissing} from '../lib/createProfileIfMissing';
 
 interface AuthPageProps {
     onLogin: (userId: string) => void;
 }
 
-const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
+const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
     const [isLogin, setIsLogin] = useState(true);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,26 +22,43 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
             return;
         }
 
-        const { data: authData, error: authError } = isLogin
-            ? await supabase.auth.signInWithPassword({ email, password })
-            : await supabase.auth.signUp({ email, password });
+        setError('');
+        setMessage('');
 
-        if (authError || !authData.user?.id) {
-            setError(authError?.message || "Erreur d'authentification");
-            return;
-        }
+        if (isLogin) {
+            const {data: authData, error: authError} = await supabase.auth.signInWithPassword({email, password});
 
-        const userId = authData.user.id;
+            if (authError || !authData.user?.id) {
+                setError(authError?.message || "Erreur d'authentification");
+                return;
+            }
 
-        if (!isLogin) {
-            await supabase.from('profiles').insert({
-                id: userId,
-                username,
-                unlockedLevels: ['user']
+            if (!authData.user.email_confirmed_at) {
+                setMessage("Veuillez confirmer votre email avant de vous connecter.");
+                await supabase.auth.signOut();
+                return;
+            }
+
+            await createProfileIfMissing(authData.user);
+
+            onLogin(authData.user.id);
+
+        } else {
+            const {data: signUpData, error: signUpError} = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {username}
+                }
             });
-        }
 
-        onLogin(userId);
+            if (signUpError || !signUpData.user) {
+                setError(signUpError?.message || "Erreur lors de l'inscription");
+                return;
+            }
+
+            setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
+        }
     };
 
     return (
@@ -100,6 +119,11 @@ const AuthPage: React.FC<AuthPageProps> = ({ onLogin }) => {
                     {error && (
                         <div className="p-3 bg-red-50 border border-red-100 rounded-md text-red-600 text-sm">
                             {error}
+                        </div>
+                    )}
+                    {message && (
+                        <div className="p-3 bg-green-50 border border-green-100 rounded-md text-green-700 text-sm">
+                            {message}
                         </div>
                     )}
                     <button
