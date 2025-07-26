@@ -46,39 +46,31 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
             onLogin(authData.user.id);
 
         } else {
-            const {data: signUpData, error: signUpError} = await supabase.auth.signUp({
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
-                    data: {username}
+                    data: { username }
                 }
             });
 
-            if (signUpError || !signUpData.user) {
-                setError(signUpError?.message || "Erreur lors de l'inscription");
+            if (signUpError) {
+                setError(signUpError.message || "Erreur lors de l'inscription.");
+                return;
+            }
+
+            if (!signUpData.user || signUpData.user?.identities?.length === 0) {
+                setError("Cette adresse email est déjà utilisée. Essayez de vous connecter.");
                 return;
             }
 
             setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
+
         }
     };
 
     useEffect(() => {
-        const restoreSession = async () => {
-            const {
-                data: { session },
-            } = await supabase.auth.getSession();
-
-            if (session?.user?.id) {
-                onLogin(session.user.id);
-            }
-        };
-
-        restoreSession();
-
-        const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             if (session?.user?.id) {
                 onLogin(session.user.id);
             }
@@ -86,7 +78,7 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
 
         return () => subscription.unsubscribe();
     }, []);
-
+    
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
             <div className="w-full max-w-md bg-white rounded-lg shadow-sm p-6 sm:p-8">

@@ -6,7 +6,7 @@ import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
 import { questionsData, Question } from './data/Questions';
-import { saveQuizResult } from './utils/supabaseHelpers';
+import {saveQuizResult, tryUnlockNextLevel} from './utils/supabaseHelpers';
 import { QuizResult } from './types/user';
 import { supabase } from './lib/supabaseClient';
 
@@ -74,12 +74,15 @@ export function App() {
     setCurrentScreen('home');
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();  
+
     setUserId(null);
     setCurrentScreen('auth');
     setUserAnswers([]);
     setSelectedQuestions([]);
   };
+
 
   const startQuiz = (category: string, level: string) => {
     if (!unlockedLevels.includes(level)) {
@@ -118,6 +121,14 @@ export function App() {
     if (userId) {
       try {
         await saveQuizResult(userId, newResult);
+
+        await tryUnlockNextLevel(userId, newResult.mode, newResult.difficulty, newResult.score);
+
+        if (newResult.mode === 'mixed' && newResult.score >= 80) {
+          const updated = await fetchUnlocked(userId);
+          setUnlockedLevels(updated);
+        }
+
       } catch (err) {
         console.error('Erreur en sauvegardant les résultats du quiz :', err);
       }

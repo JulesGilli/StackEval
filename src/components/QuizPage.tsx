@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import QuestionCard from './QuestionCard';
-import {saveQuizResultToDB} from '../utils/supabaseApi';
 import {fetchUnlockedLevels, tryUnlockNextLevel} from "../utils/supabaseHelpers.ts";
 
 
@@ -67,17 +66,10 @@ const QuizPage: React.FC<QuizPageProps> = ({
         const score = Math.round((correctAnswers / TOTAL_QUESTIONS) * 100);
 
         try {
-            await saveQuizResultToDB({
-                user_id: userId,
-                mode: quizSettings.mode,
-                difficulty: quizSettings.difficulty,
-                score,
-                totalQuestions: TOTAL_QUESTIONS,
-                correctAnswers
-            });
-
             try {
+                console.log("🔑 Tentative de déblocage du niveau supérieur...");
                 await tryUnlockNextLevel(userId, quizSettings.mode, quizSettings.difficulty, score);
+                console.log("✅ Déblocage terminé");
 
                 if (quizSettings.mode === 'mixed' && score >= 80) {
                     const updated = await fetchUnlockedLevels(userId);
