@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
@@ -7,8 +7,8 @@ import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
 import { questionsData, Question } from './data/Questions';
 import { saveQuizResult } from './utils/supabaseHelpers';
-
 import { QuizResult } from './types/user';
+import { supabase } from './lib/supabaseClient';
 
 function shuffle<T>(arr: T[]): T[] {
   const array = arr.slice();
@@ -22,6 +22,21 @@ function shuffle<T>(arr: T[]): T[] {
 function getRandomQuestions<T>(questions: T[], count: number): T[] {
   return shuffle(questions).slice(0, count);
 }
+
+const fetchUnlocked = async (userId: string): Promise<string[]> => {
+  const { data, error } = await supabase
+      .from('profiles')
+      .select('unlockedLevels')
+      .eq('id', userId)
+      .maybeSingle();
+
+  if (!error && data?.unlockedLevels) {
+    return data.unlockedLevels;
+  } else {
+    console.warn("Aucun niveau débloqué trouvé");
+    return [];
+  }
+};
 
 function pickQuestions(
     allQuestions: Question[],
@@ -42,14 +57,17 @@ function pickQuestions(
 export function App() {
   const [userId, setUserId] = useState<string | null>(null);
   const [currentScreen, setCurrentScreen] = useState<'auth' | 'home' | 'quiz' | 'results' | 'profile'>('auth');
-
-  const [quizSettings, setQuizSettings] = useState({
-    difficulty: '',
-    mode: ''
-  });
-
+  const [quizSettings, setQuizSettings] = useState({ difficulty: '', mode: '' });
   const [userAnswers, setUserAnswers] = useState<Array<number | null>>([]);
   const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
+  const [unlockedLevels, setUnlockedLevels] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    fetchUnlocked(userId).then(setUnlockedLevels);
+  }, [userId]);
+
 
   const handleLogin = (id: string) => {
     setUserId(id);
@@ -64,6 +82,11 @@ export function App() {
   };
 
   const startQuiz = (category: string, level: string) => {
+    if (!unlockedLevels.includes(level)) {
+      alert("Ce niveau n'est pas encore débloqué.");
+      return;
+    }
+
     setQuizSettings({ difficulty: level, mode: category });
     const questions = pickQuestions(questionsData, category, level, 10);
     setSelectedQuestions(questions);
@@ -112,18 +135,19 @@ export function App() {
         {userId && (
             <Header
                 isAuthenticated={true}
-                username={''} // à améliorer si tu veux afficher le nom
+                username={''}
                 onLogout={handleLogout}
                 onProfile={() => setCurrentScreen('profile')}
             />
         )}
 
-        {currentScreen === 'auth' && (
-            <AuthPage onLogin={handleLogin} />
-        )}
+        {currentScreen === 'auth' && <AuthPage onLogin={handleLogin} />}
 
         {currentScreen === 'home' && userId && (
-            <HomePage onStartQuiz={startQuiz} />
+            <HomePage
+                onStartQuiz={startQuiz}
+                unlockedLevels={unlockedLevels}
+            />
         )}
 
         {currentScreen === 'quiz' && userId && (
@@ -134,6 +158,7 @@ export function App() {
                 onFinishQuiz={finishQuiz}
                 quizSettings={quizSettings}
                 userId={userId}
+                setUnlockedLevels={setUnlockedLevels}
             />
         )}
 
