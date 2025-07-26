@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {supabase} from '../lib/supabaseClient';
 import {createProfileIfMissing} from '../lib/createProfileIfMissing';
+import { useEffect } from 'react';
 
 interface AuthPageProps {
     onLogin: (userId: string) => void;
 }
+
 
 const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
     const [isLogin, setIsLogin] = useState(true);
@@ -60,6 +62,30 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
             setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
         }
     };
+
+    useEffect(() => {
+        const restoreSession = async () => {
+            const {
+                data: { session },
+            } = await supabase.auth.getSession();
+
+            if (session?.user?.id) {
+                onLogin(session.user.id);
+            }
+        };
+
+        restoreSession();
+
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (session?.user?.id) {
+                onLogin(session.user.id);
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
