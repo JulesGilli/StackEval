@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import { createProfileIfMissing } from '../lib/createProfileIfMissing';
+import React, {useState} from 'react';
+import {supabase} from '../lib/supabaseClient';
 
-const AuthPage: React.FC = () => {
+const AuthPage: React.FC<{ onLogin: (id: string) => void }> = ({onLogin}) => {
     const [isLogin, setIsLogin] = useState(true);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +21,7 @@ const AuthPage: React.FC = () => {
         setMessage('');
 
         if (isLogin) {
-            const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
+            const {data: authData, error: authError} = await supabase.auth.signInWithPassword({email, password});
 
             if (authError || !authData.user?.id) {
                 setError(authError?.message || "Erreur d'authentification");
@@ -35,14 +34,13 @@ const AuthPage: React.FC = () => {
                 return;
             }
 
-            await createProfileIfMissing(authData.user);
-
+            onLogin(authData.user.id); 
         } else {
-            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+            const {data: signUpData, error: signUpError} = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
-                    data: { username }
+                    data: {username}
                 }
             });
 
@@ -55,6 +53,9 @@ const AuthPage: React.FC = () => {
                 setError("Cette adresse email est déjà utilisée. Essayez de vous connecter.");
                 return;
             }
+
+            // ✅ Stock temporaire du username
+            localStorage.setItem('pendingUsername', username);
 
             setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
         }

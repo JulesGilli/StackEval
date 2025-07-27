@@ -1,26 +1,26 @@
-﻿import { User } from '@supabase/supabase-js';
-import { supabase } from './supabaseClient';
+﻿import { supabase } from './supabaseClient';
+import { User } from '@supabase/supabase-js'; 
 
-export async function createProfileIfMissing(user: User | null) {
-    if (!user || !user.id || !user.email_confirmed_at) return;
+export async function createProfileIfMissing(user: User, username: string) {
+    if (!user?.id) return;
+
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('id', user.id)
+        .maybeSingle();
+
+    if (error) throw error;
+    if (data) return; // existe déjà
 
     const { error: insertError } = await supabase
         .from('profiles')
-        .insert({
+        .insert([{
             id: user.id,
-            username: user.user_metadata?.username ?? '',
+            email: user.email,
+            username: username || user.email?.split('@')[0] || 'user',
             unlockedLevels: ['user'],
-        });
+        }]);
 
-    if (insertError) {
-        if (insertError.code === '23505') {
-            console.log('⏩ Profil déjà existant, insertion ignorée.');
-        } else {
-            console.error('❌ Erreur insertion profil :', insertError.message);
-        }
-    } else {
-        console.log('✅ Profil inséré avec succès.');
-    }
+    if (insertError) throw insertError;
 }
-
-

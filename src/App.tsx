@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
-import {questionsData, Question} from './data/Questions';
-import {saveQuizResult, tryUnlockNextLevel} from './utils/supabaseHelpers';
-import {QuizResult} from './types/user';
-import {supabase} from './lib/supabaseClient';
+import { questionsData, Question } from './data/Questions';
+import { saveQuizResult, tryUnlockNextLevel } from './utils/supabaseHelpers';
+import { QuizResult } from './types/user';
+import { supabase } from './lib/supabaseClient';
+import { createProfileIfMissing } from './lib/createProfileIfMissing';
 
 function shuffle<T>(arr: T[]): T[] {
     const array = arr.slice();
@@ -23,76 +24,46 @@ function getRandomQuestions<T>(questions: T[], count: number): T[] {
     return shuffle(questions).slice(0, count);
 }
 
-const fetchUnlocked = async (userId: string | null): Promise<string[]> => {
-    if (!userId) {
-        console.warn("fetchUnlocked() appelé sans userId");
-        return [];
-    }
-
+async function fetchUnlocked(userId: string | null): Promise<string[]> {
+    if (!userId) return [];
     const { data, error } = await supabase
         .from('profiles')
         .select('unlockedLevels')
         .eq('id', userId)
         .maybeSingle();
 
-    if (!error && data?.unlockedLevels) {
-        return data.unlockedLevels;
-    } else {
-        console.warn("Aucun niveau débloqué trouvé ou erreur Supabase :", error);
-        return [];
-    }
-};
+    if (error || !data?.unlockedLevels) return [];
+    return data.unlockedLevels;
+}
 
-function pickQuestions(
-    allQuestions: Question[],
-    category: string,
-    level: string,
-    count: number
-): Question[] {
+function pickQuestions(allQuestions: Question[], category: string, level: string, count: number): Question[] {
     if (category === 'evaluation') {
         const filtered = allQuestions.filter(q => q.level === level);
         return getRandomQuestions(filtered, count);
     }
-    const filtered = allQuestions.filter(
-        q => q.category === category && q.level === level
-    );
+    const filtered = allQuestions.filter(q => q.category === category && q.level === level);
     return getRandomQuestions(filtered, count);
 }
 
 export function App() {
     const [userId, setUserId] = useState<string | null>(null);
     const [currentScreen, setCurrentScreen] = useState<'auth' | 'home' | 'quiz' | 'results' | 'profile'>('auth');
-    const [quizSettings, setQuizSettings] = useState({difficulty: '', mode: ''});
+    const [quizSettings, setQuizSettings] = useState({ difficulty: '', mode: '' });
     const [userAnswers, setUserAnswers] = useState<Array<number | null>>([]);
     const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
     const [unlockedLevels, setUnlockedLevels] = useState<string[]>([]);
-
-    useEffect(() => {
-        if (!userId) return;
-
-        let cancelled = false;
-
-        const loadUnlocked = async () => {
-            const levels = await fetchUnlocked(userId);
-            if (!cancelled) setUnlockedLevels(levels);
-        };
-
-        loadUnlocked();
-
-        return () => {
-            cancelled = true;
-        };
-    }, [userId]);
-
     const [isSessionLoading, setIsSessionLoading] = useState(true);
 
+    // -------- Session init --------
     useEffect(() => {
-        const checkSession = async () => {
+        (async () => {
+            setIsSessionLoading(true);
             const { data } = await supabase.auth.getSession();
             const user = data?.session?.user;
 
             if (user && user.email_confirmed_at) {
                 setUserId(user.id);
+                setUnlockedLevels(await fetchUnlocked(user.id));
                 setCurrentScreen('home');
             } else {
                 await supabase.auth.signOut();
@@ -101,37 +72,54 @@ export function App() {
             }
 
             setIsSessionLoading(false);
-        };
-
-        checkSession();
-
-        const { data: authListener } = supabase.auth.onAuthStateChange(async (_event, session) => {
-            const user = session?.user;
-
-            if (user && user.email_confirmed_at) {
-                setUserId(user.id);
-                setCurrentScreen('home');
-            } else {
-                await supabase.auth.signOut();
-                setUserId(null);
-                setCurrentScreen('auth');
-            }
-        });
-
-        return () => {
-            authListener.subscription.unsubscribe();
-        };
+        })();
     }, []);
-    
+    // ------------------------------
+
+    // -------- Guard: rediriger vers login si pas loggué --------
+    useEffect(() => {
+        if (!isSessionLoading && !userId && currentScreen !== 'auth') {
+            setCurrentScreen('auth');
+        }
+    }, [isSessionLoading, userId, currentScreen]);
+    // -----------------------------------------------------------
+
     const handleLogout = async () => {
         await supabase.auth.signOut();
-
         setUserId(null);
         setCurrentScreen('auth');
         setUserAnswers([]);
         setSelectedQuestions([]);
+        setUnlockedLevels([]);
     };
 
+    const handleLogin = async (id: string) => {
+        const { data } = await supabase.auth.getUser();
+        const user = data?.user;
+
+        if (!user || user.id !== id || !user.email_confirmed_at) {
+            await supabase.auth.signOut();
+            setUserId(null);
+            setCurrentScreen('auth');
+            return;
+        }
+
+        setUserId(user.id);
+
+        const username = localStorage.getItem('pendingUsername');
+        if (username) {
+            try {
+                await createProfileIfMissing(user, username);
+                localStorage.removeItem('pendingUsername');
+            } catch (e) {
+                console.error("❌ Erreur lors de la création du profil :", e);
+            }
+        }
+
+        const levels = await fetchUnlocked(user.id);
+        setUnlockedLevels(levels);
+        setCurrentScreen('home');
+    };
 
     const startQuiz = (category: string, level: string) => {
         if (!unlockedLevels.includes(level)) {
@@ -139,13 +127,11 @@ export function App() {
             return;
         }
 
-        setQuizSettings({difficulty: level, mode: category});
-
+        setQuizSettings({ difficulty: level, mode: category });
         const questionCount = category === 'evaluation' ? 20 : 10;
         const questions = pickQuestions(questionsData, category, level, questionCount);
         setSelectedQuestions(questions);
         setUserAnswers(Array(questionCount).fill(null));
-
         setCurrentScreen('quiz');
     };
 
@@ -173,14 +159,12 @@ export function App() {
         if (userId) {
             try {
                 await saveQuizResult(userId, newResult);
-
                 await tryUnlockNextLevel(userId, newResult.mode, newResult.difficulty, newResult.score);
 
                 if (newResult.mode === 'evaluation' && newResult.score >= 80) {
                     const updated = await fetchUnlocked(userId);
                     setUnlockedLevels(updated);
                 }
-
             } catch (err) {
                 console.error('Erreur en sauvegardant les résultats du quiz :', err);
             }
@@ -213,7 +197,7 @@ export function App() {
             )}
 
             <main className="flex-1 flex flex-col">
-                {currentScreen === 'auth' && <AuthPage />}
+                {currentScreen === 'auth' && <AuthPage onLogin={handleLogin} />}
 
                 {currentScreen === 'home' && userId && (
                     <HomePage
