@@ -41,7 +41,8 @@ const AuthPage: React.FC<{ onLogin: (id: string) => void }> = ({onLogin}) => {
                 email,
                 password,
                 options: {
-                    data: { username } // injecte dans metadata
+                    data: { username }, // injecte dans metadata
+                    emailRedirectTo: 'https://julesgilli.github.io/StackEval'
                 }
             });
 
