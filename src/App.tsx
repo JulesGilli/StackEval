@@ -65,15 +65,57 @@ export function App() {
     useEffect(() => {
         if (!userId) return;
 
-        fetchUnlocked(userId).then(setUnlockedLevels);
+        const safeFetch = async () => {
+            try {
+                const levels = await fetchUnlocked(userId);
+                setUnlockedLevels(levels);
+            } catch (e) {
+                console.warn("Erreur lors du fetch des niveaux :", e);
+            }
+        };
+
+        safeFetch();
     }, [userId]);
 
+    const [isSessionLoading, setIsSessionLoading] = useState(true);
 
-    const handleLogin = (id: string) => {
-        setUserId(id);
-        setCurrentScreen('home');
-    };
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data } = await supabase.auth.getUser();
+            const user = data?.user;
 
+            if (user && user.email_confirmed_at) {
+                setUserId(user.id);
+                setCurrentScreen('home');
+            } else {
+                if (user) await supabase.auth.signOut(); // kill la session sale
+                setUserId(null);
+                setCurrentScreen('auth');
+            }
+
+            setIsSessionLoading(false);
+        };
+
+        checkSession();
+
+        const { data: authListener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+            const user = session?.user;
+
+            if (user && user.email_confirmed_at) {
+                setUserId(user.id);
+                setCurrentScreen('home');
+            } else {
+                await supabase.auth.signOut();
+                setUserId(null);
+                setCurrentScreen('auth');
+            }
+        });
+
+        return () => {
+            authListener.subscription.unsubscribe();
+        };
+    }, []);
+    
     const handleLogout = async () => {
         await supabase.auth.signOut();
 
@@ -144,6 +186,14 @@ export function App() {
         setCurrentScreen('home');
     };
 
+    if (isSessionLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center text-gray-500">
+                Chargement...
+            </div>
+        );
+    }
+
     return (
         <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900 antialiased">
             {userId && (
@@ -156,7 +206,7 @@ export function App() {
             )}
 
             <main className="flex-1 flex flex-col">
-                {currentScreen === 'auth' && <AuthPage onLogin={handleLogin}/>}
+                {currentScreen === 'auth' && <AuthPage />}
 
                 {currentScreen === 'home' && userId && (
                     <HomePage
@@ -186,7 +236,7 @@ export function App() {
                     />
                 )}
 
-                {currentScreen === 'profile' && userId && (
+                {userId && currentScreen === 'profile' && (
                     <ProfilePage
                         userId={userId}
                         onLogout={handleLogout}

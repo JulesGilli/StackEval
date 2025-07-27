@@ -1,14 +1,8 @@
-import React, {useState} from 'react';
-import {supabase} from '../lib/supabaseClient';
-import {createProfileIfMissing} from '../lib/createProfileIfMissing';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import { createProfileIfMissing } from '../lib/createProfileIfMissing';
 
-interface AuthPageProps {
-    onLogin: (userId: string) => void;
-}
-
-
-const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
+const AuthPage: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -28,7 +22,7 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
         setMessage('');
 
         if (isLogin) {
-            const {data: authData, error: authError} = await supabase.auth.signInWithPassword({email, password});
+            const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
 
             if (authError || !authData.user?.id) {
                 setError(authError?.message || "Erreur d'authentification");
@@ -42,8 +36,6 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
             }
 
             await createProfileIfMissing(authData.user);
-
-            onLogin(authData.user.id);
 
         } else {
             const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
@@ -65,20 +57,9 @@ const AuthPage: React.FC<AuthPageProps> = ({onLogin}) => {
             }
 
             setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
-
         }
     };
 
-    useEffect(() => {
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            if (session?.user?.id) {
-                onLogin(session.user.id);
-            }
-        });
-
-        return () => subscription.unsubscribe();
-    }, []);
-    
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
             <div className="w-full max-w-md bg-white rounded-lg shadow-sm p-6 sm:p-8">
