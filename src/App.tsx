@@ -23,8 +23,13 @@ function getRandomQuestions<T>(questions: T[], count: number): T[] {
     return shuffle(questions).slice(0, count);
 }
 
-const fetchUnlocked = async (userId: string): Promise<string[]> => {
-    const {data, error} = await supabase
+const fetchUnlocked = async (userId: string | null): Promise<string[]> => {
+    if (!userId) {
+        console.warn("fetchUnlocked() appelé sans userId");
+        return [];
+    }
+
+    const { data, error } = await supabase
         .from('profiles')
         .select('unlockedLevels')
         .eq('id', userId)
@@ -33,7 +38,7 @@ const fetchUnlocked = async (userId: string): Promise<string[]> => {
     if (!error && data?.unlockedLevels) {
         return data.unlockedLevels;
     } else {
-        console.warn("Aucun niveau débloqué trouvé");
+        console.warn("Aucun niveau débloqué trouvé ou erreur Supabase :", error);
         return [];
     }
 };
@@ -65,30 +70,32 @@ export function App() {
     useEffect(() => {
         if (!userId) return;
 
-        const safeFetch = async () => {
-            try {
-                const levels = await fetchUnlocked(userId);
-                setUnlockedLevels(levels);
-            } catch (e) {
-                console.warn("Erreur lors du fetch des niveaux :", e);
-            }
+        let cancelled = false;
+
+        const loadUnlocked = async () => {
+            const levels = await fetchUnlocked(userId);
+            if (!cancelled) setUnlockedLevels(levels);
         };
 
-        safeFetch();
+        loadUnlocked();
+
+        return () => {
+            cancelled = true;
+        };
     }, [userId]);
 
     const [isSessionLoading, setIsSessionLoading] = useState(true);
 
     useEffect(() => {
         const checkSession = async () => {
-            const { data } = await supabase.auth.getUser();
-            const user = data?.user;
+            const { data } = await supabase.auth.getSession();
+            const user = data?.session?.user;
 
             if (user && user.email_confirmed_at) {
                 setUserId(user.id);
                 setCurrentScreen('home');
             } else {
-                if (user) await supabase.auth.signOut(); // kill la session sale
+                await supabase.auth.signOut();
                 setUserId(null);
                 setCurrentScreen('auth');
             }
