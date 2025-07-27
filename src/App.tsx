@@ -91,9 +91,12 @@ export function App() {
     }
 
     setQuizSettings({ difficulty: level, mode: category });
-    const questions = pickQuestions(questionsData, category, level, 10);
+
+    const questionCount = category === 'evaluation' ? 20 : 10;
+    const questions = pickQuestions(questionsData, category, level, questionCount);
     setSelectedQuestions(questions);
-    setUserAnswers(Array(10).fill(null));
+    setUserAnswers(Array(questionCount).fill(null));
+
     setCurrentScreen('quiz');
   };
 

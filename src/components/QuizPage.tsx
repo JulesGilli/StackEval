@@ -26,9 +26,6 @@ interface QuizPageProps {
     setUnlockedLevels: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-
-const TOTAL_QUESTIONS = 10;
-
 const QuizPage: React.FC<QuizPageProps> = ({
                                                questions,
                                                userAnswers,
@@ -39,6 +36,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
                                                setUnlockedLevels,
                                            }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const TOTAL_QUESTIONS = questions.length;
 
     const handleNext = () => {
         if (currentQuestionIndex < TOTAL_QUESTIONS - 1) {
@@ -95,7 +93,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
         const map: Record<string, string> = {
             fundamentals: 'Fondamentaux',
             scripting: 'Scripting & C#',
-            mixed: 'Mixte',
+            mixed: 'Évaluation',
         };
         return map[mode] || mode;
     };

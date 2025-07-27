@@ -18,6 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({onStartQuiz, unlockedLevels}) => {
 
     const categories = [
         {id: 'fundamentals', label: 'Fondamentaux'},
+        {id: 'evaluation', label: 'Evaluation'},
         {id: 'scripting', label: 'Scripting & C#'},
         /*{ id: 'ui', label: 'Interface Utilisateur' },
         { id: 'animation', label: 'Animation' },
@@ -25,7 +26,6 @@ const HomePage: React.FC<HomePageProps> = ({onStartQuiz, unlockedLevels}) => {
         { id: 'graphics', label: 'Graphismes & Rendu' },
         { id: 'performance', label: 'Optimisation & Performances' },
         { id: 'build', label: 'Build & Publication' },*/
-        {id: 'mixed', label: 'Mixte'},
     ];
 
     const handleStartQuiz = () => {

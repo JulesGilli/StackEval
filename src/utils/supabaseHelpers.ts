@@ -59,7 +59,7 @@ export const saveQuizResult = async (userId: string, result: QuizResult) => {
 const LEVEL_ORDER = ['user', 'associate', 'pro'];
 
 export async function tryUnlockNextLevel(userId: string, mode: string, difficulty: string, score: number) {
-    if (mode !== 'mixed') return;
+    if (mode !== 'evaluation') return;
 
     const currentLevelIndex = LEVEL_ORDER.indexOf(difficulty);
     if (currentLevelIndex === -1 || currentLevelIndex >= LEVEL_ORDER.length - 1) return;
