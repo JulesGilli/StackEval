@@ -1,26 +1,33 @@
 ﻿import { supabase } from './supabaseClient';
-import { User } from '@supabase/supabase-js'; 
 
-export async function createProfileIfMissing(user: User, username: string) {
-    if (!user?.id) return;
-
+export async function createProfileIfMissing(userId: string, username: string) {
+    console.log('[🚩 createProfileIfMissing] called with:', userId, username); // 👈 AJOUTE ÇA
     const { data, error } = await supabase
         .from('profiles')
-        .select('id')
-        .eq('id', user.id)
-        .maybeSingle();
+        .select('id', { head: false })
+        .eq('id', userId)
+        .single();
 
-    if (error) throw error;
-    if (data) return; // existe déjà
+    if (error && error.code !== 'PGRST116') {
+        console.error('[❌ createProfileIfMissing] SELECT failed:', error.message);
+        return;
+    }
 
-    const { error: insertError } = await supabase
-        .from('profiles')
-        .insert([{
-            id: user.id,
-            email: user.email,
-            username: username || user.email?.split('@')[0] || 'user',
-            unlockedLevels: ['user'],
-        }]);
+    if (data) {
+        console.log('[ℹ️] Profile already exists');
+        return;
+    }
 
-    if (insertError) throw insertError;
+    const { error: insertError } = await supabase.from('profiles').insert({
+        id: userId,
+        username,
+        unlockedLevels: ['user']
+    });
+
+    if (insertError) {
+        console.error('[❌ createProfileIfMissing] INSERT failed:', insertError.message);
+    } else {
+        console.log('[✅] Profile created for', userId, 'with username:', username);
+    }
 }
+

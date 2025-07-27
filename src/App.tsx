@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
 import ResultsPage from './components/ResultsPage';
 import ProfilePage from './components/ProfilePage';
 import Header from './components/Header';
-import { questionsData, Question } from './data/Questions';
-import { saveQuizResult, tryUnlockNextLevel } from './utils/supabaseHelpers';
-import { QuizResult } from './types/user';
-import { supabase } from './lib/supabaseClient';
-import { createProfileIfMissing } from './lib/createProfileIfMissing';
+import {questionsData, Question} from './data/Questions';
+import {saveQuizResult, tryUnlockNextLevel} from './utils/supabaseHelpers';
+import {QuizResult} from './types/user';
+import {supabase} from './lib/supabaseClient';
+import {createProfileIfMissing} from './lib/createProfileIfMissing';
 
 function shuffle<T>(arr: T[]): T[] {
     const array = arr.slice();
@@ -26,7 +26,7 @@ function getRandomQuestions<T>(questions: T[], count: number): T[] {
 
 async function fetchUnlocked(userId: string | null): Promise<string[]> {
     if (!userId) return [];
-    const { data, error } = await supabase
+    const {data, error} = await supabase
         .from('profiles')
         .select('unlockedLevels')
         .eq('id', userId)
@@ -48,24 +48,61 @@ function pickQuestions(allQuestions: Question[], category: string, level: string
 export function App() {
     const [userId, setUserId] = useState<string | null>(null);
     const [currentScreen, setCurrentScreen] = useState<'auth' | 'home' | 'quiz' | 'results' | 'profile'>('auth');
-    const [quizSettings, setQuizSettings] = useState({ difficulty: '', mode: '' });
+    const [quizSettings, setQuizSettings] = useState({difficulty: '', mode: ''});
     const [userAnswers, setUserAnswers] = useState<Array<number | null>>([]);
     const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
     const [unlockedLevels, setUnlockedLevels] = useState<string[]>([]);
     const [isSessionLoading, setIsSessionLoading] = useState(true);
 
+    useEffect(() => {
+        supabase.auth.signOut()
+            .then(() => {
+                console.log('[🔧 Reset] Déconnexion forcée');
+                localStorage.clear();
+                indexedDB.deleteDatabase('localforage');
+            });
+    }, []);
+
     // -------- Session init --------
     useEffect(() => {
         (async () => {
             setIsSessionLoading(true);
-            const { data } = await supabase.auth.getSession();
-            const user = data?.session?.user;
+            console.log('[🔎 Auth Init] Vérification de la session Supabase...');
 
-            if (user && user.email_confirmed_at) {
+            const {data, error} = await supabase.auth.getSession();
+
+            if (error) {
+                console.error('[❌ Supabase] Erreur lors de getSession:', error.message);
+            }
+
+            const session = data?.session;
+
+            if (!session) {
+                console.log('[ℹ️] Aucune session trouvée. Redirection vers login.');
+                await supabase.auth.signOut();
+                setUserId(null);
+                setCurrentScreen('auth');
+                setIsSessionLoading(false);
+                return;
+            }
+
+            const user = session.user;
+            console.log('[✅ Session trouvée]', user);
+
+            if (user?.email_confirmed_at) {
+                console.log('[✅ Email confirmé] => Passage à Home');
                 setUserId(user.id);
-                setUnlockedLevels(await fetchUnlocked(user.id));
+
+                const metadataUsername = user.user_metadata?.username || 'User_' + user.id.slice(0, 5);
+                console.log('[👤 Session] Appel à createProfileIfMissing avec metadata:', metadataUsername);
+                await createProfileIfMissing(user.id, metadataUsername);
+
+                const levels = await fetchUnlocked(user.id);
+                console.log('[📦 Levels déverrouillés]:', levels);
+                setUnlockedLevels(levels);
                 setCurrentScreen('home');
             } else {
+                console.warn('[⚠️ Email non confirmé ou invalide] => Déconnexion forcée');
                 await supabase.auth.signOut();
                 setUserId(null);
                 setCurrentScreen('auth');
@@ -105,21 +142,23 @@ export function App() {
         }
 
         setUserId(user.id);
+        console.log('[✅ handleLogin] Utilisateur authentifié:', user.id);
 
-        const username = localStorage.getItem('pendingUsername');
-        if (username) {
-            try {
-                await createProfileIfMissing(user, username);
-                localStorage.removeItem('pendingUsername');
-            } catch (e) {
-                console.error("❌ Erreur lors de la création du profil :", e);
-            }
+        const metadataUsername = user.user_metadata?.username || 'User_' + user.id.slice(0, 5);
+        console.log('[👤] createProfileIfMissing avec metadata:', metadataUsername);
+
+        try {
+            await createProfileIfMissing(user.id, metadataUsername);
+        } catch (e) {
+            console.error("❌ Erreur createProfileIfMissing:", e);
         }
 
         const levels = await fetchUnlocked(user.id);
+        console.log('[📦 handleLogin] Levels déverrouillés:', levels);
         setUnlockedLevels(levels);
         setCurrentScreen('home');
     };
+
 
     const startQuiz = (category: string, level: string) => {
         if (!unlockedLevels.includes(level)) {
@@ -127,7 +166,7 @@ export function App() {
             return;
         }
 
-        setQuizSettings({ difficulty: level, mode: category });
+        setQuizSettings({difficulty: level, mode: category});
         const questionCount = category === 'evaluation' ? 20 : 10;
         const questions = pickQuestions(questionsData, category, level, questionCount);
         setSelectedQuestions(questions);
@@ -197,7 +236,7 @@ export function App() {
             )}
 
             <main className="flex-1 flex flex-col">
-                {currentScreen === 'auth' && <AuthPage onLogin={handleLogin} />}
+                {currentScreen === 'auth' && <AuthPage onLogin={handleLogin}/>}
 
                 {currentScreen === 'home' && userId && (
                     <HomePage

@@ -21,7 +21,7 @@ const AuthPage: React.FC<{ onLogin: (id: string) => void }> = ({onLogin}) => {
         setMessage('');
 
         if (isLogin) {
-            const {data: authData, error: authError} = await supabase.auth.signInWithPassword({email, password});
+            const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
 
             if (authError || !authData.user?.id) {
                 setError(authError?.message || "Erreur d'authentification");
@@ -34,13 +34,14 @@ const AuthPage: React.FC<{ onLogin: (id: string) => void }> = ({onLogin}) => {
                 return;
             }
 
-            onLogin(authData.user.id); 
+            console.log('[✅ AuthPage] Connexion réussie avec ID:', authData.user.id);
+            onLogin(authData.user.id);
         } else {
-            const {data: signUpData, error: signUpError} = await supabase.auth.signUp({
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
-                    data: {username}
+                    data: { username } // injecte dans metadata
                 }
             });
 
@@ -54,9 +55,7 @@ const AuthPage: React.FC<{ onLogin: (id: string) => void }> = ({onLogin}) => {
                 return;
             }
 
-            // ✅ Stock temporaire du username
-            localStorage.setItem('pendingUsername', username);
-
+            console.log('[✅ AuthPage] Inscription réussie, username:', username);
             setMessage("Un email de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.");
         }
     };
