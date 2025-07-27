@@ -76,7 +76,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ userId, onStartNewQuiz }) => 
         ({
             unity: 'Unity',
             csharp: 'C#',
-            mixed: 'Mixte',
+            evaluation: 'Évaluation',
         }[mode] || mode);
 
     const formatDate = (dateString: string) =>

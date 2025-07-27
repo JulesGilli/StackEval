@@ -44,7 +44,7 @@ function pickQuestions(
     level: string,
     count: number
 ): Question[] {
-  if (category === 'mixed') {
+  if (category === 'evaluation') {
     const filtered = allQuestions.filter(q => q.level === level);
     return getRandomQuestions(filtered, count);
   }
@@ -127,7 +127,7 @@ export function App() {
 
         await tryUnlockNextLevel(userId, newResult.mode, newResult.difficulty, newResult.score);
 
-        if (newResult.mode === 'mixed' && newResult.score >= 80) {
+        if (newResult.mode === 'evaluation' && newResult.score >= 80) {
           const updated = await fetchUnlocked(userId);
           setUnlockedLevels(updated);
         }

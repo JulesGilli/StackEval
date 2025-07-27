@@ -21,7 +21,6 @@ interface ResultsPageProps {
   };
 }
 
-const TOTAL_QUESTIONS = 10;
 
 const ResultsPage: React.FC<ResultsPageProps> = ({
                                                    questions,
@@ -30,15 +29,15 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
                                                    quizSettings
                                                  }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  const totalQuestions = questions.length;
   const correctAnswers = questions.filter(
       (q, i) => userAnswers[i] === q.correctAnswer
   ).length;
   const unansweredCount = userAnswers.filter(a => a === null).length;
-  const score = (correctAnswers / TOTAL_QUESTIONS) * 100;
+  const score = (correctAnswers / totalQuestions) * 100;
 
   const handleNext = () => {
-    if (currentQuestionIndex < TOTAL_QUESTIONS - 1) {
+    if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -60,7 +59,7 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
     const map: Record<string, string> = {
       unity: 'Unity',
       csharp: 'C#',
-      mixed: 'Mixte'
+      evaluation: 'Évaluation'
     };
     return map[mode] || mode;
   };
@@ -98,7 +97,7 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
                 </div>
                 <div className="text-gray-700">
                   {correctAnswers} bonne{correctAnswers !== 1 ? 's' : ''} réponse
-                  sur {TOTAL_QUESTIONS}
+                  sur {totalQuestions}
                   {unansweredCount > 0 && (
                       <div className="text-sm text-gray-500 mt-1 text-center">
                         ({unansweredCount} question{unansweredCount > 1 ? 's' : ''} sans réponse)
@@ -112,7 +111,7 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
               <h2 className="text-xl font-medium text-gray-900 mb-6">Révision des questions</h2>
               <div className="mb-6 flex justify-between items-center">
                 <div className="text-sm font-medium text-gray-900">
-                  Question {currentQuestionIndex + 1}/{TOTAL_QUESTIONS}
+                  Question {currentQuestionIndex + 1}/{totalQuestions}
                 </div>
                 <div className="text-sm">
                   {currentAnswer === current.correctAnswer ? (
@@ -141,7 +140,7 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
               </button>
               <button
                   onClick={handleNext}
-                  disabled={currentQuestionIndex === TOTAL_QUESTIONS - 1}
+                  disabled={currentQuestionIndex === totalQuestions - 1}
                   className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Suivante

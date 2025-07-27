@@ -69,7 +69,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
                 await tryUnlockNextLevel(userId, quizSettings.mode, quizSettings.difficulty, score);
                 console.log("✅ Déblocage terminé");
 
-                if (quizSettings.mode === 'mixed' && score >= 80) {
+                if (quizSettings.mode === 'evaluation' && score >= 80) {
                     const updated = await fetchUnlockedLevels(userId);
                     setUnlockedLevels(updated);
                 }
@@ -93,7 +93,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
         const map: Record<string, string> = {
             fundamentals: 'Fondamentaux',
             scripting: 'Scripting & C#',
-            mixed: 'Évaluation',
+            evaluation: 'Évaluation',
         };
         return map[mode] || mode;
     };
