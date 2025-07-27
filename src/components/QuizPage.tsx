@@ -112,7 +112,7 @@ const QuizPage: React.FC<QuizPageProps> = ({
     const progress = (answeredCount / TOTAL_QUESTIONS) * 100;
 
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
+        <div className="flex flex-col flex-1 bg-gray-50">
             <header className="bg-white border-b border-gray-200 py-4">
                 <div className="container mx-auto px-4 max-w-3xl flex justify-between items-center">
                     <h1 className="text-lg font-medium text-gray-900">

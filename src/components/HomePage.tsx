@@ -42,7 +42,7 @@ const HomePage: React.FC<HomePageProps> = ({onStartQuiz, unlockedLevels}) => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="flex-1 flex items-center justify-center px-4 py-8">
             <div className="w-full max-w-xl bg-white rounded-lg shadow-sm p-6 sm:p-8">
                 <header className="mb-10">
                     <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 text-center">
@@ -92,6 +92,11 @@ const HomePage: React.FC<HomePageProps> = ({onStartQuiz, unlockedLevels}) => {
                                 </button>
                             ))}
                         </div>
+                        {category === 'evaluation' && (
+                            <p className="mt-4 text-sm text-gray-500 text-center">
+                                Obtenez <span className="font-medium text-gray-800">80%</span> à l’évaluation pour débloquer le niveau suivant.
+                            </p>
+                        )}
                     </div>
                 </section>
                 {error && (
